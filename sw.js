@@ -1,7 +1,7 @@
 // Service Worker (Spec v2, NF-05): App-Dateien offline verfügbar, Kataloge zuerst aus dem Netz.
 // Bei jeder Änderung an App-Dateien VERSION erhöhen, damit Nutzer die neue Fassung bekommen.
 
-const VERSION = '0.5.1';
+const VERSION = '0.6.0';
 const SHELL_CACHE = `lerntrainer-shell-${VERSION}`;
 const DATA_CACHE = 'lerntrainer-data';
 
