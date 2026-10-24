@@ -30,6 +30,8 @@ const de = {
   'home.backupLink': 'Jetzt sichern',
   'home.loadError': 'Der Fragenkatalog konnte nicht geladen werden. Prüfe die Internetverbindung und lade die Seite neu.',
   'home.retry': 'Neu laden',
+  'footer.impressum': 'Impressum',
+  'footer.version': 'Version {version}',
   'home.noStorage': 'Dein Browser erlaubt kein dauerhaftes Speichern. Der Lernstand geht beim Schließen verloren.',
 
   'progress.label': '{total} Fragen: {seen} gesehen, {correct} zuletzt richtig, {mastered} beherrscht',
@@ -57,6 +59,7 @@ const de = {
   'quiz.level3': 'Stufe 3: Transfer',
   'quiz.draft': 'Entwurf',
   'quiz.score': 'Punktestand',
+  'quiz.scoreUnit': 'Pkt.',
   'quiz.scoreValue.one': '1 Punkt',
   'quiz.scoreValue.other': '{n} Punkte',
   'quiz.worth.one': 'bis zu 1 Punkt',

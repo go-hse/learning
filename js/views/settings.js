@@ -2,8 +2,8 @@ import { h, icon, appBar } from '../ui.js';
 import { t, formatDate } from '../i18n/de.js';
 import * as store from '../store.js';
 import { dayKey } from '../scoring.js';
+import { APP_VERSION } from '../config.js';
 
-export const APP_VERSION = '0.2.0';
 const GOAL_MIN = 5;
 const GOAL_MAX = 100;
 const GOAL_STEP = 5;

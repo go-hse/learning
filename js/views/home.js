@@ -5,6 +5,7 @@ import { streak, series, totalPoints, dayKey } from '../scoring.js';
 import { computeBoxes, progress } from '../leitner.js';
 import { visibleQuestions, findChapter, sectionTitle } from '../catalog.js';
 import { isFinished } from '../session.js';
+import { APP_VERSION, IMPRESSUM_URL } from '../config.js';
 
 const BACKUP_INTERVAL = 14 * 24 * 60 * 60 * 1000;
 
@@ -68,6 +69,10 @@ export function home(root, _params, ctx) {
       t('home.backup', { when: settings.lastExport ? formatDate(settings.lastExport) : t('home.backupNever') }), ' ',
       h('a', { href: '#/einstellungen' }, t('home.backupLink'))));
   }
+
+  root.append(h('footer', { class: 'footer' },
+    h('a', { href: IMPRESSUM_URL }, t('footer.impressum')),
+    h('span', {}, t('footer.version', { version: APP_VERSION }))));
 }
 
 function dayPanel(st) {
