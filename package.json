@@ -1,0 +1,12 @@
+{
+  "name": "lerntrainer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lernkarten-SPA zur Vorlesung Internet-Technologien",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "start": "python -m http.server 8000"
+  },
+  "license": "GPL-3.0"
+}

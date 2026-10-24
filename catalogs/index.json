@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "catalogs": [
+    {
+      "id": "inet-tech",
+      "title": "Internet-Technologien",
+      "url": "catalogs/inet-tech.json",
+      "version": "2026.10.23.2",
+      "languages": [
+        "de"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1443 @@
+[
+  {
+    "id": "css-bas-einbindung-best-practice",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welche Art, CSS einzubinden, ist für eine Website mit vielen Seiten Best Practice?",
+    "options": [
+      {
+        "text": "Ein externes Stylesheet über <link rel=\"stylesheet\">",
+        "correct": true
+      },
+      {
+        "text": "Internes CSS in einem <style>-Element auf jeder Seite"
+      },
+      {
+        "text": "Inline-CSS im style-Attribut jedes Elements"
+      },
+      {
+        "text": "CSS direkt im <body> vor jedem Abschnitt"
+      }
+    ],
+    "explanation": "Ein externes Stylesheet ist wiederverwendbar, wird vom Browser gecacht und trennt Inhalt und Darstellung vollständig. Internes CSS gilt nur für eine Seite, Inline-CSS nur für ein Element und ist kaum wartbar."
+  },
+  {
+    "id": "css-bas-inline-gegen-id",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Farbe hat die Überschrift?",
+    "code": {
+      "lang": "html",
+      "text": "<style>\n  #titel { color: blue; }\n</style>\n<h1 id=\"titel\" style=\"color: red;\">Hallo</h1>"
+    },
+    "options": [
+      {
+        "text": "rot",
+        "correct": true
+      },
+      {
+        "text": "blau"
+      },
+      {
+        "text": "schwarz (Browser-Standard)"
+      },
+      {
+        "text": "Das hängt davon ab, ob <style> vor oder nach dem h1 steht"
+      }
+    ],
+    "explanation": "Ein Inline-Style hat keinen Selektor und bekommt eine vorangestellte vierte Spalte: 1-0-0-0. Damit schlägt er jede Regel aus einem Stylesheet, auch eine mit ID-Selektor (1-0-0). Ausnahme wäre !important."
+  },
+  {
+    "id": "css-bas-spezifitaet-zwei-klassen",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welche Spezifität hat der Selektor `.article .title`?",
+    "options": [
+      {
+        "text": "0-2-0",
+        "correct": true
+      },
+      {
+        "text": "0-1-1"
+      },
+      {
+        "text": "2-0-0"
+      },
+      {
+        "text": "0-0-2"
+      }
+    ],
+    "explanation": "Jeder Klassen-Selektor zählt 0-1-0, zwei Klassen also 0-2-0. Der Nachfahren-Kombinator (Leerzeichen) zählt nicht mit."
+  },
+  {
+    "id": "css-bas-id-gegen-klassen",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Ein `<h1 id=\"content\" class=\"title\">` steht innerhalb eines Elements mit der Klasse `article`. Welche Farbe hat die Überschrift?",
+    "code": {
+      "lang": "css",
+      "text": "h1#content      { color: green; }\n.article .title { color: yellow; }"
+    },
+    "options": [
+      {
+        "text": "grün",
+        "correct": true
+      },
+      {
+        "text": "gelb"
+      },
+      {
+        "text": "schwarz (Browser-Standard)"
+      },
+      {
+        "text": "gelb, weil zwei Klassen mehr wiegen als eine ID"
+      }
+    ],
+    "explanation": "h1#content hat die Spezifität 1-0-1, .article .title nur 0-2-0. Verglichen wird spaltenweise von links: Ein ID-Treffer schlägt beliebig viele Klassen."
+  },
+  {
+    "id": "css-bas-gleiche-spezifitaet",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welche Farbe haben die Absätze?",
+    "code": {
+      "lang": "css",
+      "text": "p { color: red; }\np { color: blue; }"
+    },
+    "options": [
+      {
+        "text": "blau",
+        "correct": true
+      },
+      {
+        "text": "rot"
+      },
+      {
+        "text": "lila (die Farben werden gemischt)"
+      },
+      {
+        "text": "Browser-Standard, weil sich die Regeln widersprechen"
+      }
+    ],
+    "explanation": "Beide Regeln haben dieselbe Spezifität (0-0-1). Dann entscheidet die Quellreihenfolge: Die zuletzt deklarierte Regel gewinnt."
+  },
+  {
+    "id": "css-bas-kaskade-reihenfolge",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Treffen mehrere Regeln auf ein Element zu, prüft die Kaskade nacheinander mehrere Kriterien. Welches zuerst?",
+    "options": [
+      {
+        "text": "Herkunft und Wichtigkeit (z. B. !important)",
+        "correct": true
+      },
+      {
+        "text": "Spezifität"
+      },
+      {
+        "text": "Quellreihenfolge"
+      },
+      {
+        "text": "Cascade Layer (@layer)"
+      }
+    ],
+    "explanation": "Die Reihenfolge ist: Herkunft und Wichtigkeit → Cascade Layer → Spezifität → Quellreihenfolge. Spezifität wird nur innerhalb derselben Herkunft und desselben Layers verglichen."
+  },
+  {
+    "id": "css-bas-layer-gegen-spezifitaet",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Welche Farbe hat ein Absatz innerhalb von `#main`?",
+    "code": {
+      "lang": "css",
+      "text": "@layer base, utilities;\n\n@layer base {\n  #main p { color: blue; }\n}\n@layer utilities {\n  p { color: green; }\n}"
+    },
+    "options": [
+      {
+        "text": "grün",
+        "correct": true
+      },
+      {
+        "text": "blau"
+      },
+      {
+        "text": "Die Regeln heben sich auf, es gilt der Browser-Standard"
+      },
+      {
+        "text": "Das hängt davon ab, welcher @layer-Block weiter unten im Stylesheet steht"
+      }
+    ],
+    "explanation": "Die Reihenfolge der Layer legt die erste Zeile fest: Später deklarierte Layer (utilities) gewinnen gegen früher deklarierte (base) – unabhängig von der Spezifität. 1-0-1 gegen 0-0-1 würde nur innerhalb desselben Layers zählen."
+  },
+  {
+    "id": "css-bas-unbekannte-eigenschaft",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Ein Stylesheet enthält eine Eigenschaft, die der Browser noch nicht kennt. Was passiert?",
+    "options": [
+      {
+        "text": "Er überspringt nur diese Deklaration, alles andere gilt weiter",
+        "correct": true
+      },
+      {
+        "text": "Er verwirft das ganze Stylesheet"
+      },
+      {
+        "text": "Er zeigt die Seite ohne jedes CSS an"
+      },
+      {
+        "text": "Er bricht das Laden der Seite mit einer Fehlermeldung ab"
+      }
+    ],
+    "explanation": "Browser ignorieren unbekannte oder ungültige Deklarationen stillschweigend. Diese Fehlertoleranz ermöglicht Progressive Enhancement: Neue Features wirken in modernen Browsern, ältere überspringen sie einfach."
+  },
+  {
+    "id": "css-bas-nesting-ampersand",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welchen Selektor erzeugt die verschachtelte Regel `&:hover`?",
+    "code": {
+      "lang": "css",
+      "text": ".card {\n  &:hover { box-shadow: 0 2px 8px rgb(0 0 0 / 20%); }\n  .title  { font-weight: bold; }\n}"
+    },
+    "options": [
+      {
+        "text": ".card:hover",
+        "correct": true
+      },
+      {
+        "text": ".card :hover"
+      },
+      {
+        "text": ".card > :hover"
+      },
+      {
+        "text": ":hover .card"
+      }
+    ],
+    "explanation": "& steht für das Elternelement selbst – &:hover wird also zu .card:hover. Ohne & entsteht ein Nachfahren-Selektor: Aus .title wird .card .title."
+  },
+  {
+    "id": "css-bas-kein-css4",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Warum gibt es kein „CSS4“?",
+    "options": [
+      {
+        "text": "Seit 2009 wird CSS in einzelnen Modulen mit eigenem Reifegrad weiterentwickelt",
+        "correct": true
+      },
+      {
+        "text": "CSS3 ist die endgültige Version, CSS wird nicht mehr erweitert"
+      },
+      {
+        "text": "Das W3C hat CSS zugunsten von JavaScript eingefroren"
+      },
+      {
+        "text": "CSS4 heißt offiziell Sass"
+      }
+    ],
+    "explanation": "Seit der Modularisierung (2009) gibt es Module wie CSS Grid Level 1 oder CSS Nesting Level 1 mit eigenem Stand – aber kein Gesamtdokument CSS3 oder CSS4. Ob ein Feature nutzbar ist, zeigt heute der Baseline-Status."
+  },
+  {
+    "id": "css-bas-komma-liste",
+    "section": "css-basics",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Was gilt für die Regel `h1, h2, h3 { color: black; }`?",
+    "options": [
+      {
+        "text": "Sie wirkt wie drei einzelne Regeln, jede mit der Spezifität 0-0-1",
+        "correct": true
+      },
+      {
+        "text": "Sie hat die Spezifität 0-0-3"
+      },
+      {
+        "text": "Sie trifft nur h3-Elemente innerhalb eines h2 innerhalb eines h1"
+      },
+      {
+        "text": "Sie gilt nur, wenn alle drei Überschriften auf der Seite vorkommen"
+      }
+    ],
+    "explanation": "Das Komma ist eine reine Abkürzung (ODER): Die Regel gilt für jedes aufgezählte Element einzeln, die Spezifität jedes Selektors bleibt unverändert."
+  },
+  {
+    "id": "css-txt-hex-kurzform",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welcher Farbwert entspricht `#c00`?",
+    "options": [
+      {
+        "text": "#cc0000",
+        "correct": true
+      },
+      {
+        "text": "#c00000"
+      },
+      {
+        "text": "#0000cc"
+      },
+      {
+        "text": "#c0c0c0"
+      }
+    ],
+    "explanation": "In der dreistelligen Kurzform wird jede Ziffer verdoppelt: c → cc, 0 → 00, 0 → 00. #c00 ist also ein kräftiges Rot."
+  },
+  {
+    "id": "css-txt-moderne-farbsyntax",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Angabe entspricht `rgb(255 0 0 / 50%)`?",
+    "options": [
+      {
+        "text": "rgba(255, 0, 0, 0.5)",
+        "correct": true
+      },
+      {
+        "text": "rgb(255, 0, 0)"
+      },
+      {
+        "text": "rgba(255, 0, 0, 50)"
+      },
+      {
+        "text": "rgb(128 0 0)"
+      }
+    ],
+    "explanation": "Die moderne Syntax trennt mit Leerzeichen und setzt den Alpha-Wert hinter einen Schrägstrich. rgba() ist nur noch ein Alias für rgb(). 50 % Deckkraft entspricht Alpha 0.5; bei rgba(255, 0, 0, 50) wird Alpha auf 1 begrenzt, die Farbe wäre deckend."
+  },
+  {
+    "id": "css-txt-font-family-fallback",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Warum endet `font-family: Arial, Helvetica, sans-serif;` mit `sans-serif`?",
+    "options": [
+      {
+        "text": "Die generische Familie greift immer, falls keine der genannten Schriften installiert ist",
+        "correct": true
+      },
+      {
+        "text": "sans-serif ist die Schrift, die der Browser zuerst probiert"
+      },
+      {
+        "text": "Ohne sans-serif ist die Deklaration ungültig"
+      },
+      {
+        "text": "sans-serif lädt Arial automatisch von einem Server nach"
+      }
+    ],
+    "explanation": "font-family ist eine Fallback-Kette: Der Browser probiert die Schriften von links nach rechts, bis eine verfügbar ist. Am Ende sollte immer eine generische Familie (sans-serif, serif, monospace) stehen."
+  },
+  {
+    "id": "css-txt-font-weight-bold",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welcher Zahlenwert entspricht `font-weight: bold`?",
+    "options": [
+      {
+        "text": "700",
+        "correct": true
+      },
+      {
+        "text": "400"
+      },
+      {
+        "text": "600"
+      },
+      {
+        "text": "900"
+      }
+    ],
+    "explanation": "normal entspricht 400, bold entspricht 700. Variable Fonts erlauben darüber hinaus jeden Wert zwischen 1 und 1000."
+  },
+  {
+    "id": "css-txt-text-decoration-teile",
+    "section": "css-text-fonts",
+    "type": "mc-multi",
+    "difficulty": 2,
+    "prompt": "Welche Einzeleigenschaften fasst die Kurzschreibweise `text-decoration` zusammen?",
+    "options": [
+      {
+        "text": "text-decoration-line",
+        "correct": true
+      },
+      {
+        "text": "text-decoration-color",
+        "correct": true
+      },
+      {
+        "text": "text-decoration-style",
+        "correct": true
+      },
+      {
+        "text": "text-decoration-thickness",
+        "correct": true
+      },
+      {
+        "text": "text-decoration-offset"
+      }
+    ],
+    "explanation": "Linie, Farbe, Stil und Dicke sind seit März 2021 (Baseline Widely available) einzeln steuerbar, z. B. text-decoration: underline dotted #ff3028 3px. Eine Eigenschaft text-decoration-offset gibt es nicht; den Abstand der Unterstreichung regelt die eigenständige Eigenschaft text-underline-offset."
+  },
+  {
+    "id": "css-txt-background-reihenfolge",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Welche Hintergrundfarbe hat das div, solange das Bild noch lädt?",
+    "code": {
+      "lang": "css",
+      "text": "div {\n  background-color: #cce5ff;\n  background: url(\"pattern.png\") no-repeat center/cover;\n}"
+    },
+    "options": [
+      {
+        "text": "keine (transparent)",
+        "correct": true
+      },
+      {
+        "text": "#cce5ff"
+      },
+      {
+        "text": "weiß, weil url() Weiß als Startwert setzt"
+      },
+      {
+        "text": "Das div hat gar keinen Hintergrund, weil die Kurzschreibweise ungültig ist"
+      }
+    ],
+    "explanation": "Die Kurzschreibweise background setzt alle nicht angegebenen Teil-Eigenschaften auf ihren Startwert zurück – auch background-color auf transparent. Deshalb gehört background-color als Fallback hinter die Kurzschreibweise."
+  },
+  {
+    "id": "css-txt-background-size-cover",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Ein Hintergrundbild soll die Fläche vollständig bedecken; dass Ränder abgeschnitten werden, ist in Ordnung. Welche Angabe?",
+    "options": [
+      {
+        "text": "background-size: cover;",
+        "correct": true
+      },
+      {
+        "text": "background-size: contain;"
+      },
+      {
+        "text": "background-size: auto;"
+      },
+      {
+        "text": "background-repeat: repeat;"
+      }
+    ],
+    "explanation": "cover skaliert das Bild, bis die ganze Fläche bedeckt ist – überstehende Ränder werden abgeschnitten. contain skaliert, bis das ganze Bild hineinpasst; dabei können Lücken bleiben."
+  },
+  {
+    "id": "css-txt-google-fonts-dsgvo",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Wie bindet man Google Fonts datenschutzkonform ein?",
+    "options": [
+      {
+        "text": "Die Schriftdateien herunterladen und per @font-face vom eigenen Server laden",
+        "correct": true
+      },
+      {
+        "text": "Per <link> auf fonts.googleapis.com, aber mit display=swap"
+      },
+      {
+        "text": "Per <link rel=\"preconnect\"> auf die Google-Server"
+      },
+      {
+        "text": "Den Schriftnamen nur im style-Attribut angeben"
+      }
+    ],
+    "explanation": "Laut LG München I (20.01.2022) verstößt das Laden von Google-Servern ohne Einwilligung gegen die DSGVO, weil dabei die IP-Adresse der Besucher an Google übertragen wird. Lokal gehostete Schriftdateien vermeiden das."
+  },
+  {
+    "id": "css-txt-font-display-swap",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Was bewirkt `font-display: swap` (bei Google Fonts: `display=swap`)?",
+    "options": [
+      {
+        "text": "Der Text erscheint sofort in einer Ersatzschrift und wechselt, sobald die Web Font geladen ist",
+        "correct": true
+      },
+      {
+        "text": "Der Text bleibt unsichtbar, bis die Web Font geladen ist"
+      },
+      {
+        "text": "Der Browser tauscht die Schnitte Fett und Normal"
+      },
+      {
+        "text": "Die Web Font wird nur geladen, wenn der Nutzer zustimmt"
+      }
+    ],
+    "explanation": "swap hält Text sofort lesbar: Zuerst wird eine Ersatzschrift angezeigt, nach dem Laden wird auf die Web Font gewechselt."
+  },
+  {
+    "id": "css-txt-variable-fonts",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Aussage zu Variable Fonts stimmt?",
+    "options": [
+      {
+        "text": "Eine Datei enthält alle Schnitte, Zwischenwerte wie font-weight: 625 sind möglich",
+        "correct": true
+      },
+      {
+        "text": "Sie erlauben font-weight nur in 100er-Schritten"
+      },
+      {
+        "text": "Für jeden Schnitt ist eine eigene Datei nötig"
+      },
+      {
+        "text": "Sie lassen sich nur per JavaScript steuern"
+      }
+    ],
+    "explanation": "Variable Fonts fassen Gewicht, Breite, Neigung usw. in einer Datei zusammen und sind über Achsen (wght, wdth, ital, slnt, opsz) stufenlos steuerbar – per font-weight oder font-variation-settings."
+  },
+  {
+    "id": "css-txt-text-transform",
+    "section": "css-text-fonts",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "`text-transform: uppercase` ist gesetzt. Was passiert mit dem Text im HTML-Dokument?",
+    "options": [
+      {
+        "text": "Nichts – nur die Darstellung ändert sich",
+        "correct": true
+      },
+      {
+        "text": "Er wird im DOM in Großbuchstaben umgeschrieben"
+      },
+      {
+        "text": "Nur der erste Buchstabe jedes Wortes wird groß"
+      },
+      {
+        "text": "Er wird in einer Kapitälchen-Schrift neu geladen"
+      }
+    ],
+    "explanation": "text-transform ändert nur, wie der Text angezeigt wird; im Dokument bleibt er unverändert. capitalize würde den ersten Buchstaben jedes Wortes groß darstellen."
+  },
+  {
+    "id": "css-anim-gradient-winkel",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wo ist das Element blau?",
+    "code": {
+      "lang": "css",
+      "text": ".box {\n  background: linear-gradient(90deg, red, blue);\n}"
+    },
+    "options": [
+      {
+        "text": "rechts",
+        "correct": true
+      },
+      {
+        "text": "links"
+      },
+      {
+        "text": "oben"
+      },
+      {
+        "text": "unten"
+      }
+    ],
+    "explanation": "0deg zeigt nach oben, 90deg nach rechts. Der Verlauf läuft in Pfeilrichtung: von Rot (links) nach Blau (rechts) – wie to right."
+  },
+  {
+    "id": "css-anim-gradient-ist-bild",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Mit welcher Eigenschaft lässt sich ein `linear-gradient()` einsetzen?",
+    "options": [
+      {
+        "text": "background-image",
+        "correct": true
+      },
+      {
+        "text": "color"
+      },
+      {
+        "text": "border-color"
+      },
+      {
+        "text": "text-decoration-color"
+      }
+    ],
+    "explanation": "Gradients sind vom Browser erzeugte Bilder. Sie gehören dorthin, wo ein Bild erwartet wird – in background-image bzw. die Kurzschreibweise background – und lassen sich mit echten Bildern schichten."
+  },
+  {
+    "id": "css-anim-harter-uebergang",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wie sieht der Hintergrund aus?",
+    "code": {
+      "lang": "css",
+      "text": ".box {\n  background: linear-gradient(to right, red 50%, blue 50%);\n}"
+    },
+    "options": [
+      {
+        "text": "Links rot, rechts blau, mit scharfer Kante in der Mitte",
+        "correct": true
+      },
+      {
+        "text": "Ein weicher Verlauf von Rot nach Blau über die ganze Breite"
+      },
+      {
+        "text": "Einfarbig lila (50 % Rot, 50 % Blau)"
+      },
+      {
+        "text": "Oben rot, unten blau"
+      }
+    ],
+    "explanation": "Endet eine Farbe an derselben Position, an der die nächste beginnt, gibt es keinen Übergangsbereich – es entsteht eine harte Kante. So entstehen z. B. Streifen oder Tortendiagramme."
+  },
+  {
+    "id": "css-anim-conic-start",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wo beginnt `conic-gradient(red, yellow, green)`, wenn kein `from` angegeben ist?",
+    "options": [
+      {
+        "text": "oben (12 Uhr)",
+        "correct": true
+      },
+      {
+        "text": "rechts (3 Uhr)"
+      },
+      {
+        "text": "unten (6 Uhr)"
+      },
+      {
+        "text": "in der Mitte, von dort nach außen"
+      }
+    ],
+    "explanation": "Konische Verläufe rotieren um den Mittelpunkt, starten bei 0deg = 12 Uhr und laufen im Uhrzeigersinn. Mit from <winkel> lässt sich der Start drehen. Von der Mitte nach außen wäre ein radial-gradient."
+  },
+  {
+    "id": "css-anim-streifenbreite",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wie breit ist ein dunkler Streifen, gemessen entlang der Verlaufsrichtung?",
+    "code": {
+      "lang": "css",
+      "text": ".stripes {\n  background: repeating-linear-gradient(\n    45deg,\n    #222 0 10px,\n    #eee 10px 20px\n  );\n}"
+    },
+    "options": [
+      {
+        "text": "10px",
+        "correct": true
+      },
+      {
+        "text": "20px"
+      },
+      {
+        "text": "45px"
+      },
+      {
+        "text": "5px"
+      }
+    ],
+    "explanation": "#222 reicht von 0 bis 10px, #eee von 10px bis 20px. Dieses 20px lange Muster wiederholt sich – jeder Streifen ist also 10px breit."
+  },
+  {
+    "id": "css-anim-box-shadow-richtung",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wohin fällt der Schatten?",
+    "code": {
+      "lang": "css",
+      "text": ".box {\n  box-shadow: -4px 4px 8px rgb(0 0 0 / 30%);\n}"
+    },
+    "options": [
+      {
+        "text": "nach links unten",
+        "correct": true
+      },
+      {
+        "text": "nach rechts unten"
+      },
+      {
+        "text": "nach links oben"
+      },
+      {
+        "text": "gleichmäßig rundherum"
+      }
+    ],
+    "explanation": "Der erste Wert ist der horizontale Versatz (negativ = links), der zweite der vertikale (positiv = unten), der dritte der Weichzeichnungsradius."
+  },
+  {
+    "id": "css-anim-transition-oder-keyframes",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Beim Hovern soll nur zwischen einem Start- und einem Endzustand weich übergeblendet werden. Was genügt?",
+    "options": [
+      {
+        "text": "transition",
+        "correct": true
+      },
+      {
+        "text": "@keyframes mit mehreren Phasen"
+      },
+      {
+        "text": "animation-timeline: scroll()"
+      },
+      {
+        "text": "@property"
+      }
+    ],
+    "explanation": "transition überblendet zwischen zwei Zuständen, z. B. bei :hover oder :focus. @keyframes braucht man erst für benannte Zwischenphasen oder Animationen, die von selbst laufen."
+  },
+  {
+    "id": "css-anim-infinite",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Was bedeutet `infinite` in dieser Regel?",
+    "code": {
+      "lang": "css",
+      "text": ".box {\n  animation: pulse 2s infinite;\n}"
+    },
+    "options": [
+      {
+        "text": "Die Animation wiederholt sich endlos",
+        "correct": true
+      },
+      {
+        "text": "Ein einzelner Durchlauf dauert unendlich lange"
+      },
+      {
+        "text": "Die Animation startet erst nach Ablauf der Zeit"
+      },
+      {
+        "text": "Die Animation läuft rückwärts"
+      }
+    ],
+    "explanation": "pulse ist der Name der @keyframes-Regel, 2s die Dauer eines Durchlaufs, infinite die Anzahl der Wiederholungen."
+  },
+  {
+    "id": "css-anim-transition-nur-background",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Was passiert beim Hovern mit der Vergrößerung?",
+    "code": {
+      "lang": "css",
+      "text": "button {\n  transition: background 0.5s;\n}\nbutton:hover {\n  background: black;\n  transform: scale(1.1);\n}"
+    },
+    "options": [
+      {
+        "text": "Sie springt sofort, nur der Hintergrund wird übergeblendet",
+        "correct": true
+      },
+      {
+        "text": "Sie wird ebenfalls in 0.5s übergeblendet"
+      },
+      {
+        "text": "Sie wird nicht ausgeführt, weil transition nur eine Eigenschaft erlaubt"
+      },
+      {
+        "text": "Sie wird erst nach 0.5s schlagartig ausgeführt"
+      }
+    ],
+    "explanation": "Nur die in transition genannten Eigenschaften werden übergeblendet. Für beide wäre z. B. transition: background 0.5s, transform 0.3s; nötig."
+  },
+  {
+    "id": "css-anim-property",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Wozu dient `@property`, wenn eine Custom Property wie `--winkel` animiert werden soll?",
+    "options": [
+      {
+        "text": "Es gibt der Variable einen Typ (z. B. <angle>), damit der Browser Zwischenwerte berechnen kann",
+        "correct": true
+      },
+      {
+        "text": "Es macht die Variable in allen Stylesheets global verfügbar"
+      },
+      {
+        "text": "Es ersetzt die @keyframes-Regel"
+      },
+      {
+        "text": "Ohne @property funktioniert var(--winkel) überhaupt nicht"
+      }
+    ],
+    "explanation": "Unregistrierte Custom Properties behandelt der Browser als Text – er springt von einem Wert zum nächsten. Mit @property (syntax, inherits, initial-value) kann er interpolieren, z. B. für einen sich drehenden conic-gradient. Baseline Newly available seit Juli 2024."
+  },
+  {
+    "id": "css-anim-scroll-driven",
+    "section": "css-gradients-animation",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Was bewirkt `animation-timeline: scroll()`?",
+    "options": [
+      {
+        "text": "Der Fortschritt der Animation folgt dem Scrollen statt der Zeit",
+        "correct": true
+      },
+      {
+        "text": "Die Animation startet, sobald ganz nach unten gescrollt wurde, und läuft dann nach Zeit"
+      },
+      {
+        "text": "Die Seite scrollt automatisch im Takt der Animation"
+      },
+      {
+        "text": "Scrollen ist gesperrt, solange die Animation läuft"
+      }
+    ],
+    "explanation": "Scroll-Driven Animations koppeln @keyframes an den Scroll-Fortschritt (scroll()) oder an die Sichtbarkeit eines Elements (view()) – bisher ein Fall für JavaScript. Mangels Firefox-Unterstützung noch nicht Baseline, daher mit Fallback einsetzen."
+  },
+  {
+    "id": "css-mq-medientypen",
+    "section": "css-media-queries",
+    "type": "mc-multi",
+    "difficulty": 1,
+    "prompt": "Welche Medientypen sind heute noch gültig?",
+    "options": [
+      {
+        "text": "all",
+        "correct": true
+      },
+      {
+        "text": "screen",
+        "correct": true
+      },
+      {
+        "text": "print",
+        "correct": true
+      },
+      {
+        "text": "handheld"
+      },
+      {
+        "text": "tv"
+      }
+    ],
+    "explanation": "Seit Media Queries Level 4 sind nur noch all, screen und print nutzbar. handheld, projection, tv und andere wurden entfernt und treffen nie mehr zu."
+  },
+  {
+    "id": "css-mq-komma",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Wann gelten die Regeln in diesem Block?",
+    "code": {
+      "lang": "css",
+      "text": "@media print, (max-width: 600px) {\n  /* … */\n}"
+    },
+    "options": [
+      {
+        "text": "Beim Drucken oder wenn der Viewport höchstens 600px breit ist",
+        "correct": true
+      },
+      {
+        "text": "Nur beim Drucken auf Papier, das schmaler als 600px ist"
+      },
+      {
+        "text": "Nur auf Bildschirmen unter 600px"
+      },
+      {
+        "text": "Nie – ein Komma ist in Media Queries ungültig"
+      }
+    ],
+    "explanation": "Das Komma wirkt wie ODER zwischen ganzen Queries. Die Regeln gelten, wenn mindestens eine der Queries zutrifft."
+  },
+  {
+    "id": "css-mq-not",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Was bedeutet diese Query?",
+    "code": {
+      "lang": "css",
+      "text": "@media not screen and (color) {\n  /* … */\n}"
+    },
+    "options": [
+      {
+        "text": "nicht (Bildschirm und farbfähig)",
+        "correct": true
+      },
+      {
+        "text": "kein Bildschirm, aber farbfähig"
+      },
+      {
+        "text": "ein Bildschirm ohne Farbe"
+      },
+      {
+        "text": "gar nichts – not ist ungültig"
+      }
+    ],
+    "explanation": "not negiert immer die gesamte Query, nicht nur das direkt folgende Wort. Die Query trifft also auf alles zu, was nicht zugleich screen und farbfähig ist."
+  },
+  {
+    "id": "css-mq-max-width-grenze",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Der Viewport ist genau 600px breit. Gelten die Regeln?",
+    "code": {
+      "lang": "css",
+      "text": "@media (max-width: 600px) {\n  /* … */\n}"
+    },
+    "options": [
+      {
+        "text": "Ja, max-width schließt den Grenzwert ein",
+        "correct": true
+      },
+      {
+        "text": "Nein, erst ab 599px"
+      },
+      {
+        "text": "Nur im Hochformat"
+      },
+      {
+        "text": "Nur, wenn zusätzlich min-width angegeben ist"
+      }
+    ],
+    "explanation": "max-width: 600px bedeutet „höchstens 600px“, also einschließlich 600px. In der Range-Syntax: (width <= 600px)."
+  },
+  {
+    "id": "css-mq-viewport-meta",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Eine responsive Seite erscheint auf dem Handy als verkleinerte Desktop-Ansicht, die Media Queries greifen nicht. Was fehlt am wahrscheinlichsten?",
+    "options": [
+      {
+        "text": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+        "correct": true
+      },
+      {
+        "text": "@media screen vor jeder Regel"
+      },
+      {
+        "text": "<link media=\"handheld\">"
+      },
+      {
+        "text": "box-sizing: border-box"
+      }
+    ],
+    "explanation": "Ohne den Viewport-Meta-Tag rendern mobile Browser die Seite in einer virtuellen, oft 980px breiten Desktop-Ansicht und verkleinern sie danach. Die Media Queries sehen dann 980px statt der echten Breite."
+  },
+  {
+    "id": "css-mq-link-download",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Was gilt für print.css, wenn die Seite normal am Bildschirm angezeigt wird?",
+    "code": {
+      "lang": "html",
+      "text": "<link rel=\"stylesheet\" href=\"print.css\" media=\"print\">"
+    },
+    "options": [
+      {
+        "text": "Sie wird trotzdem heruntergeladen, aber nur beim Drucken angewendet",
+        "correct": true
+      },
+      {
+        "text": "Sie wird erst beim Drucken heruntergeladen"
+      },
+      {
+        "text": "Sie wird geladen und auch am Bildschirm angewendet"
+      },
+      {
+        "text": "Sie wird nie geladen, weil print veraltet ist"
+      }
+    ],
+    "explanation": "Ein media-Attribut steuert nur, wann ein Stylesheet angewendet wird, nicht ob es geladen wird. Ein häufiges Missverständnis: Auch nicht zutreffende Stylesheets werden heruntergeladen."
+  },
+  {
+    "id": "css-mq-range-syntax",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welche Query entspricht `@media (400px <= width <= 900px)`?",
+    "options": [
+      {
+        "text": "@media (min-width: 400px) and (max-width: 900px)",
+        "correct": true
+      },
+      {
+        "text": "@media (min-width: 900px) and (max-width: 400px)"
+      },
+      {
+        "text": "@media (min-width: 400px), (max-width: 900px)"
+      },
+      {
+        "text": "@media (width: 400px) or (width: 900px)"
+      }
+    ],
+    "explanation": "Die Range-Syntax (seit ca. September 2025 Baseline Widely available) ersetzt min-/max-Präfixe durch Vergleichsoperatoren. Ein Komma statt and wäre ODER und träfe auf fast jede Breite zu."
+  },
+  {
+    "id": "css-mq-container-query",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Eine Karten-Komponente soll ihr Layout danach richten, wie breit ihr eigener Container ist – unabhängig von der Fensterbreite. Womit?",
+    "options": [
+      {
+        "text": "@container (Container Queries)",
+        "correct": true
+      },
+      {
+        "text": "@media (min-width: …)"
+      },
+      {
+        "text": "vw-Einheiten"
+      },
+      {
+        "text": "@layer"
+      }
+    ],
+    "explanation": "Media Queries prüfen nur den Viewport. Container Queries (container-type, @container) prüfen die Größe eines markierten Elternelements – ideal für wiederverwendbare Komponenten. Baseline Widely available seit Februar 2023."
+  },
+  {
+    "id": "css-mq-width-bezug",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Worauf bezieht sich `width` in einer Media Query?",
+    "options": [
+      {
+        "text": "auf den Viewport",
+        "correct": true
+      },
+      {
+        "text": "auf die Bildschirmauflösung des Geräts"
+      },
+      {
+        "text": "auf das Browserfenster samt Symbolleisten"
+      },
+      {
+        "text": "auf das Elternelement"
+      }
+    ],
+    "explanation": "width und height beziehen sich auf den Viewport, also den sichtbaren Bereich der Seite im Browserfenster – nicht auf den Monitor und nicht auf das Fenster samt Rahmen. device-width ist veraltet."
+  },
+  {
+    "id": "css-mq-breakpoints-waehlen",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Wie wählt man Breakpoints am besten?",
+    "options": [
+      {
+        "text": "Dort, wo das eigene Layout sichtbar zu brechen beginnt",
+        "correct": true
+      },
+      {
+        "text": "Genau bei den Breiten der meistverkauften Smartphones"
+      },
+      {
+        "text": "In festen Abständen von 100px"
+      },
+      {
+        "text": "Immer bei 480, 768 und 1024px, weil das genormt ist"
+      }
+    ],
+    "explanation": "Breakpoint-Tabellen sind nur Richtwerte. Gerätegrößen ändern sich jedes Jahr – der richtige Breakpoint liegt dort, wo der eigene Inhalt unschön zu wirken beginnt."
+  },
+  {
+    "id": "css-mq-dark-mode",
+    "section": "css-media-queries",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Mit welchem Media Feature reagiert eine Seite auf den Dunkelmodus des Systems?",
+    "options": [
+      {
+        "text": "prefers-color-scheme",
+        "correct": true
+      },
+      {
+        "text": "color"
+      },
+      {
+        "text": "prefers-reduced-motion"
+      },
+      {
+        "text": "resolution"
+      }
+    ],
+    "explanation": "@media (prefers-color-scheme: dark) greift, wenn der Nutzer den Dunkelmodus eingestellt hat. prefers-reduced-motion fragt nach reduzierten Bewegungen, color nach der Farbfähigkeit des Geräts."
+  },
+  {
+    "id": "css-lay-fr-verteilung",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wie breit wird die mittlere Spalte?",
+    "code": {
+      "lang": "css",
+      "text": ".grid {\n  display: grid;\n  width: 800px;\n  grid-template-columns: 1fr 2fr 1fr;\n}"
+    },
+    "options": [
+      {
+        "text": "400px",
+        "correct": true
+      },
+      {
+        "text": "200px"
+      },
+      {
+        "text": "267px"
+      },
+      {
+        "text": "533px"
+      }
+    ],
+    "explanation": "Insgesamt gibt es 1 + 2 + 1 = 4 Anteile; 800px / 4 = 200px pro fr. Die mittlere Spalte bekommt 2fr = 400px."
+  },
+  {
+    "id": "css-lay-gap-vor-fr",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wie breit ist eine Spalte?",
+    "code": {
+      "lang": "css",
+      "text": ".grid {\n  display: grid;\n  width: 640px;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}"
+    },
+    "options": [
+      {
+        "text": "200px",
+        "correct": true
+      },
+      {
+        "text": "213px"
+      },
+      {
+        "text": "180px"
+      },
+      {
+        "text": "220px"
+      }
+    ],
+    "explanation": "gap wird vor der Verteilung der fr-Anteile abgezogen: 640px − 2 × 20px = 600px, geteilt durch 3 = 200px. Ein calc() ist dafür nicht nötig."
+  },
+  {
+    "id": "css-lay-grid-column-linien",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Über wie viele Spalten erstreckt sich `.header`?",
+    "code": {
+      "lang": "css",
+      "text": ".header {\n  grid-column: 1 / 4;\n}"
+    },
+    "options": [
+      {
+        "text": "3",
+        "correct": true
+      },
+      {
+        "text": "4"
+      },
+      {
+        "text": "1"
+      },
+      {
+        "text": "2"
+      }
+    ],
+    "explanation": "Die Zahlen sind Linien, nicht Spalten: Von Linie 1 bis Linie 4 liegen drei Spalten."
+  },
+  {
+    "id": "css-lay-minus-eins",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Was bewirkt diese Angabe?",
+    "code": {
+      "lang": "css",
+      "text": ".full {\n  grid-column: 1 / -1;\n}"
+    },
+    "options": [
+      {
+        "text": "Das Item reicht von der ersten bis zur letzten Linie, also über alle Spalten",
+        "correct": true
+      },
+      {
+        "text": "Das Item wird aus dem Grid entfernt"
+      },
+      {
+        "text": "Das Item belegt nur die letzte Spalte"
+      },
+      {
+        "text": "Sie ist ungültig, negative Linien gibt es nicht"
+      }
+    ],
+    "explanation": "Negative Liniennummern zählen vom Ende: -1 ist die letzte Linie. 1 / -1 spannt das Item damit über die gesamte Breite – unabhängig von der Spaltenanzahl."
+  },
+  {
+    "id": "css-lay-auto-fit-spalten",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Der Container enthält 12 Karten. Wie viele Spalten entstehen?",
+    "code": {
+      "lang": "css",
+      "text": ".cards {\n  display: grid;\n  width: 1100px;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n}"
+    },
+    "options": [
+      {
+        "text": "4",
+        "correct": true
+      },
+      {
+        "text": "5"
+      },
+      {
+        "text": "3"
+      },
+      {
+        "text": "12"
+      }
+    ],
+    "explanation": "Jede Spalte ist mindestens 250px breit: 4 × 250px = 1000px passen in 1100px, 5 × 250px = 1250px nicht. Die vier Spalten teilen sich dann die 1100px, je 275px."
+  },
+  {
+    "id": "css-lay-auto-fit-auto-fill",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Ein Grid mit `repeat(…, minmax(150px, 1fr))` enthält nur zwei Karten in einem breiten Container. Bei welchem Schlüsselwort strecken sich die beiden Karten über die ganze Breite?",
+    "options": [
+      {
+        "text": "auto-fit",
+        "correct": true
+      },
+      {
+        "text": "auto-fill"
+      },
+      {
+        "text": "bei beiden"
+      },
+      {
+        "text": "bei keinem – dafür ist eine Media Query nötig"
+      }
+    ],
+    "explanation": "auto-fit lässt leere Spalten zusammenfallen, die vorhandenen Karten strecken sich. auto-fill behält die leeren Spalten, am Ende bleibt eine Lücke."
+  },
+  {
+    "id": "css-lay-areas-punkt",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Was bedeutet ein Punkt (`.`) in `grid-template-areas`?",
+    "options": [
+      {
+        "text": "eine bewusst leere Zelle",
+        "correct": true
+      },
+      {
+        "text": "die Zelle, in der das aktuelle Item steht"
+      },
+      {
+        "text": "einen Klassen-Selektor"
+      },
+      {
+        "text": "eine Zelle, die sich über alle Spalten erstreckt"
+      }
+    ],
+    "explanation": "Ein Punkt markiert eine Zelle, die zu keinem benannten Bereich gehört und leer bleibt."
+  },
+  {
+    "id": "css-lay-areas-zuordnung",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wie breit ist der Bereich `header`?",
+    "code": {
+      "lang": "css",
+      "text": ".page {\n  display: grid;\n  grid-template-columns: 200px 1fr;\n  grid-template-areas:\n    \"header header\"\n    \"nav    main\"\n    \"footer footer\";\n}"
+    },
+    "options": [
+      {
+        "text": "über beide Spalten, also die volle Breite",
+        "correct": true
+      },
+      {
+        "text": "200px"
+      },
+      {
+        "text": "nur die rechte Spalte (1fr)"
+      },
+      {
+        "text": "Die Angabe ist ungültig, ein Name darf nur einmal vorkommen"
+      }
+    ],
+    "explanation": "Steht ein Name in einer Zeile mehrfach nebeneinander, bildet er einen zusammenhängenden Bereich über diese Zellen. header und footer reichen hier über beide Spalten."
+  },
+  {
+    "id": "css-lay-zentrieren",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Wie zentriert man ein Element im Container horizontal und vertikal mit zwei Zeilen?",
+    "options": [
+      {
+        "text": "display: grid; place-items: center;",
+        "correct": true
+      },
+      {
+        "text": "display: block; margin: auto;"
+      },
+      {
+        "text": "text-align: center; vertical-align: middle;"
+      },
+      {
+        "text": "position: relative; top: 50%;"
+      }
+    ],
+    "explanation": "place-items: center setzt justify-items und align-items gleichzeitig und zentriert jedes Item in seiner Zelle. margin: auto zentriert einen Block nur horizontal."
+  },
+  {
+    "id": "css-lay-mobile-first",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welche Media Queries passen zu Mobile First?",
+    "options": [
+      {
+        "text": "min-width-Queries, die das Basis-Layout für größere Viewports erweitern",
+        "correct": true
+      },
+      {
+        "text": "max-width-Queries, die ein Desktop-Layout für kleine Viewports einschränken"
+      },
+      {
+        "text": "Gar keine – Mobile First verzichtet auf Media Queries"
+      },
+      {
+        "text": "orientation: portrait für alle Regeln"
+      }
+    ],
+    "explanation": "Bei Mobile First gelten die Basisregeln für schmale Viewports; min-width-Queries ergänzen ab einer bestimmten Breite zusätzliche Regeln. Aufwendige Effekte und große Bilder werden so erst auf großen Bildschirmen geladen."
+  },
+  {
+    "id": "css-lay-adaptive",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 1,
+    "prompt": "Welcher Layout-Typ verwendet vordefinierte Layouts für bestimmte Geräteklassen?",
+    "options": [
+      {
+        "text": "Adaptive",
+        "correct": true
+      },
+      {
+        "text": "Fluid"
+      },
+      {
+        "text": "Elastic"
+      },
+      {
+        "text": "Fixed"
+      }
+    ],
+    "explanation": "Adaptive Layouts schalten per Media Query zwischen festen Layouts für bekannte Geräteklassen um. Fluid nutzt prozentuale Breiten; Responsive verbindet beides."
+  },
+  {
+    "id": "css-lay-responsive-bilder",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Wozu dient `height: auto` in dieser Regel?",
+    "code": {
+      "lang": "css",
+      "text": "img, video {\n  max-width: 100%;\n  height: auto;\n}"
+    },
+    "options": [
+      {
+        "text": "Das Seitenverhältnis bleibt erhalten, wenn das Bild schmaler wird",
+        "correct": true
+      },
+      {
+        "text": "Das Bild wird immer so hoch wie sein Container"
+      },
+      {
+        "text": "Das Bild wird erst nach dem Laden angezeigt"
+      },
+      {
+        "text": "Es verhindert, dass das Bild breiter als sein Container wird"
+      }
+    ],
+    "explanation": "max-width: 100% verhindert, dass ein Bild seinen Container sprengt. height: auto passt die Höhe proportional an, damit das Bild nicht verzerrt wird."
+  },
+  {
+    "id": "css-lay-direkte-kinder",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Für `.grid` gilt `display: grid`. Welche Elemente werden zu Grid-Items?",
+    "code": {
+      "lang": "html",
+      "text": "<div class=\"grid\">\n  <article>\n    <h2>Titel</h2>\n    <p>Text</p>\n  </article>\n  <article>…</article>\n</div>"
+    },
+    "options": [
+      {
+        "text": "nur die beiden article-Elemente",
+        "correct": true
+      },
+      {
+        "text": "article, h2 und p"
+      },
+      {
+        "text": "nur h2 und p"
+      },
+      {
+        "text": "nur das div selbst"
+      }
+    ],
+    "explanation": "Nur die direkten Kinder eines Grid-Containers werden zu Grid-Items. Soll auch der Inhalt eines article ins Raster, braucht der article selbst display: grid – oder subgrid."
+  },
+  {
+    "id": "css-lay-subgrid",
+    "section": "css-layout",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Wozu dient `grid-template-rows: subgrid`?",
+    "options": [
+      {
+        "text": "Ein verschachteltes Grid übernimmt die Zeilen des Eltern-Grids, sodass Inhalte mehrerer Karten fluchten",
+        "correct": true
+      },
+      {
+        "text": "Es erzeugt ein zweites, unabhängiges Grid im Hintergrund"
+      },
+      {
+        "text": "Es teilt jede Zeile in zwei Unterzeilen"
+      },
+      {
+        "text": "Es ordnet Kacheln versetzt als Masonry-Layout an"
+      }
+    ],
+    "explanation": "Ohne subgrid berechnet ein verschachteltes Grid seine Tracks unabhängig. Mit subgrid übernimmt es die Tracks des Eltern-Grids – Titel, Text und Buttons verschiedener Karten stehen auf einer Linie. Baseline Widely available seit ca. März 2026. Masonry ist dagegen display: grid-lanes."
+  }
+]

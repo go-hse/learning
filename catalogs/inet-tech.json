@@ -1,0 +1,5090 @@
+{
+  "schemaVersion": 1,
+  "catalog": {
+    "id": "inet-tech",
+    "title": "Internet-Technologien",
+    "version": "2026.10.23.2",
+    "lang": "de"
+  },
+  "chapters": [
+    {
+      "id": "css",
+      "title": "CSS",
+      "order": 4,
+      "sections": [
+        {
+          "id": "css-basics",
+          "title": "Grundlagen und Kaskade",
+          "source": "04-CSS/01-Basics.md"
+        },
+        {
+          "id": "css-selectors",
+          "title": "Selektoren",
+          "source": "04-CSS/02-Selectors.md"
+        },
+        {
+          "id": "css-text-fonts",
+          "title": "Text und Schriften",
+          "source": "04-CSS/03-Text-and-Fonts.md"
+        },
+        {
+          "id": "css-units",
+          "title": "Einheiten",
+          "source": "04-CSS/05-Box-Model-Layout-Basics.md"
+        },
+        {
+          "id": "css-lists",
+          "title": "Listen gestalten",
+          "source": "04-CSS/06-Styling-Lists.md"
+        },
+        {
+          "id": "css-box-model",
+          "title": "Box-Modell",
+          "source": "04-CSS/07-Box-Model-and-Layout-Basics.md"
+        },
+        {
+          "id": "css-flexbox",
+          "title": "Flexbox",
+          "source": "04-CSS/09-Flexbox-Layout.md"
+        },
+        {
+          "id": "css-positioning",
+          "title": "Positionierung",
+          "source": "04-CSS/11-Positioning.md"
+        },
+        {
+          "id": "css-gradients-animation",
+          "title": "Verläufe und Animation",
+          "source": "04-CSS/12-Gradients-and-Animation.md"
+        },
+        {
+          "id": "css-media-queries",
+          "title": "Media Queries",
+          "source": "04-CSS/14-Media-Queries.md"
+        },
+        {
+          "id": "css-layout",
+          "title": "Layout und Grid",
+          "source": "04-CSS/15-Layout.md"
+        },
+        {
+          "id": "css-review",
+          "title": "Selektoren üben",
+          "source": "04-CSS/16-Review-Questions-CSS.md"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-einbindung-best-practice",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Art, CSS einzubinden, ist für eine Website mit vielen Seiten Best Practice?",
+      "options": [
+        {
+          "text": "Ein externes Stylesheet über <link rel=\"stylesheet\">",
+          "correct": true
+        },
+        {
+          "text": "Internes CSS in einem <style>-Element auf jeder Seite"
+        },
+        {
+          "text": "Inline-CSS im style-Attribut jedes Elements"
+        },
+        {
+          "text": "CSS direkt im <body> vor jedem Abschnitt"
+        }
+      ],
+      "explanation": "Ein externes Stylesheet ist wiederverwendbar, wird vom Browser gecacht und trennt Inhalt und Darstellung vollständig. Internes CSS gilt nur für eine Seite, Inline-CSS nur für ein Element und ist kaum wartbar."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-inline-gegen-id",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Farbe hat die Überschrift?",
+      "code": {
+        "lang": "html",
+        "text": "<style>\n  #titel { color: blue; }\n</style>\n<h1 id=\"titel\" style=\"color: red;\">Hallo</h1>"
+      },
+      "options": [
+        {
+          "text": "rot",
+          "correct": true
+        },
+        {
+          "text": "blau"
+        },
+        {
+          "text": "schwarz (Browser-Standard)"
+        },
+        {
+          "text": "Das hängt davon ab, ob <style> vor oder nach dem h1 steht"
+        }
+      ],
+      "explanation": "Ein Inline-Style hat keinen Selektor und bekommt eine vorangestellte vierte Spalte: 1-0-0-0. Damit schlägt er jede Regel aus einem Stylesheet, auch eine mit ID-Selektor (1-0-0). Ausnahme wäre !important."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-spezifitaet-zwei-klassen",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Spezifität hat der Selektor `.article .title`?",
+      "options": [
+        {
+          "text": "0-2-0",
+          "correct": true
+        },
+        {
+          "text": "0-1-1"
+        },
+        {
+          "text": "2-0-0"
+        },
+        {
+          "text": "0-0-2"
+        }
+      ],
+      "explanation": "Jeder Klassen-Selektor zählt 0-1-0, zwei Klassen also 0-2-0. Der Nachfahren-Kombinator (Leerzeichen) zählt nicht mit."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-id-gegen-klassen",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Ein `<h1 id=\"content\" class=\"title\">` steht innerhalb eines Elements mit der Klasse `article`. Welche Farbe hat die Überschrift?",
+      "code": {
+        "lang": "css",
+        "text": "h1#content      { color: green; }\n.article .title { color: yellow; }"
+      },
+      "options": [
+        {
+          "text": "grün",
+          "correct": true
+        },
+        {
+          "text": "gelb"
+        },
+        {
+          "text": "schwarz (Browser-Standard)"
+        },
+        {
+          "text": "gelb, weil zwei Klassen mehr wiegen als eine ID"
+        }
+      ],
+      "explanation": "h1#content hat die Spezifität 1-0-1, .article .title nur 0-2-0. Verglichen wird spaltenweise von links: Ein ID-Treffer schlägt beliebig viele Klassen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-gleiche-spezifitaet",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Farbe haben die Absätze?",
+      "code": {
+        "lang": "css",
+        "text": "p { color: red; }\np { color: blue; }"
+      },
+      "options": [
+        {
+          "text": "blau",
+          "correct": true
+        },
+        {
+          "text": "rot"
+        },
+        {
+          "text": "lila (die Farben werden gemischt)"
+        },
+        {
+          "text": "Browser-Standard, weil sich die Regeln widersprechen"
+        }
+      ],
+      "explanation": "Beide Regeln haben dieselbe Spezifität (0-0-1). Dann entscheidet die Quellreihenfolge: Die zuletzt deklarierte Regel gewinnt."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-kaskade-reihenfolge",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Treffen mehrere Regeln auf ein Element zu, prüft die Kaskade nacheinander mehrere Kriterien. Welches zuerst?",
+      "options": [
+        {
+          "text": "Herkunft und Wichtigkeit (z. B. !important)",
+          "correct": true
+        },
+        {
+          "text": "Spezifität"
+        },
+        {
+          "text": "Quellreihenfolge"
+        },
+        {
+          "text": "Cascade Layer (@layer)"
+        }
+      ],
+      "explanation": "Die Reihenfolge ist: Herkunft und Wichtigkeit → Cascade Layer → Spezifität → Quellreihenfolge. Spezifität wird nur innerhalb derselben Herkunft und desselben Layers verglichen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-layer-gegen-spezifitaet",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Welche Farbe hat ein Absatz innerhalb von `#main`?",
+      "code": {
+        "lang": "css",
+        "text": "@layer base, utilities;\n\n@layer base {\n  #main p { color: blue; }\n}\n@layer utilities {\n  p { color: green; }\n}"
+      },
+      "options": [
+        {
+          "text": "grün",
+          "correct": true
+        },
+        {
+          "text": "blau"
+        },
+        {
+          "text": "Die Regeln heben sich auf, es gilt der Browser-Standard"
+        },
+        {
+          "text": "Das hängt davon ab, welcher @layer-Block weiter unten im Stylesheet steht"
+        }
+      ],
+      "explanation": "Die Reihenfolge der Layer legt die erste Zeile fest: Später deklarierte Layer (utilities) gewinnen gegen früher deklarierte (base) – unabhängig von der Spezifität. 1-0-1 gegen 0-0-1 würde nur innerhalb desselben Layers zählen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-unbekannte-eigenschaft",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Ein Stylesheet enthält eine Eigenschaft, die der Browser noch nicht kennt. Was passiert?",
+      "options": [
+        {
+          "text": "Er überspringt nur diese Deklaration, alles andere gilt weiter",
+          "correct": true
+        },
+        {
+          "text": "Er verwirft das ganze Stylesheet"
+        },
+        {
+          "text": "Er zeigt die Seite ohne jedes CSS an"
+        },
+        {
+          "text": "Er bricht das Laden der Seite mit einer Fehlermeldung ab"
+        }
+      ],
+      "explanation": "Browser ignorieren unbekannte oder ungültige Deklarationen stillschweigend. Diese Fehlertoleranz ermöglicht Progressive Enhancement: Neue Features wirken in modernen Browsern, ältere überspringen sie einfach."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-nesting-ampersand",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welchen Selektor erzeugt die verschachtelte Regel `&:hover`?",
+      "code": {
+        "lang": "css",
+        "text": ".card {\n  &:hover { box-shadow: 0 2px 8px rgb(0 0 0 / 20%); }\n  .title  { font-weight: bold; }\n}"
+      },
+      "options": [
+        {
+          "text": ".card:hover",
+          "correct": true
+        },
+        {
+          "text": ".card :hover"
+        },
+        {
+          "text": ".card > :hover"
+        },
+        {
+          "text": ":hover .card"
+        }
+      ],
+      "explanation": "& steht für das Elternelement selbst – &:hover wird also zu .card:hover. Ohne & entsteht ein Nachfahren-Selektor: Aus .title wird .card .title."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-kein-css4",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Warum gibt es kein „CSS4“?",
+      "options": [
+        {
+          "text": "Seit 2009 wird CSS in einzelnen Modulen mit eigenem Reifegrad weiterentwickelt",
+          "correct": true
+        },
+        {
+          "text": "CSS3 ist die endgültige Version, CSS wird nicht mehr erweitert"
+        },
+        {
+          "text": "Das W3C hat CSS zugunsten von JavaScript eingefroren"
+        },
+        {
+          "text": "CSS4 heißt offiziell Sass"
+        }
+      ],
+      "explanation": "Seit der Modularisierung (2009) gibt es Module wie CSS Grid Level 1 oder CSS Nesting Level 1 mit eigenem Stand – aber kein Gesamtdokument CSS3 oder CSS4. Ob ein Feature nutzbar ist, zeigt heute der Baseline-Status."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-komma-liste",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Was gilt für die Regel `h1, h2, h3 { color: black; }`?",
+      "options": [
+        {
+          "text": "Sie wirkt wie drei einzelne Regeln, jede mit der Spezifität 0-0-1",
+          "correct": true
+        },
+        {
+          "text": "Sie hat die Spezifität 0-0-3"
+        },
+        {
+          "text": "Sie trifft nur h3-Elemente innerhalb eines h2 innerhalb eines h1"
+        },
+        {
+          "text": "Sie gilt nur, wenn alle drei Überschriften auf der Seite vorkommen"
+        }
+      ],
+      "explanation": "Das Komma ist eine reine Abkürzung (ODER): Die Regel gilt für jedes aufgezählte Element einzeln, die Spezifität jedes Selektors bleibt unverändert."
+    },
+    {
+      "id": "css-gl-layer-cascade-layer",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "@layer (Cascade Layer)",
+      "answer": "CSS-At-Regel (Baseline Widely available seit März 2022), die benannte Kaskade-Ebenen deklariert. Später deklarierte Layer gewinnen gegen früher deklarierte, unabhängig von der Spezifität einzelner Regeln — löst die sogenannten \"Specificity Wars\" in großen Projekten.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-baseline",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Baseline",
+      "answer": "Der browserübergreifende Kompatibilitätsstatus eines Web-Plattform-Features (z. B. eines CSS-Moduls), gepflegt von der W3C WebDX Community Group. Ersetzt seit der CSS-Modularisierung die Frage nach einer einzelnen \"CSS-Version\".",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-cascading-style-sheets-css",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Cascading Style Sheets (CSS)",
+      "answer": "Die Stylesheet-Sprache des Web zur Beschreibung der Darstellung (Farben, Schriften, Layout) eines HTML-Dokuments, unabhängig von dessen Inhalt.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-css1-css2-css2-1",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "CSS1 / CSS2 / CSS2.1",
+      "answer": "Die ersten formalen W3C-Recommendations von CSS: CSS1 (17. Dezember 1996, 68 Eigenschaften), CSS2 (Mai 1998, u. a. Positionierung und `@media`), CSS2.1 (2011, spiegelt das tatsächliche Browser-Verhalten wider).",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-css-modularisierung",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "CSS-Modularisierung",
+      "answer": "Seit 2009 verfolgtes Prinzip des W3C, CSS nicht mehr als ein einzelnes Dokument (wie CSS1/CSS2), sondern als eigenständig weiterentwickelbare Module (z. B. CSS Grid Level 1, CSS Nesting Level 1) zu spezifizieren. Der Grund, warum es kein einheitliches \"CSS3\"- oder \"CSS4\"-Dokument gibt.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-extern-eingebundenes-css",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Extern eingebundenes CSS",
+      "answer": "CSS-Einbindung über `<link rel=\"stylesheet\" href=\"...\">`. Wiederverwendbar über mehrere Seiten und vom Browser cachebar, aber render-blockierend beim ersten Seitenaufruf.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-inline-css",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Inline-CSS",
+      "answer": "CSS-Einbindung direkt im `style`-Attribut eines HTML-Elements. Höchste Spezifität (1-0-0-0), aber unwartbar bei größeren Projekten.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-internes-css",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Internes CSS",
+      "answer": "CSS-Einbindung über ein `<style>`-Element im `<head>` einer HTML-Seite. Gilt nur für die eine Seite, nicht wiederverwendbar über mehrere Seiten hinweg.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-kaskade",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Kaskade",
+      "answer": "Der Algorithmus, mit dem der Browser bei mehreren zutreffenden CSS-Regeln entscheidet, welche gewinnt: zuerst Herkunft/Wichtigkeit (`!important`), dann Cascade Layer (`@layer`), dann Spezifität, zuletzt Quellreihenfolge. Namensgebendes Konzept von \"Cascading\" Style Sheets.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-nesting-css-verschachtelung",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Nesting (CSS-Verschachtelung)",
+      "answer": "Seit Dezember 2023 native, browserseitig unterstützte Syntax, um CSS-Selektoren ineinander zu verschachteln, ohne einen Präprozessor wie Sass zu benötigen. Das `&`-Zeichen referenziert dabei explizit das Elternelement.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-progressive-enhancement",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Progressive Enhancement",
+      "answer": "Designprinzip, wonach eine Webseite mit einer soliden Grundfunktionalität für alle Browser startet und zusätzliche, modernere Features nur dort aktiv werden, wo sie unterstützt werden. In CSS ermöglicht durch die Fehlertoleranz, mit der Browser unbekannte Regeln stillschweigend ignorieren.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-sel-welche-regel-gewinnt",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Farbe hat der Text von `<p id=\"main\" class=\"alert\">`?",
+      "code": {
+        "lang": "css",
+        "text": "#main  { color: green; }\n.alert { color: red; }\np      { color: blue; }"
+      },
+      "options": [
+        {
+          "text": "rot"
+        },
+        {
+          "text": "blau"
+        },
+        {
+          "text": "grün",
+          "correct": true
+        },
+        {
+          "text": "schwarz (Browser-Standard)"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "#main hat die Spezifität 1-0-0 und schlägt .alert (0-1-0) und p (0-0-1) – unabhängig von der Reihenfolge im Stylesheet.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-attribut-operatoren",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welcher Selektor trifft genau die Links, deren Adresse auf .pdf endet?",
+      "options": [
+        {
+          "text": "a[href^=\".pdf\"]"
+        },
+        {
+          "text": "a[href$=\".pdf\"]",
+          "correct": true
+        },
+        {
+          "text": "a[href*=\".pdf\"]"
+        },
+        {
+          "text": "a[href=\".pdf\"]"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "^= prüft den Anfang, *= trifft .pdf auch mitten in der Adresse (z. B. skript.pdf.html), = verlangt den exakten Wert \".pdf\".",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-operator-pipe-gleich",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-multi",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Elemente trifft der Selektor [lang|=\"de\"]?",
+      "options": [
+        {
+          "text": "lang=\"deu\""
+        },
+        {
+          "text": "lang=\"de\"",
+          "correct": true
+        },
+        {
+          "text": "lang=\"en-DE\""
+        },
+        {
+          "text": "lang=\"de-CH\"",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "|= verlangt exakt den Wert oder den Wert gefolgt von einem Bindestrich; \"deu\" hat keinen Bindestrich, \"en-DE\" beginnt nicht mit de.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-kind-kombinator",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welche Links färbt die Regel nav > a { color: red; } rot?",
+      "code": {
+        "lang": "html",
+        "text": "<nav>\n  <a href=\"#\">Eins</a>\n  <span><a href=\"#\">Zwei</a></span>\n  <a href=\"#\">Drei</a>\n</nav>"
+      },
+      "options": [
+        {
+          "text": "alle drei"
+        },
+        {
+          "text": "nur Eins"
+        },
+        {
+          "text": "nur Zwei"
+        },
+        {
+          "text": "Eins und Drei",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "> trifft nur direkte Kinder von nav; Zwei steckt in einem span und ist damit Enkel, nicht Kind.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-geschwister-kombinator",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Absätze trifft der Selektor h2 ~ p?",
+      "code": {
+        "lang": "html",
+        "text": "<h2>Titel</h2>\n<p>A</p>\n<p>B</p>\n<div>Kasten</div>\n<p>C</p>"
+      },
+      "options": [
+        {
+          "text": "nur A"
+        },
+        {
+          "text": "A und B"
+        },
+        {
+          "text": "A, B und C",
+          "correct": true
+        },
+        {
+          "text": "keinen"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "~ trifft alle folgenden Geschwister vom Typ p, auch wenn andere Elemente dazwischenstehen. h2 + p würde nur A treffen.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-komma-oder-kein-komma",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Elemente trifft der Selektor div.note.highlight?",
+      "options": [
+        {
+          "text": "alle div, alle .note und alle .highlight"
+        },
+        {
+          "text": "div-Elemente, die beide Klassen note und highlight tragen",
+          "correct": true
+        },
+        {
+          "text": "Elemente mit Klasse highlight innerhalb eines div.note"
+        },
+        {
+          "text": "div-Elemente mit genau einer der beiden Klassen"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Ohne Trennzeichen müssen alle Teile auf dasselbe Element zutreffen (UND); Spezifität 0-2-1. „Alle div, alle .note und alle .highlight“ wäre der Selektor div, .note, .highlight (Komma = ODER).",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-pseudo-klasse-oder-pseudo-element",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-multi",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welche dieser Selektoren sind Pseudo-Elemente?",
+      "options": [
+        {
+          "text": ":hover"
+        },
+        {
+          "text": "::before",
+          "correct": true
+        },
+        {
+          "text": ":nth-child(2)"
+        },
+        {
+          "text": ":first-of-type"
+        },
+        {
+          "text": "::first-line",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Pseudo-Elemente adressieren generierten oder einen Teil des Inhalts und tragen zwei Doppelpunkte; :hover, :nth-child() und :first-of-type sind Pseudo-Klassen (Zustand bzw. Position).",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-nth-child-formel",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Positionen trifft li:nth-child(-n+3)?",
+      "options": [
+        {
+          "text": "1, 2 und 3",
+          "correct": true
+        },
+        {
+          "text": "3, 6, 9, ..."
+        },
+        {
+          "text": "alle ab Position 3"
+        },
+        {
+          "text": "nur Position 3"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Für n = 0, 1, 2, 3, ... ergibt -n+3 die Werte 3, 2, 1, 0, -1, ...; nur die Positionen ab 1 existieren.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-sel-spezifitaet-von-where",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "mc-single",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "Welche Spezifität hat der Selektor :where(#main, .note, p)?",
+      "options": [
+        {
+          "text": "1-0-0"
+        },
+        {
+          "text": "0-1-0"
+        },
+        {
+          "text": "0-0-1"
+        },
+        {
+          "text": "0-0-0",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": ":where() zählt immer null, unabhängig vom Argument. :is(#main, .note, p) hätte dagegen 1-0-0, die Spezifität des gewichtigsten Arguments.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/02-selectors-ars.json"
+      }
+    },
+    {
+      "id": "css-gl-an-b-formel",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "An+B-Formel",
+      "answer": "Mathematische Formel zur Argumentbildung von `:nth-child()`, `:nth-of-type()` u. a. Wird für `n = 0, 1, 2, 3, …` ausgewertet; negative oder nullte Ergebnisse entfallen. Beispiel: `:nth-child(-n+3)` wählt die ersten drei Elemente aus.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-attribut-selektor",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Attribut-Selektor",
+      "answer": "Selektor-Typ, der Elemente anhand vorhandener Attribute und deren Werten auswählt (`[attr]`, `[attr=wert]`, `[attr~=wert]`, `[attr|=wert]`, `[attr^=wert]`, `[attr$=wert]`, `[attr*=wert]`). Seit Baseline Juli 2015 zusätzlich mit optionalem `i`- (case-insensitiv) oder `s`-Flag (case-sensitiv) steuerbar.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-has-eltern-selektor",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": ":has() (Eltern-Selektor)",
+      "answer": "Funktionale Pseudo-Klasse (Baseline Newly available seit Dezember 2023), die ein Element anhand seines Inhalts oder seiner Nachfahren auswählt — erstmals ist damit ein \"Eltern-Selektor\" in CSS möglich. Die Spezifität richtet sich nach dem gewichtigsten Argument in der Klammer.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-is-where",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": ":is() / :where()",
+      "answer": "Funktionale Pseudo-Klassen zur Gruppierung von Selektoren. `:is()` übernimmt die Spezifität des gewichtigsten Arguments, `:where()` trägt dagegen immer die Spezifität 0-0-0 — nützlich, um Regeln zusammenzufassen, ohne die Kaskaden-Priorität zu erhöhen.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-kombinator",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Kombinator",
+      "answer": "Zeichen, das zwei Selektoren über eine strukturelle DOM-Beziehung verknüpft: Nachfahre (Leerzeichen), Kind (`>`), nächstes Geschwister (`+`), allgemeines Geschwister (`~`).",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-mehrfacher-selektor-zusammengesetzter-selektor",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Mehrfacher Selektor / Zusammengesetzter Selektor",
+      "answer": "Zwei unterschiedliche Arten, Selektoren zu kombinieren: Ein mehrfacher Selektor (Komma-getrennt, z. B. `h1, h2`) bedeutet ODER — jede Teilregel gilt einzeln. Ein zusammengesetzter Selektor (ohne Trennzeichen, z. B. `div.note.highlight`) bedeutet UND — alle Teile müssen gleichzeitig zutreffen, wobei sich die Spezifitäten der Teile addieren.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-pseudo-element",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Pseudo-Element",
+      "answer": "Adressiert einen Teil eines Elements, der im DOM nicht als eigenes Element existiert, sondern vom Browser generiert wird (z. B. `::before`, `::after`, `::first-line`). Seit CSS3 mit doppeltem Doppelpunkt (`::`) geschrieben, zur Abgrenzung von Pseudo-Klassen; die vier CSS2-Pseudo-Elemente (`:before`, `:after`, `:first-line`, `:first-letter`) bleiben aus Kompatibilitätsgründen auch mit einfachem Doppelpunkt gültig.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-pseudo-klasse",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Pseudo-Klasse",
+      "answer": "Wählt Elemente anhand eines Zustands oder ihrer Position im Dokument aus, ohne neuen Inhalt zu erzeugen (z. B. `:hover`, `:nth-child()`, `:not()`). Wird mit einfachem Doppelpunkt (`:`) geschrieben.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-spezifitaet",
+      "chapter": "css",
+      "section": "css-selectors",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Spezifität",
+      "answer": "Numerischer Wert (ID-Klasse-Typ), der bestimmt, welche von mehreren gleichrangigen CSS-Regeln (gleiche Herkunft, gleicher Layer) sich durchsetzt. Wird spaltenweise verglichen: ein ID-Treffer schlägt beliebig viele Klassen- oder Typ-Selektoren.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-hex-kurzform",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welcher Farbwert entspricht `#c00`?",
+      "options": [
+        {
+          "text": "#cc0000",
+          "correct": true
+        },
+        {
+          "text": "#c00000"
+        },
+        {
+          "text": "#0000cc"
+        },
+        {
+          "text": "#c0c0c0"
+        }
+      ],
+      "explanation": "In der dreistelligen Kurzform wird jede Ziffer verdoppelt: c → cc, 0 → 00, 0 → 00. #c00 ist also ein kräftiges Rot."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-moderne-farbsyntax",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Angabe entspricht `rgb(255 0 0 / 50%)`?",
+      "options": [
+        {
+          "text": "rgba(255, 0, 0, 0.5)",
+          "correct": true
+        },
+        {
+          "text": "rgb(255, 0, 0)"
+        },
+        {
+          "text": "rgba(255, 0, 0, 50)"
+        },
+        {
+          "text": "rgb(128 0 0)"
+        }
+      ],
+      "explanation": "Die moderne Syntax trennt mit Leerzeichen und setzt den Alpha-Wert hinter einen Schrägstrich. rgba() ist nur noch ein Alias für rgb(). 50 % Deckkraft entspricht Alpha 0.5; bei rgba(255, 0, 0, 50) wird Alpha auf 1 begrenzt, die Farbe wäre deckend."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-font-family-fallback",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Warum endet `font-family: Arial, Helvetica, sans-serif;` mit `sans-serif`?",
+      "options": [
+        {
+          "text": "Die generische Familie greift immer, falls keine der genannten Schriften installiert ist",
+          "correct": true
+        },
+        {
+          "text": "sans-serif ist die Schrift, die der Browser zuerst probiert"
+        },
+        {
+          "text": "Ohne sans-serif ist die Deklaration ungültig"
+        },
+        {
+          "text": "sans-serif lädt Arial automatisch von einem Server nach"
+        }
+      ],
+      "explanation": "font-family ist eine Fallback-Kette: Der Browser probiert die Schriften von links nach rechts, bis eine verfügbar ist. Am Ende sollte immer eine generische Familie (sans-serif, serif, monospace) stehen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-font-weight-bold",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welcher Zahlenwert entspricht `font-weight: bold`?",
+      "options": [
+        {
+          "text": "700",
+          "correct": true
+        },
+        {
+          "text": "400"
+        },
+        {
+          "text": "600"
+        },
+        {
+          "text": "900"
+        }
+      ],
+      "explanation": "normal entspricht 400, bold entspricht 700. Variable Fonts erlauben darüber hinaus jeden Wert zwischen 1 und 1000."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-text-decoration-teile",
+      "section": "css-text-fonts",
+      "type": "mc-multi",
+      "difficulty": 2,
+      "prompt": "Welche Einzeleigenschaften fasst die Kurzschreibweise `text-decoration` zusammen?",
+      "options": [
+        {
+          "text": "text-decoration-line",
+          "correct": true
+        },
+        {
+          "text": "text-decoration-color",
+          "correct": true
+        },
+        {
+          "text": "text-decoration-style",
+          "correct": true
+        },
+        {
+          "text": "text-decoration-thickness",
+          "correct": true
+        },
+        {
+          "text": "text-decoration-offset"
+        }
+      ],
+      "explanation": "Linie, Farbe, Stil und Dicke sind seit März 2021 (Baseline Widely available) einzeln steuerbar, z. B. text-decoration: underline dotted #ff3028 3px. Eine Eigenschaft text-decoration-offset gibt es nicht; den Abstand der Unterstreichung regelt die eigenständige Eigenschaft text-underline-offset."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-background-reihenfolge",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Welche Hintergrundfarbe hat das div, solange das Bild noch lädt?",
+      "code": {
+        "lang": "css",
+        "text": "div {\n  background-color: #cce5ff;\n  background: url(\"pattern.png\") no-repeat center/cover;\n}"
+      },
+      "options": [
+        {
+          "text": "keine (transparent)",
+          "correct": true
+        },
+        {
+          "text": "#cce5ff"
+        },
+        {
+          "text": "weiß, weil url() Weiß als Startwert setzt"
+        },
+        {
+          "text": "Das div hat gar keinen Hintergrund, weil die Kurzschreibweise ungültig ist"
+        }
+      ],
+      "explanation": "Die Kurzschreibweise background setzt alle nicht angegebenen Teil-Eigenschaften auf ihren Startwert zurück – auch background-color auf transparent. Deshalb gehört background-color als Fallback hinter die Kurzschreibweise."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-background-size-cover",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Ein Hintergrundbild soll die Fläche vollständig bedecken; dass Ränder abgeschnitten werden, ist in Ordnung. Welche Angabe?",
+      "options": [
+        {
+          "text": "background-size: cover;",
+          "correct": true
+        },
+        {
+          "text": "background-size: contain;"
+        },
+        {
+          "text": "background-size: auto;"
+        },
+        {
+          "text": "background-repeat: repeat;"
+        }
+      ],
+      "explanation": "cover skaliert das Bild, bis die ganze Fläche bedeckt ist – überstehende Ränder werden abgeschnitten. contain skaliert, bis das ganze Bild hineinpasst; dabei können Lücken bleiben."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-google-fonts-dsgvo",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Wie bindet man Google Fonts datenschutzkonform ein?",
+      "options": [
+        {
+          "text": "Die Schriftdateien herunterladen und per @font-face vom eigenen Server laden",
+          "correct": true
+        },
+        {
+          "text": "Per <link> auf fonts.googleapis.com, aber mit display=swap"
+        },
+        {
+          "text": "Per <link rel=\"preconnect\"> auf die Google-Server"
+        },
+        {
+          "text": "Den Schriftnamen nur im style-Attribut angeben"
+        }
+      ],
+      "explanation": "Laut LG München I (20.01.2022) verstößt das Laden von Google-Servern ohne Einwilligung gegen die DSGVO, weil dabei die IP-Adresse der Besucher an Google übertragen wird. Lokal gehostete Schriftdateien vermeiden das."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-font-display-swap",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Was bewirkt `font-display: swap` (bei Google Fonts: `display=swap`)?",
+      "options": [
+        {
+          "text": "Der Text erscheint sofort in einer Ersatzschrift und wechselt, sobald die Web Font geladen ist",
+          "correct": true
+        },
+        {
+          "text": "Der Text bleibt unsichtbar, bis die Web Font geladen ist"
+        },
+        {
+          "text": "Der Browser tauscht die Schnitte Fett und Normal"
+        },
+        {
+          "text": "Die Web Font wird nur geladen, wenn der Nutzer zustimmt"
+        }
+      ],
+      "explanation": "swap hält Text sofort lesbar: Zuerst wird eine Ersatzschrift angezeigt, nach dem Laden wird auf die Web Font gewechselt."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-variable-fonts",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Aussage zu Variable Fonts stimmt?",
+      "options": [
+        {
+          "text": "Eine Datei enthält alle Schnitte, Zwischenwerte wie font-weight: 625 sind möglich",
+          "correct": true
+        },
+        {
+          "text": "Sie erlauben font-weight nur in 100er-Schritten"
+        },
+        {
+          "text": "Für jeden Schnitt ist eine eigene Datei nötig"
+        },
+        {
+          "text": "Sie lassen sich nur per JavaScript steuern"
+        }
+      ],
+      "explanation": "Variable Fonts fassen Gewicht, Breite, Neigung usw. in einer Datei zusammen und sind über Achsen (wght, wdth, ital, slnt, opsz) stufenlos steuerbar – per font-weight oder font-variation-settings."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-txt-text-transform",
+      "section": "css-text-fonts",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "`text-transform: uppercase` ist gesetzt. Was passiert mit dem Text im HTML-Dokument?",
+      "options": [
+        {
+          "text": "Nichts – nur die Darstellung ändert sich",
+          "correct": true
+        },
+        {
+          "text": "Er wird im DOM in Großbuchstaben umgeschrieben"
+        },
+        {
+          "text": "Nur der erste Buchstabe jedes Wortes wird groß"
+        },
+        {
+          "text": "Er wird in einer Kapitälchen-Schrift neu geladen"
+        }
+      ],
+      "explanation": "text-transform ändert nur, wie der Text angezeigt wird; im Dokument bleibt er unverändert. capitalize würde den ersten Buchstaben jedes Wortes groß darstellen."
+    },
+    {
+      "id": "css-gl-font-face",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "@font-face",
+      "answer": "CSS-At-Regel, die eine eigene Schriftdatei (typischerweise `.woff2`) vom eigenen Server lädt und unter einem selbst gewählten `font-family`-Namen nutzbar macht — unabhängig davon, ob die Schrift auf dem Endgerät des Nutzers installiert ist. Grundlage von Web Fonts.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-dsgvo-und-google-fonts",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "DSGVO und Google Fonts",
+      "answer": "Das LG München I entschied am 20.01.2022 (Az. 3 O 17493/20), dass die dynamische Einbindung von Google Fonts direkt von Google-Servern ohne Einwilligung gegen die DSGVO verstößt, da dabei die IP-Adresse des Besuchers — ein personenbezogenes Datum — unautorisiert an Google übertragen wird. Empfohlene Lösung: Web Fonts per `@font-face` lokal hosten statt extern verlinken.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-moderne-farbsyntax-css-color-module-level-4",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Moderne Farbsyntax (CSS Color Module Level 4)",
+      "answer": "Leerzeichenbasierte Schreibweise von Farbfunktionen mit Schrägstrich-Alpha, z. B. `rgb(255 0 0 / 50%)` statt `rgba(255, 0, 0, 0.5)`. `rgba()` ist seither nur noch ein Alias für `rgb()`. Ergänzt um relative Farben (`rgb(from green r g b / 0.5)`), die eine neue Farbe direkt aus einer bestehenden ableiten.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-text-decoration-shorthand",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "text-decoration (Shorthand)",
+      "answer": "Kurzschreibweise, die seit Baseline Widely available März 2021 vier Einzeleigenschaften zusammenfasst: `text-decoration-line` (welche Linie), `text-decoration-color` (Farbe), `text-decoration-style` (Linienart, z. B. `wavy`) und `text-decoration-thickness` (Dicke).",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-variable-font",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Variable Font",
+      "answer": "Schriftdatei-Format, das alle Schriftschnitte (Gewicht, Breite, Kursivstellung) einer Schriftfamilie in einer einzigen Datei zusammenfasst und über registrierte Achsen (`wght`, `wdth`, `ital`, `slnt`, `opsz`) mit `font-variation-settings` oder direkt per `font-weight` (Wertebereich 1–1000) fein steuerbar macht.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-web-font",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Web Font",
+      "answer": "Über `@font-face` eingebundene, vom Server geladene Schriftdatei, die unabhängig von den auf dem Endgerät installierten Schriften genutzt werden kann.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-woff2",
+      "chapter": "css",
+      "section": "css-text-fonts",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "WOFF2",
+      "answer": "Komprimiertes Web-Font-Dateiformat und heutiger Standard für `@font-face`-Einbindungen; kleiner als sein Vorgänger WOFF und in allen aktuellen Browsern unterstützt.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-unit-em-bei-padding",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welchen Innenabstand in Pixeln hat der Absatz? (html: 16px)",
+      "code": {
+        "lang": "css",
+        "text": ".box   { font-size: 20px; }\n.box p { padding: 2em; }"
+      },
+      "options": [
+        {
+          "text": "2px"
+        },
+        {
+          "text": "20px"
+        },
+        {
+          "text": "32px"
+        },
+        {
+          "text": "40px",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "em bezieht sich auf die Schriftgröße des Elements selbst; der Absatz erbt 20px von .box, also 2 × 20px = 40px.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-compounding",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Wie groß ist die Schrift in der inneren Liste? (html: 16px)",
+      "code": {
+        "lang": "css",
+        "text": "ul    { font-size: 1.2em; }\nul ul { font-size: 1.2em; }"
+      },
+      "options": [
+        {
+          "text": "16px"
+        },
+        {
+          "text": "19.2px"
+        },
+        {
+          "text": "23.04px",
+          "correct": true
+        },
+        {
+          "text": "24px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Die äußere Liste hat 1.2 × 16px = 19.2px, die innere 1.2 × 19.2px = 23.04px – em multipliziert sich bei jeder Verschachtelung.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-compounding-vermeiden",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Mit welcher Einheit hätte die innere Liste dieselbe Schriftgröße wie die äußere?",
+      "options": [
+        {
+          "text": "em"
+        },
+        {
+          "text": "rem",
+          "correct": true
+        },
+        {
+          "text": "%"
+        },
+        {
+          "text": "pt"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "rem bezieht sich immer auf die Schriftgröße des Wurzelelements html und nicht auf das Elternelement – es gibt kein Aufmultiplizieren. % verhält sich bei font-size wie em.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-absolute-einheiten",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Wie vielen Pixeln entsprechen 12pt?",
+      "options": [
+        {
+          "text": "9px"
+        },
+        {
+          "text": "12px"
+        },
+        {
+          "text": "16px",
+          "correct": true
+        },
+        {
+          "text": "24px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "1px = 1/96 Zoll, 1pt = 1/72 Zoll; 12pt = 12/72 Zoll = 16/96 Zoll = 16px.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-viewport-einheiten",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Wie breit ist ein Element mit width: 50vw in einem 1200px breiten Browserfenster?",
+      "options": [
+        {
+          "text": "hängt vom Elternelement ab"
+        },
+        {
+          "text": "50px"
+        },
+        {
+          "text": "1200px"
+        },
+        {
+          "text": "600px",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "1vw ist 1 % der Viewport-Breite – unabhängig vom Elternelement.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-vmin",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Das Browserfenster ist 800px breit und 600px hoch. Wie groß ist 10vmin?",
+      "options": [
+        {
+          "text": "10px"
+        },
+        {
+          "text": "60px",
+          "correct": true
+        },
+        {
+          "text": "80px"
+        },
+        {
+          "text": "140px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "vmin bezieht sich auf die kleinere der beiden Dimensionen, hier die Höhe 600px; 10 % davon sind 60px.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-mobile-browserleisten",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Einheit passt sich an, wenn die Adressleiste im Handy-Browser ein- und ausfährt?",
+      "options": [
+        {
+          "text": "svh"
+        },
+        {
+          "text": "lvh"
+        },
+        {
+          "text": "dvh",
+          "correct": true
+        },
+        {
+          "text": "vh"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "svh bezieht sich auf den kleinsten Viewport (Leisten sichtbar), lvh auf den größten (Leisten ausgeblendet); vh entspricht in den meisten mobilen Browsern lvh.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-unit-calc",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welche Angabe ist gültiges CSS?",
+      "options": [
+        {
+          "text": "width: calc(100% - 2rem);",
+          "correct": true
+        },
+        {
+          "text": "width: calc(100%-2rem);"
+        },
+        {
+          "text": "width: 100% - 2rem;"
+        },
+        {
+          "text": "width: calc(100% - 2);"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Um + und - müssen Leerzeichen stehen; eine einheitenlose Zahl lässt sich nicht von einer Länge abziehen; ohne calc() wird gar nicht gerechnet.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/05-units-ars.json"
+      }
+    },
+    {
+      "id": "css-gl-calc",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "calc()",
+      "answer": "CSS-Funktion (Baseline Widely available seit Juli 2015), die verschiedene Einheiten in einem Ausdruck mischt, z. B. `width: calc(100% - 2em)`. Alle Operanden außer reinen Zahlen benötigen eine Einheit.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-dynamische-viewport-einheiten-svh-lvh-dvh",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Dynamische Viewport-Einheiten (svh, lvh, dvh)",
+      "answer": "Seit Ende 2022 browserübergreifend verfügbare Ergänzung zu `vh`, die das Problem schwankender mobiler Viewport-Höhen durch ein- und ausklappende Browser-UI-Elemente (Adressleiste, Navigationsleiste) löst: `svh` bezieht sich auf den kleinstmöglichen, `lvh` auf den größtmöglichen und `dvh` auf den sich laufend anpassenden aktuellen Viewport.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-rem-vs-em-compounding-problem",
+      "chapter": "css",
+      "section": "css-units",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "rem vs. em (Compounding-Problem)",
+      "answer": "`rem` bezieht sich immer auf die feste Schriftgröße des Wurzelelements (`<html>`) und bleibt dadurch bei jeder Verschachtelungstiefe vorhersehbar. `em` bezieht sich dagegen auf die Schriftgröße des Elements selbst — bei verschachtelten Elementen, die jeweils erneut in `em` skalieren, multiplizieren sich die Faktoren ungewollt auf (Compounding). Für Schriftgrößen wird deshalb meist `rem` empfohlen.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-list-list-style-type",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welcher Wert nummeriert mit I., II., III.?",
+      "options": [
+        {
+          "text": "decimal"
+        },
+        {
+          "text": "lower-roman"
+        },
+        {
+          "text": "upper-alpha"
+        },
+        {
+          "text": "upper-roman",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "lower-roman ergibt i., ii., iii.; upper-alpha ergibt A., B., C.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-list-bild-fehlt",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Das Bild wird nicht gefunden. Was zeigt der Browser als Markierung?",
+      "code": {
+        "lang": "css",
+        "text": "ul {\n  list-style-type: square;\n  list-style-image: url(\"fehlt.png\");\n}"
+      },
+      "options": [
+        {
+          "text": "Punkte (disc)"
+        },
+        {
+          "text": "keine Markierung"
+        },
+        {
+          "text": "Quadrate",
+          "correct": true
+        },
+        {
+          "text": "ein Platzhalter-Symbol"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Schlägt list-style-image fehl, fällt der Browser automatisch auf list-style-type zurück – hier square.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-list-bildgroesse",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Ein Bild mit 64 × 64 Pixeln wird als list-style-image verwendet. Wie groß erscheint die Markierung?",
+      "options": [
+        {
+          "text": "16 × 16 Pixel"
+        },
+        {
+          "text": "64 × 64 Pixel",
+          "correct": true
+        },
+        {
+          "text": "so groß wie die Schrift"
+        },
+        {
+          "text": "so groß wie ein Punkt (disc)"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "list-style-image nutzt die eigene Größe des Bildes; der Browser skaliert es nicht. Für Markierungen also kleine Bilder verwenden.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-list-inside-oder-outside",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Bei welchem Wert von list-style-position beginnen die Folgezeilen eines langen Eintrags unter der Markierung?",
+      "options": [
+        {
+          "text": "outside"
+        },
+        {
+          "text": "none"
+        },
+        {
+          "text": "inside",
+          "correct": true
+        },
+        {
+          "text": "auto"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Die Markierung ist dann Teil des Textblocks; bei outside (Standard) fluchten die Folgezeilen unter der ersten Textzeile.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-list-kurzschreibweise",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-multi",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Angaben sind gültig?",
+      "options": [
+        {
+          "text": "list-style: square, inside;"
+        },
+        {
+          "text": "list-style: square inside;",
+          "correct": true
+        },
+        {
+          "text": "list-style: none;",
+          "correct": true
+        },
+        {
+          "text": "list-style: inside square;",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Gültig sind square inside, none und inside square. Die Werte der Kurzschreibweise stehen in beliebiger Reihenfolge und werden durch Leerzeichen getrennt – ein Komma macht die Deklaration ungültig.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-list-marker",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Eigenschaft wirkt bei li::marker?",
+      "options": [
+        {
+          "text": "margin"
+        },
+        {
+          "text": "padding"
+        },
+        {
+          "text": "background"
+        },
+        {
+          "text": "color",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "::marker erlaubt nur Farbe, Schrift-Eigenschaften und content; Layout-Eigenschaften wie margin, padding oder background wirken nicht.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-list-navigation-aus-einer-liste",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Nach ul { list-style: none; } ist die Liste immer noch eingerückt. Warum?",
+      "options": [
+        {
+          "text": "ul hat standardmäßig einen Innenabstand links",
+          "correct": true
+        },
+        {
+          "text": "die Markierung ist nur unsichtbar"
+        },
+        {
+          "text": "li hat einen Außenabstand links"
+        },
+        {
+          "text": "der Text ist eingerückt (text-indent)"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Der Browser gibt ul standardmäßig einen Innenabstand am Zeilenanfang (padding-inline-start, meist 40px). Für eine Navigation deshalb zusätzlich padding: 0 setzen.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/06-styling-lists-ars.json"
+      }
+    },
+    {
+      "id": "css-gl-marker",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "::marker",
+      "answer": "Pseudo-Element, das die Markierungsbox eines Listenelements (Aufzählungszeichen oder Nummer) adressiert. Erlaubt nur einen eingeschränkten Eigenschaftsumfang (color, content, Schrift- und Zähler-Eigenschaften) – Layout-Eigenschaften wie margin oder border wirken nicht. Noch nicht durchgängig Baseline Widely available.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-list-style-shorthand",
+      "chapter": "css",
+      "section": "css-lists",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "list-style (Shorthand)",
+      "answer": "Kurzschreibweise, die `list-style-type` (Markierungsform), `list-style-position` (`inside`/`outside`) und `list-style-image` (Ersatzbild) in beliebiger Reihenfolge zusammenfasst, z. B. `list-style: square inside url(\"star.png\")`. Schlägt das Bild fehl, fällt der Browser automatisch auf `list-style-type` zurück.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-box-gesamtbreite",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Wie viel Platz belegt das div in der Breite – einschließlich margin?",
+      "code": {
+        "lang": "css",
+        "text": "div {\n  width: 320px;\n  padding: 30px;\n  border: 5px solid gray;\n  margin: 50px;\n}"
+      },
+      "options": [
+        {
+          "text": "390px"
+        },
+        {
+          "text": "420px"
+        },
+        {
+          "text": "490px",
+          "correct": true
+        },
+        {
+          "text": "320px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "320 + 2 × 30 (padding) + 2 × 5 (border) + 2 × 50 (margin) = 490px. 390px ist die sichtbare Box ohne margin – der margin gehört nicht mehr zur sichtbaren Box, belegt aber Platz.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-content-box",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Wie breit ist die Box insgesamt (ohne margin)?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  box-sizing: content-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid;\n}"
+      },
+      "options": [
+        {
+          "text": "200px"
+        },
+        {
+          "text": "240px"
+        },
+        {
+          "text": "245px"
+        },
+        {
+          "text": "250px",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Bei content-box gilt width nur für den Inhalt: 200 + 2 × 20 (padding) + 2 × 5 (border) = 250px.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-border-box",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Wie breit ist der Inhaltsbereich?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid;\n}"
+      },
+      "options": [
+        {
+          "text": "140px"
+        },
+        {
+          "text": "150px",
+          "correct": true
+        },
+        {
+          "text": "160px"
+        },
+        {
+          "text": "200px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Bei border-box enthält width padding und border: 200 − 2 × 20 − 2 × 5 = 150px. Die Box bleibt 200px breit.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-drei-werte",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Wie groß ist der Innenabstand links?",
+      "code": {
+        "lang": "css",
+        "text": "padding: 10px 20px 30px;"
+      },
+      "options": [
+        {
+          "text": "0"
+        },
+        {
+          "text": "10px"
+        },
+        {
+          "text": "20px",
+          "correct": true
+        },
+        {
+          "text": "30px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Drei Werte bedeuten oben, links/rechts, unten – der zweite Wert gilt für beide Seiten.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-zentrieren",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Was braucht ein Block-Element, damit margin: 0 auto es horizontal zentriert?",
+      "options": [
+        {
+          "text": "eine feste Breite (width)",
+          "correct": true
+        },
+        {
+          "text": "display: inline"
+        },
+        {
+          "text": "float: left"
+        },
+        {
+          "text": "box-sizing: border-box"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Ohne width nimmt ein Block-Element die volle Breite ein – dann bleibt kein freier Platz, den auto links und rechts verteilen könnte.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-negativer-margin",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Was bewirkt diese Regel?",
+      "code": {
+        "lang": "css",
+        "text": ".overlap {\n  margin-top: -10px;\n}"
+      },
+      "options": [
+        {
+          "text": "Ungültig – margin darf nicht negativ sein"
+        },
+        {
+          "text": "Der Innenabstand oben schrumpft um 10px"
+        },
+        {
+          "text": "Das Element rückt 10px näher an das vorherige heran",
+          "correct": true
+        },
+        {
+          "text": "Das Element wird 10px niedriger"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Das Element rückt 10px nach oben, näher an das vorherige Element – es kann es dabei überlappen. Negative Werte sind bei margin erlaubt, bei padding nicht.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-rahmen-pro-seite",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welche Angabe ändert nur die Farbe des unteren Rahmens?",
+      "options": [
+        {
+          "text": "border-color-bottom: red;"
+        },
+        {
+          "text": "border-bottom-color: red;",
+          "correct": true
+        },
+        {
+          "text": "bottom-border-color: red;"
+        },
+        {
+          "text": "border: bottom red;"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Schema: border-<Seite>-<Teil>, also erst die Seite, dann width/style/color.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-border-radius-mit-zwei-werten",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Ecken werden um 10px abgerundet?",
+      "code": {
+        "lang": "css",
+        "text": "border-radius: 10px 0;"
+      },
+      "options": [
+        {
+          "text": "oben links und oben rechts"
+        },
+        {
+          "text": "nur oben links"
+        },
+        {
+          "text": "alle vier"
+        },
+        {
+          "text": "oben links und unten rechts",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Bei zwei Werten gilt der erste für oben-links/unten-rechts, der zweite für oben-rechts/unten-links.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-border-radius-mit-drei-werten",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-multi",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "Welche Ecken bleiben eckig?",
+      "code": {
+        "lang": "css",
+        "text": "border-radius: 10px 0 10px;"
+      },
+      "options": [
+        {
+          "text": "oben links"
+        },
+        {
+          "text": "oben rechts",
+          "correct": true
+        },
+        {
+          "text": "unten rechts"
+        },
+        {
+          "text": "unten links",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Drei Werte: oben-links, dann oben-rechts/unten-links gemeinsam, dann unten-rechts. Der mittlere Wert 0 gilt für beide diagonalen Ecken.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-display-inline",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-multi",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Angaben wirken bei einem Element mit display: inline NICHT?",
+      "options": [
+        {
+          "text": "padding-left"
+        },
+        {
+          "text": "width",
+          "correct": true
+        },
+        {
+          "text": "color"
+        },
+        {
+          "text": "height",
+          "correct": true
+        },
+        {
+          "text": "margin-top",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Inline-Elemente fließen im Text mit und ignorieren Breite, Höhe und vertikale Außenabstände; horizontales padding und color wirken.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-unsichtbar-aber-mit-platz",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Ein Element soll unsichtbar werden, sein Platz aber frei bleiben. Welche Angabe?",
+      "options": [
+        {
+          "text": "display: none;"
+        },
+        {
+          "text": "display: inline;"
+        },
+        {
+          "text": "visibility: hidden;",
+          "correct": true
+        },
+        {
+          "text": "float: none;"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Das Element bleibt im Layoutfluss und hält seinen Platz frei. display: none entfernt es dagegen ganz aus dem Fluss – die folgenden Elemente rücken nach.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-clear",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Der Absatz soll unterhalb des schwebenden Bildes beginnen, statt es zu umfließen. Was gehört in die Regel für p?",
+      "code": {
+        "lang": "css",
+        "text": "img {\n  float: right;\n}\np {\n  /* ??? */\n}"
+      },
+      "options": [
+        {
+          "text": "display: flow-root;"
+        },
+        {
+          "text": "clear: both;",
+          "correct": true
+        },
+        {
+          "text": "float: none;"
+        },
+        {
+          "text": "position: relative;"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "clear beendet das Umfließen und beginnt unterhalb des floats. flow-root gehört an den Container, damit er seine floats umschließt – das ist ein anderes Problem.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-float",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Ein Container umschließt seine schwebenden Kinder nicht und ist zu niedrig. Was hilft?",
+      "options": [
+        {
+          "text": "float: none an den Kindern"
+        },
+        {
+          "text": "margin: 0 auto am Container"
+        },
+        {
+          "text": "display: flow-root am Container",
+          "correct": true
+        },
+        {
+          "text": "box-sizing: border-box am Container"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Der Container bildet dann einen eigenen Formatierungskontext und umschließt die floats – der moderne Ersatz für den Clearfix-Hack. float: none an den Kindern hebt das Nebeneinander auf.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-logische-eigenschaften",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Auf welcher Seite liegt margin-inline-start bei dir=\"rtl\"?",
+      "options": [
+        {
+          "text": "links"
+        },
+        {
+          "text": "rechts",
+          "correct": true
+        },
+        {
+          "text": "oben"
+        },
+        {
+          "text": "auf beiden Seiten"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "inline-start ist der Zeilenanfang – bei rechts-nach-links-Schrift also rechts.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-box-drei-karten-ohne-border-box",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "mc-single",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "Drei Karten sollen nebeneinander stehen, dazwischen insgesamt 2rem Abstand. Ohne `* { box-sizing: border-box; }` rutscht die dritte Karte in die nächste Zeile. Warum?",
+      "code": {
+        "lang": "css",
+        "text": ".karte {\n  width: calc((100% - 2rem) / 3);\n  border: 1px solid #d0d0d0;\n}"
+      },
+      "options": [
+        {
+          "text": "calc() funktioniert nur zusammen mit border-box"
+        },
+        {
+          "text": "Drei Karten passen grundsätzlich nie in eine Zeile"
+        },
+        {
+          "text": "Jede Karte ist um 2 × 1px Rahmen breiter – zusammen mehr als 100 %",
+          "correct": true
+        },
+        {
+          "text": "Der Browser rundet ein Drittel immer auf"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Bei content-box kommt der Rahmen zur Breite hinzu: Jede Karte ist width + 2px breit. Drei Karten plus 2rem Abstand ergeben mehr als 100 % – die dritte Karte bricht um.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/07-box-model-ars.json"
+      }
+    },
+    {
+      "id": "css-gl-box-sizing-content-box-border-box",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "box-sizing (content-box / border-box)",
+      "answer": "Eigenschaft, die festlegt, ob `width`/`height` nur den Inhaltsbereich (`content-box`, Standard) oder zusätzlich Padding und Border (`border-box`) umfassen. `border-box` hält die Gesamtbreite bei jeder Änderung von Padding/Border konstant und wird deshalb in vielen CSS-Resets global gesetzt.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-clearfix-display-flow-root",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Clearfix / display: flow-root",
+      "answer": "Clearfix ist der klassische Hack (`.container::after { content: \"\"; display: table; clear: both; }`), um ein Elternelement dazu zu zwingen, seine schwebenden (`float`) Kinder in seine eigene Höhe einzuschließen. `display: flow-root` (seit 2017 in allen großen Browser-Engines) erzeugt denselben Effekt ohne Pseudo-Element-Hack, indem es einen neuen Block Formatting Context etabliert.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-logische-eigenschaften-margin-inline-padding-blo",
+      "chapter": "css",
+      "section": "css-box-model",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Logische Eigenschaften (margin-inline, padding-block)",
+      "answer": "Eigenschaften (Baseline Widely available seit April 2021), die sich statt an physischen Himmelsrichtungen (`margin-left`) an der Schreibrichtung des Dokuments orientieren (`margin-inline` = Leserichtung, `margin-block` = Zeilenrichtung). Passen sich automatisch an RTL-Sprachen oder vertikale Schreibrichtungen an, ohne dass Werte manuell gespiegelt werden müssen.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-flex-wo-steht-display-flex",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Auf welches Element setzen Sie display: flex, damit die li-Elemente nebeneinander stehen?",
+      "code": {
+        "lang": "html",
+        "text": "<ul class=\"menue\">\n  <li>Start</li>\n  <li>Kurse</li>\n  <li>Kontakt</li>\n</ul>"
+      },
+      "options": [
+        {
+          "text": "auf jedes li"
+        },
+        {
+          "text": "auf body"
+        },
+        {
+          "text": "auf das ul",
+          "correct": true
+        },
+        {
+          "text": "auf das erste li – die anderen folgen"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "display: flex gehört auf den Container; alle direkten Kinder (hier die li) werden automatisch zu Flex-Items.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-hauptachse-bei-column",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "In welche Richtung zentriert justify-content: center die Items hier?",
+      "code": {
+        "lang": "css",
+        "text": ".container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}"
+      },
+      "options": [
+        {
+          "text": "horizontal"
+        },
+        {
+          "text": "vertikal",
+          "correct": true
+        },
+        {
+          "text": "in beide Richtungen"
+        },
+        {
+          "text": "gar nicht – justify-content gilt nur bei row"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "justify-content wirkt immer auf der Hauptachse – und flex-direction: column macht die vertikale Achse zur Hauptachse.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-querachse",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welche Eigenschaft richtet die Items auf der Querachse aus?",
+      "options": [
+        {
+          "text": "justify-content"
+        },
+        {
+          "text": "flex-direction"
+        },
+        {
+          "text": "order"
+        },
+        {
+          "text": "align-items",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Merkhilfe: Justify wirkt auf der Hauptachse, Align auf der Querachse.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-alle-gleich-hoch",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Die Items haben keine Höhe angegeben, sind aber alle so hoch wie der Container. Warum?",
+      "options": [
+        {
+          "text": "flex-grow wirkt auch in der Höhe"
+        },
+        {
+          "text": "display: flex setzt height: 100% an jedem Kind"
+        },
+        {
+          "text": "align-items: stretch ist der Standardwert",
+          "correct": true
+        },
+        {
+          "text": "Flex-Items erben die Höhe des Containers automatisch über height: inherit"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "align-items hat den Standardwert stretch – Items ohne feste Höhe werden auf der Querachse auf die volle Container-Höhe gestreckt.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-zu-viele-items",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Zehn Items mit width: 200px liegen in einem 600px breiten Flex-Container, sonst ist nichts angegeben. Was passiert?",
+      "options": [
+        {
+          "text": "Die Items brechen in vier Zeilen um"
+        },
+        {
+          "text": "Die Items schrumpfen und bleiben in einer Zeile",
+          "correct": true
+        },
+        {
+          "text": "Der Container wird 2000px breit"
+        },
+        {
+          "text": "Die Items behalten 200px und ragen rechts aus dem Container heraus"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Sie bleiben in einer Zeile und schrumpfen notfalls. Der Standard ist flex-wrap: nowrap (und flex-shrink: 1). Umbruch gibt es erst mit flex-wrap: wrap.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-align-content-ohne-wirkung",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "align-content: center zeigt keine Wirkung. Was ist der wahrscheinlichste Grund?",
+      "code": {
+        "lang": "css",
+        "text": ".container {\n  display: flex;\n  height: 400px;\n  align-content: center;\n}"
+      },
+      "options": [
+        {
+          "text": "Es gibt nur eine Zeile – flex-wrap fehlt",
+          "correct": true
+        },
+        {
+          "text": "align-content gibt es nur in CSS Grid"
+        },
+        {
+          "text": "align-content muss an die Items, nicht an den Container"
+        },
+        {
+          "text": "Die Eigenschaft heißt eigentlich align-contents"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "align-content verteilt mehrere Zeilen auf der Querachse. Ohne flex-wrap: wrap gibt es nur eine Zeile – dann hat align-content keinen Effekt.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-flex-grow-rechnen",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "Wie breit wird .b?",
+      "code": {
+        "lang": "css",
+        "text": ".container { display: flex; width: 600px; }\n.item { flex-basis: 100px; }\n.a { flex-grow: 1; }\n.b { flex-grow: 2; }\n.c { flex-grow: 0; }"
+      },
+      "options": [
+        {
+          "text": "200px"
+        },
+        {
+          "text": "300px",
+          "correct": true
+        },
+        {
+          "text": "250px"
+        },
+        {
+          "text": "400px"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Freier Platz: 600 − 3 × 100 = 300px. Verteilt im Verhältnis 1 : 2 : 0 – .b bekommt 2/3 davon, also 200px, zusätzlich zu seiner Basis von 100px.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-order",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-multi",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Aussagen zu order: -1 treffen zu?",
+      "code": {
+        "lang": "css",
+        "text": ".item:nth-child(2) {\n  order: -1;\n}"
+      },
+      "options": [
+        {
+          "text": "Das Item erscheint vor allen Items mit order 0",
+          "correct": true
+        },
+        {
+          "text": "Der Browser sortiert dabei das HTML um"
+        },
+        {
+          "text": "Screenreader und Tab-Taste folgen weiter der DOM-Reihenfolge",
+          "correct": true
+        },
+        {
+          "text": "Der Standardwert von order ist 0",
+          "correct": true
+        },
+        {
+          "text": "Das Item rückt genau eine Position nach links"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "order ändert nur die visuelle Reihenfolge; das HTML bleibt unverändert, Screenreader und Tab-Navigation folgen der DOM-Reihenfolge. -1 ist kleiner als der Standard 0, das Item steht deshalb vor allen anderen – nicht nur eine Position weiter vorn.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-ein-item-anders",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Ein einzelnes Item soll unten stehen, alle anderen bleiben oben. Was setzen Sie an diesem Item?",
+      "options": [
+        {
+          "text": "align-items: flex-end;"
+        },
+        {
+          "text": "justify-content: flex-end;"
+        },
+        {
+          "text": "order: 99;"
+        },
+        {
+          "text": "align-self: flex-end;",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "align-self überschreibt align-items für ein einzelnes Item. align-items und justify-content gehören an den Container.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-gap",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Was ersetzt gap: 16px am Flex-Container typischerweise?",
+      "code": {
+        "lang": "css",
+        "text": ".container {\n  display: flex;\n  gap: 16px;\n}"
+      },
+      "options": [
+        {
+          "text": "padding am Container"
+        },
+        {
+          "text": "flex-basis an den Items"
+        },
+        {
+          "text": "margin an den Items – mit Sonderregel für das letzte Item",
+          "correct": true
+        },
+        {
+          "text": "border-spacing wie bei Tabellen"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "gap setzt Abstände nur zwischen den Items, nicht am Rand – die früheren Margin-Ausnahmen (z. B. :last-child { margin-right: 0 }) entfallen. In Flexbox seit ca. 2023 durchgängig verfügbar.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-flex-flexbox-oder-grid",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Eine Bildergalerie soll feste Zeilen UND Spalten haben. Was empfiehlt die Faustregel?",
+      "options": [
+        {
+          "text": "Grid",
+          "correct": true
+        },
+        {
+          "text": "Flexbox"
+        },
+        {
+          "text": "float für alle Bilder"
+        },
+        {
+          "text": "jedes Bild mit position: absolute einzeln platzieren"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "Faustregel: eine Achse → Flexbox, Zeilen und Spalten gleichzeitig → Grid. Beide lassen sich kombinieren, z. B. Flexbox innerhalb einer Grid-Zelle.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/09-flexbox-ars.json"
+      }
+    },
+    {
+      "id": "css-gl-flex-grow-flex-shrink-flex-basis",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "flex-grow / flex-shrink / flex-basis",
+      "answer": "Die drei Eigenschaften, die das Wachstums- und Schrumpfverhalten eines einzelnen Flex-Items entlang der Hauptachse steuern: `flex-basis` legt die Ausgangsgröße fest, `flex-grow` und `flex-shrink` verteilen zusätzlichen bzw. fehlenden Platz als Verhältniswert auf die Items. Die Kurzschreibweise `flex: 1;` entspricht `flex-grow: 1; flex-shrink: 1; flex-basis: 0%;`.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-flexbox-css-flexible-box-layout",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Flexbox (CSS Flexible Box Layout)",
+      "answer": "Eindimensionaler CSS-Layout-Modus, der Kindelemente entlang einer einzigen Achse (Zeile oder Spalte) effizient anordnet, ausrichtet und verteilt. Abzugrenzen von CSS Grid, das zweidimensional Zeilen und Spalten gleichzeitig layoutet.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-gap-flexbox-kontext",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "gap (Flexbox-Kontext)",
+      "answer": "Kurzschreibweise für `row-gap` und `column-gap`, die Abstand ausschließlich zwischen Flex-Items setzt, ohne den äußeren Rand des Containers zu beeinflussen. Im Grid-Kontext bereits seit 2017 verfügbar, im Flexbox-Kontext erst seit Safari 14.1 (April 2021) in allen drei großen Engines implementiert – nach der 30-Monats-Regel seit ca. Oktober 2023 als Baseline Widely available einzustufen.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-hauptachse-querachse-main-axis-cross-axis",
+      "chapter": "css",
+      "section": "css-flexbox",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Hauptachse / Querachse (main axis / cross axis)",
+      "answer": "Die beiden Achsen eines Flex-Containers: die Hauptachse verläuft in der von `flex-direction` festgelegten Richtung, die Querachse steht immer senkrecht dazu. `justify-content` wirkt auf der Hauptachse, `align-items`/`align-self` auf der Querachse.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-pos-raus-aus-dem-fluss",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-multi",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Welche position-Werte nehmen ein Element vollständig aus dem Dokumentfluss?",
+      "options": [
+        {
+          "text": "static"
+        },
+        {
+          "text": "relative"
+        },
+        {
+          "text": "absolute",
+          "correct": true
+        },
+        {
+          "text": "fixed",
+          "correct": true
+        },
+        {
+          "text": "sticky"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "absolute und fixed – sie reservieren keinen Platz mehr. static (Standard) und relative bleiben im Fluss, sticky ist eine Mischform aus relative und fixed.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-relative-verschieben",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Was passiert mit dem Platz, den .box ursprünglich belegt hat?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  position: relative;\n  top: 20px;\n}"
+      },
+      "options": [
+        {
+          "text": "Die folgenden Elemente rücken nach oben in die Lücke"
+        },
+        {
+          "text": "Die Box wird 20px höher"
+        },
+        {
+          "text": "Er bleibt reserviert – nur die Darstellung verschiebt sich",
+          "correct": true
+        },
+        {
+          "text": "Die Box verschwindet aus dem Dokument"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "relative verschiebt nur die Darstellung um 20px nach unten; im Fluss steht die Box weiter an ihrer alten Stelle, die Nachbarn bewegen sich nicht.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-falsche-ecke",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Das .child landet rechts oben in der Ecke der Seite statt in .parent. Was fehlt?",
+      "code": {
+        "lang": "css",
+        "text": ".parent {\n  width: 300px;\n}\n.child {\n  position: absolute;\n  top: 10px; right: 10px;\n}"
+      },
+      "options": [
+        {
+          "text": "position: relative an .child statt absolute"
+        },
+        {
+          "text": "position: relative an .parent",
+          "correct": true
+        },
+        {
+          "text": "z-index: 1 an .child"
+        },
+        {
+          "text": "float: right an .child"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "position: relative an .parent. absolute richtet sich am nächsten positionierten Vorfahren aus – gibt es keinen, am Anfangs-Containing-Block (der Seite). Ein typischer Debugging-Fall: Das Element „springt“ an eine falsche Stelle.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-badge-an-der-karte",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Wo sitzt das Badge?",
+      "code": {
+        "lang": "css",
+        "text": ".card  { position: relative; }\n.badge { position: absolute;\n         top: -8px; right: -8px; }"
+      },
+      "options": [
+        {
+          "text": "rechts oben in der Ecke des Browserfensters"
+        },
+        {
+          "text": "links oben innerhalb der Karte"
+        },
+        {
+          "text": "rechts oben, 8px über den Rand der Karte hinaus",
+          "correct": true
+        },
+        {
+          "text": "an seiner normalen Stelle – negative Werte sind ungültig"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "rechts oben, leicht über den Kartenrand hinaus. .card ist der Containing Block; negative Offsets schieben das Badge über die Kante – das typische Benachrichtigungs-Badge.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-fester-header",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Header und Footer sind position: fixed. Wozu dient main { margin: 70px 0 50px; }?",
+      "options": [
+        {
+          "text": "main wird damit horizontal zentriert"
+        },
+        {
+          "text": "Platz für die Scrollbalken"
+        },
+        {
+          "text": "fixed verlangt einen margin am Geschwister-Element"
+        },
+        {
+          "text": "Sonst läge der Anfang und das Ende von main unter Header und Footer",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "fixed entfernt Header und Footer aus dem Fluss – sie reservieren keinen Platz. Ohne margin würde main oben unter dem Header und unten unter dem Footer verschwinden.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-sticky",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-multi",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welche Aussagen zu position: sticky treffen zu?",
+      "options": [
+        {
+          "text": "Verhält sich zunächst wie relative, ab einem Schwellenwert wie fixed",
+          "correct": true
+        },
+        {
+          "text": "Der Schwellenwert kommt aus top, bottom, left oder right",
+          "correct": true
+        },
+        {
+          "text": "overflow: hidden auf einem Vorfahren verhindert sticky",
+          "correct": true
+        },
+        {
+          "text": "Klebt bis zum Seitenende, auch über das Elternelement hinaus"
+        },
+        {
+          "text": "Funktioniert nur zusammen mit z-index"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "sticky verhält sich zunächst wie relative und ab einem Schwellenwert aus top, bottom, left oder right wie fixed; overflow: hidden auf einem Vorfahren verhindert das Kleben. Falsch sind die anderen beiden Aussagen: sticky wirkt nur innerhalb der Höhe des Elternelements, und z-index ist dafür nicht nötig.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-chat-button",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Ein Chat-Button soll immer rechts unten im Browserfenster stehen, egal wohin gescrollt wird. Welcher Wert?",
+      "options": [
+        {
+          "text": "position: absolute"
+        },
+        {
+          "text": "position: sticky"
+        },
+        {
+          "text": "position: fixed",
+          "correct": true
+        },
+        {
+          "text": "position: relative"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "fixed – Bezug ist der Viewport, das Element bleibt beim Scrollen stehen. absolute würde mitscrollen, sticky klebt nur innerhalb seines Elternelements.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-z-index-9999",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": ".popup ist ein Kind von .a, die Boxen überlappen. Liegt .popup vor oder hinter .b?",
+      "code": {
+        "lang": "css",
+        "text": ".a     { position: relative; z-index: 1; }\n.popup { position: absolute; z-index: 9999; }\n.b     { position: relative; z-index: 2; }"
+      },
+      "options": [
+        {
+          "text": "Vor .b – 9999 ist größer als 2"
+        },
+        {
+          "text": "Hinter .b – .popup steckt im Stacking Context von .a",
+          "correct": true
+        },
+        {
+          "text": "Das entscheidet der Browser zufällig"
+        },
+        {
+          "text": "Vor .b, weil absolute immer über relative liegt"
+        }
+      ],
+      "shuffle": true,
+      "explanation": ".a bildet mit position: relative und z-index: 1 einen eigenen Stacking Context. z-index: 9999 gilt nur INNERHALB von .a; nach außen zählt die 1 von .a – und die ist kleiner als die 2 von .b. Eine der häufigsten Fehlerquellen bei z-index.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-neuer-stacking-context",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-multi",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "Welche Angaben erzeugen einen neuen Stacking Context?",
+      "options": [
+        {
+          "text": "margin: 10px"
+        },
+        {
+          "text": "opacity: 0.5",
+          "correct": true
+        },
+        {
+          "text": "color: red"
+        },
+        {
+          "text": "transform: scale(1.1)",
+          "correct": true
+        },
+        {
+          "text": "position: relative mit z-index: 1",
+          "correct": true
+        }
+      ],
+      "shuffle": true,
+      "explanation": "opacity < 1, Transformationen und position mit z-index ungleich auto. margin und color haben keinen Einfluss.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-inset",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Welchen Wert hat left bei dieser Angabe?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  inset: 10px 20px;\n}"
+      },
+      "options": [
+        {
+          "text": "0"
+        },
+        {
+          "text": "10px"
+        },
+        {
+          "text": "20px",
+          "correct": true
+        },
+        {
+          "text": "auto"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "inset folgt der Ein- bis Vier-Werte-Notation wie margin/padding: zwei Werte bedeuten oben/unten 10px, links/rechts 20px.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-pos-anchor-positioning",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "mc-single",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Wofür ist CSS Anchor Positioning gedacht?",
+      "options": [
+        {
+          "text": "Weiches Scrollen zu Sprungmarken (#anker)"
+        },
+        {
+          "text": "Ein Element relativ zu einem beliebigen anderen Element platzieren, z. B. einen Tooltip",
+          "correct": true
+        },
+        {
+          "text": "a-Elemente auf der Seite verankern"
+        },
+        {
+          "text": "Ein Element beim Scrollen am oberen Rand festhalten"
+        }
+      ],
+      "shuffle": true,
+      "explanation": "anchor-name markiert ein Bezugselement, position-anchor und anchor() beziehen sich darauf – unabhängig vom eigenen Containing Block. Ersetzt zunehmend JavaScript-Bibliotheken wie Floating UI oder Popper.js; Baseline Newly available seit Januar 2026. Am oberen Rand festhalten wäre position: sticky.",
+      "source": {
+        "kind": "ars",
+        "file": "04-CSS/Praesentationen/11-positioning-ars.json"
+      }
+    },
+    {
+      "id": "css-gl-css-anchor-positioning",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "CSS Anchor Positioning",
+      "answer": "Seit Januar 2026 Baseline Newly available verfügbare CSS-Funktionalität (`anchor-name`, `position-anchor`, die Funktion `anchor()`), mit der ein Element direkt in CSS an ein beliebiges anderes Element im Dokument \"angeheftet\" werden kann – ohne JavaScript-Positionsberechnung bei Scroll- oder Resize-Events. Ersetzt zunehmend Bibliotheken wie Floating UI für Tooltips und Popovers.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-containing-block",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Containing Block",
+      "answer": "Der Bezugsrahmen, an dem sich die Offsets (`top`, `right`, `bottom`, `left`) eines positionierten Elements orientieren. Bei `position: absolute` ist dies der nächste Vorfahre mit einem `position`-Wert ungleich `static` – meist gezielt durch `position: relative` auf dem Elternelement hergestellt.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-inset-shorthand",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "inset (Shorthand)",
+      "answer": "Kurzschreibweise (Baseline Widely available seit April 2021) für die vier Offset-Eigenschaften `top`, `right`, `bottom` und `left` gleichzeitig, mit derselben Ein- bis Vier-Werte-Notation wie `margin`/`padding`. Logische Varianten: `inset-block`, `inset-inline`.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-position-static-relative-absolute-fixed-sticky",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "position (static / relative / absolute / fixed / sticky)",
+      "answer": "Eigenschaft mit fünf Werten, die bestimmt, ob und wie ein Element am normalen Dokumentfluss teilnimmt. `static` (Standard) und `relative` bleiben im Fluss, `absolute` und `fixed` werden vollständig daraus entfernt, `sticky` wechselt ab einem Scroll-Schwellenwert zwischen `relative`- und `fixed`-Verhalten.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-stacking-context",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Stacking Context",
+      "answer": "Ein durch bestimmte CSS-Eigenschaften (z. B. `position` ungleich `static` mit nicht-`auto` `z-index`, `opacity < 1`, CSS-Transformationen) erzeugter, in sich geschlossener Stapelkontext. `z-index`-Werte werden nur innerhalb desselben Stacking Context miteinander verglichen – verschachtelte Stacking Contexts sind eine häufige Ursache für unerwartetes `z-index`-Verhalten.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-z-index",
+      "chapter": "css",
+      "section": "css-positioning",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "z-index",
+      "answer": "Eigenschaft, die bei positionierten Elementen (`position` ungleich `static`) die Stapelreihenfolge innerhalb eines Stacking Context bestimmt – ein höherer Wert liegt bei Überlappung weiter oben. Wirkt nur relativ zu anderen Elementen desselben Stacking Context, nicht global über die gesamte Seite hinweg.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-gradient-winkel",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wo ist das Element blau?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  background: linear-gradient(90deg, red, blue);\n}"
+      },
+      "options": [
+        {
+          "text": "rechts",
+          "correct": true
+        },
+        {
+          "text": "links"
+        },
+        {
+          "text": "oben"
+        },
+        {
+          "text": "unten"
+        }
+      ],
+      "explanation": "0deg zeigt nach oben, 90deg nach rechts. Der Verlauf läuft in Pfeilrichtung: von Rot (links) nach Blau (rechts) – wie to right."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-gradient-ist-bild",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Mit welcher Eigenschaft lässt sich ein `linear-gradient()` einsetzen?",
+      "options": [
+        {
+          "text": "background-image",
+          "correct": true
+        },
+        {
+          "text": "color"
+        },
+        {
+          "text": "border-color"
+        },
+        {
+          "text": "text-decoration-color"
+        }
+      ],
+      "explanation": "Gradients sind vom Browser erzeugte Bilder. Sie gehören dorthin, wo ein Bild erwartet wird – in background-image bzw. die Kurzschreibweise background – und lassen sich mit echten Bildern schichten."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-harter-uebergang",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wie sieht der Hintergrund aus?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  background: linear-gradient(to right, red 50%, blue 50%);\n}"
+      },
+      "options": [
+        {
+          "text": "Links rot, rechts blau, mit scharfer Kante in der Mitte",
+          "correct": true
+        },
+        {
+          "text": "Ein weicher Verlauf von Rot nach Blau über die ganze Breite"
+        },
+        {
+          "text": "Einfarbig lila (50 % Rot, 50 % Blau)"
+        },
+        {
+          "text": "Oben rot, unten blau"
+        }
+      ],
+      "explanation": "Endet eine Farbe an derselben Position, an der die nächste beginnt, gibt es keinen Übergangsbereich – es entsteht eine harte Kante. So entstehen z. B. Streifen oder Tortendiagramme."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-conic-start",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wo beginnt `conic-gradient(red, yellow, green)`, wenn kein `from` angegeben ist?",
+      "options": [
+        {
+          "text": "oben (12 Uhr)",
+          "correct": true
+        },
+        {
+          "text": "rechts (3 Uhr)"
+        },
+        {
+          "text": "unten (6 Uhr)"
+        },
+        {
+          "text": "in der Mitte, von dort nach außen"
+        }
+      ],
+      "explanation": "Konische Verläufe rotieren um den Mittelpunkt, starten bei 0deg = 12 Uhr und laufen im Uhrzeigersinn. Mit from <winkel> lässt sich der Start drehen. Von der Mitte nach außen wäre ein radial-gradient."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-streifenbreite",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wie breit ist ein dunkler Streifen, gemessen entlang der Verlaufsrichtung?",
+      "code": {
+        "lang": "css",
+        "text": ".stripes {\n  background: repeating-linear-gradient(\n    45deg,\n    #222 0 10px,\n    #eee 10px 20px\n  );\n}"
+      },
+      "options": [
+        {
+          "text": "10px",
+          "correct": true
+        },
+        {
+          "text": "20px"
+        },
+        {
+          "text": "45px"
+        },
+        {
+          "text": "5px"
+        }
+      ],
+      "explanation": "#222 reicht von 0 bis 10px, #eee von 10px bis 20px. Dieses 20px lange Muster wiederholt sich – jeder Streifen ist also 10px breit."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-box-shadow-richtung",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wohin fällt der Schatten?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  box-shadow: -4px 4px 8px rgb(0 0 0 / 30%);\n}"
+      },
+      "options": [
+        {
+          "text": "nach links unten",
+          "correct": true
+        },
+        {
+          "text": "nach rechts unten"
+        },
+        {
+          "text": "nach links oben"
+        },
+        {
+          "text": "gleichmäßig rundherum"
+        }
+      ],
+      "explanation": "Der erste Wert ist der horizontale Versatz (negativ = links), der zweite der vertikale (positiv = unten), der dritte der Weichzeichnungsradius."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-transition-oder-keyframes",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Beim Hovern soll nur zwischen einem Start- und einem Endzustand weich übergeblendet werden. Was genügt?",
+      "options": [
+        {
+          "text": "transition",
+          "correct": true
+        },
+        {
+          "text": "@keyframes mit mehreren Phasen"
+        },
+        {
+          "text": "animation-timeline: scroll()"
+        },
+        {
+          "text": "@property"
+        }
+      ],
+      "explanation": "transition überblendet zwischen zwei Zuständen, z. B. bei :hover oder :focus. @keyframes braucht man erst für benannte Zwischenphasen oder Animationen, die von selbst laufen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-infinite",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Was bedeutet `infinite` in dieser Regel?",
+      "code": {
+        "lang": "css",
+        "text": ".box {\n  animation: pulse 2s infinite;\n}"
+      },
+      "options": [
+        {
+          "text": "Die Animation wiederholt sich endlos",
+          "correct": true
+        },
+        {
+          "text": "Ein einzelner Durchlauf dauert unendlich lange"
+        },
+        {
+          "text": "Die Animation startet erst nach Ablauf der Zeit"
+        },
+        {
+          "text": "Die Animation läuft rückwärts"
+        }
+      ],
+      "explanation": "pulse ist der Name der @keyframes-Regel, 2s die Dauer eines Durchlaufs, infinite die Anzahl der Wiederholungen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-transition-nur-background",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Was passiert beim Hovern mit der Vergrößerung?",
+      "code": {
+        "lang": "css",
+        "text": "button {\n  transition: background 0.5s;\n}\nbutton:hover {\n  background: black;\n  transform: scale(1.1);\n}"
+      },
+      "options": [
+        {
+          "text": "Sie springt sofort, nur der Hintergrund wird übergeblendet",
+          "correct": true
+        },
+        {
+          "text": "Sie wird ebenfalls in 0.5s übergeblendet"
+        },
+        {
+          "text": "Sie wird nicht ausgeführt, weil transition nur eine Eigenschaft erlaubt"
+        },
+        {
+          "text": "Sie wird erst nach 0.5s schlagartig ausgeführt"
+        }
+      ],
+      "explanation": "Nur die in transition genannten Eigenschaften werden übergeblendet. Für beide wäre z. B. transition: background 0.5s, transform 0.3s; nötig."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-property",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Wozu dient `@property`, wenn eine Custom Property wie `--winkel` animiert werden soll?",
+      "options": [
+        {
+          "text": "Es gibt der Variable einen Typ (z. B. <angle>), damit der Browser Zwischenwerte berechnen kann",
+          "correct": true
+        },
+        {
+          "text": "Es macht die Variable in allen Stylesheets global verfügbar"
+        },
+        {
+          "text": "Es ersetzt die @keyframes-Regel"
+        },
+        {
+          "text": "Ohne @property funktioniert var(--winkel) überhaupt nicht"
+        }
+      ],
+      "explanation": "Unregistrierte Custom Properties behandelt der Browser als Text – er springt von einem Wert zum nächsten. Mit @property (syntax, inherits, initial-value) kann er interpolieren, z. B. für einen sich drehenden conic-gradient. Baseline Newly available seit Juli 2024."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-anim-scroll-driven",
+      "section": "css-gradients-animation",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Was bewirkt `animation-timeline: scroll()`?",
+      "options": [
+        {
+          "text": "Der Fortschritt der Animation folgt dem Scrollen statt der Zeit",
+          "correct": true
+        },
+        {
+          "text": "Die Animation startet, sobald ganz nach unten gescrollt wurde, und läuft dann nach Zeit"
+        },
+        {
+          "text": "Die Seite scrollt automatisch im Takt der Animation"
+        },
+        {
+          "text": "Scrollen ist gesperrt, solange die Animation läuft"
+        }
+      ],
+      "explanation": "Scroll-Driven Animations koppeln @keyframes an den Scroll-Fortschritt (scroll()) oder an die Sichtbarkeit eines Elements (view()) – bisher ein Fall für JavaScript. Mangels Firefox-Unterstützung noch nicht Baseline, daher mit Fallback einsetzen."
+    },
+    {
+      "id": "css-gl-keyframes",
+      "chapter": "css",
+      "section": "css-gradients-animation",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "@keyframes",
+      "answer": "CSS-At-Regel, die benannte Animationsphasen als Prozentwerte des Animationsverlaufs (`0%` bis `100%`) definiert. Wird über die `animation`-Eigenschaft (Dauer, Wiederholungsanzahl, Richtung u. a.) an ein Element gebunden; mehrere Eigenschaften können innerhalb derselben Phase synchron animiert werden.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-property",
+      "chapter": "css",
+      "section": "css-gradients-animation",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "@property",
+      "answer": "CSS-At-Regel (Baseline Newly available seit 9. Juli 2024), die einer Custom Property (`–meine-variable`) einen konkreten Typ (`syntax`), einen Vererbungsmodus (`inherits`) und einen Startwert (`initial-value`) zuweist. Erst dadurch kann der Browser zwischen zwei Werten sauber interpolieren, z. B. um einen `conic-gradient`-Rotationswinkel weich per `transition` zu animieren.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-animation-timeline-scroll-driven-animations",
+      "chapter": "css",
+      "section": "css-gradients-animation",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "animation-timeline (Scroll-Driven Animations)",
+      "answer": "Eigenschaft, die eine `@keyframes`-Animation statt an eine feste Zeitdauer an den Scroll-Fortschritt einer Seite (`scroll()`) oder das Ein-/Ausblenden eines Elements im Sichtbereich (`view()`) koppelt – ohne JavaScript (`IntersectionObserver`, Scroll-Listener). Von Chrome, Edge und Safari unterstützt, mangels Firefox-Implementierung jedoch noch nicht Baseline.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-box-shadow",
+      "chapter": "css",
+      "section": "css-gradients-animation",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "box-shadow",
+      "answer": "Eigenschaft, die einen Schlagschatten um die Box eines Elements legt: horizontaler und vertikaler Versatz, Weichzeichnungsradius und Farbe (meist als `rgba()` für Transparenz), z. B. `box-shadow: 4px 4px 8px rgba(0,0,0,0.3);`. Verleiht flachen Elementen optische Tiefe.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-gradients-linear-gradient-radial-gradient-conic",
+      "chapter": "css",
+      "section": "css-gradients-animation",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Gradients (linear-gradient / radial-gradient / conic-gradient)",
+      "answer": "Vom Browser generierte Bild-Werte für `background`, die einen Farbverlauf statt einer Bilddatei erzeugen: `linear-gradient` entlang einer geraden Linie, `radial-gradient` von einem Mittelpunkt nach außen, `conic-gradient` rotierend um einen Mittelpunkt. Benötigen keine zusätzlichen Assets, lassen sich schichten und mit `repeating-*-gradient` zu Mustern wiederholen.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-transition",
+      "chapter": "css",
+      "section": "css-gradients-animation",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "transition",
+      "answer": "Eigenschaft, die eine sanfte Überblendung zwischen zwei Werten einer CSS-Eigenschaft über eine festgelegte Dauer erzeugt, typischerweise bei Zustandswechseln wie `:hover` oder `:focus`, z. B. `transition: background 0.5s, transform 0.3s;`. Im Unterschied zu `@keyframes` ohne benannte Zwischenphasen – nur Start- und Endzustand werden definiert.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-medientypen",
+      "section": "css-media-queries",
+      "type": "mc-multi",
+      "difficulty": 1,
+      "prompt": "Welche Medientypen sind heute noch gültig?",
+      "options": [
+        {
+          "text": "all",
+          "correct": true
+        },
+        {
+          "text": "screen",
+          "correct": true
+        },
+        {
+          "text": "print",
+          "correct": true
+        },
+        {
+          "text": "handheld"
+        },
+        {
+          "text": "tv"
+        }
+      ],
+      "explanation": "Seit Media Queries Level 4 sind nur noch all, screen und print nutzbar. handheld, projection, tv und andere wurden entfernt und treffen nie mehr zu."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-komma",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Wann gelten die Regeln in diesem Block?",
+      "code": {
+        "lang": "css",
+        "text": "@media print, (max-width: 600px) {\n  /* … */\n}"
+      },
+      "options": [
+        {
+          "text": "Beim Drucken oder wenn der Viewport höchstens 600px breit ist",
+          "correct": true
+        },
+        {
+          "text": "Nur beim Drucken auf Papier, das schmaler als 600px ist"
+        },
+        {
+          "text": "Nur auf Bildschirmen unter 600px"
+        },
+        {
+          "text": "Nie – ein Komma ist in Media Queries ungültig"
+        }
+      ],
+      "explanation": "Das Komma wirkt wie ODER zwischen ganzen Queries. Die Regeln gelten, wenn mindestens eine der Queries zutrifft."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-not",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Was bedeutet diese Query?",
+      "code": {
+        "lang": "css",
+        "text": "@media not screen and (color) {\n  /* … */\n}"
+      },
+      "options": [
+        {
+          "text": "nicht (Bildschirm und farbfähig)",
+          "correct": true
+        },
+        {
+          "text": "kein Bildschirm, aber farbfähig"
+        },
+        {
+          "text": "ein Bildschirm ohne Farbe"
+        },
+        {
+          "text": "gar nichts – not ist ungültig"
+        }
+      ],
+      "explanation": "not negiert immer die gesamte Query, nicht nur das direkt folgende Wort. Die Query trifft also auf alles zu, was nicht zugleich screen und farbfähig ist."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-max-width-grenze",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Der Viewport ist genau 600px breit. Gelten die Regeln?",
+      "code": {
+        "lang": "css",
+        "text": "@media (max-width: 600px) {\n  /* … */\n}"
+      },
+      "options": [
+        {
+          "text": "Ja, max-width schließt den Grenzwert ein",
+          "correct": true
+        },
+        {
+          "text": "Nein, erst ab 599px"
+        },
+        {
+          "text": "Nur im Hochformat"
+        },
+        {
+          "text": "Nur, wenn zusätzlich min-width angegeben ist"
+        }
+      ],
+      "explanation": "max-width: 600px bedeutet „höchstens 600px“, also einschließlich 600px. In der Range-Syntax: (width <= 600px)."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-viewport-meta",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Eine responsive Seite erscheint auf dem Handy als verkleinerte Desktop-Ansicht, die Media Queries greifen nicht. Was fehlt am wahrscheinlichsten?",
+      "options": [
+        {
+          "text": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+          "correct": true
+        },
+        {
+          "text": "@media screen vor jeder Regel"
+        },
+        {
+          "text": "<link media=\"handheld\">"
+        },
+        {
+          "text": "box-sizing: border-box"
+        }
+      ],
+      "explanation": "Ohne den Viewport-Meta-Tag rendern mobile Browser die Seite in einer virtuellen, oft 980px breiten Desktop-Ansicht und verkleinern sie danach. Die Media Queries sehen dann 980px statt der echten Breite."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-link-download",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Was gilt für print.css, wenn die Seite normal am Bildschirm angezeigt wird?",
+      "code": {
+        "lang": "html",
+        "text": "<link rel=\"stylesheet\" href=\"print.css\" media=\"print\">"
+      },
+      "options": [
+        {
+          "text": "Sie wird trotzdem heruntergeladen, aber nur beim Drucken angewendet",
+          "correct": true
+        },
+        {
+          "text": "Sie wird erst beim Drucken heruntergeladen"
+        },
+        {
+          "text": "Sie wird geladen und auch am Bildschirm angewendet"
+        },
+        {
+          "text": "Sie wird nie geladen, weil print veraltet ist"
+        }
+      ],
+      "explanation": "Ein media-Attribut steuert nur, wann ein Stylesheet angewendet wird, nicht ob es geladen wird. Ein häufiges Missverständnis: Auch nicht zutreffende Stylesheets werden heruntergeladen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-range-syntax",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Query entspricht `@media (400px <= width <= 900px)`?",
+      "options": [
+        {
+          "text": "@media (min-width: 400px) and (max-width: 900px)",
+          "correct": true
+        },
+        {
+          "text": "@media (min-width: 900px) and (max-width: 400px)"
+        },
+        {
+          "text": "@media (min-width: 400px), (max-width: 900px)"
+        },
+        {
+          "text": "@media (width: 400px) or (width: 900px)"
+        }
+      ],
+      "explanation": "Die Range-Syntax (seit ca. September 2025 Baseline Widely available) ersetzt min-/max-Präfixe durch Vergleichsoperatoren. Ein Komma statt and wäre ODER und träfe auf fast jede Breite zu."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-container-query",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Eine Karten-Komponente soll ihr Layout danach richten, wie breit ihr eigener Container ist – unabhängig von der Fensterbreite. Womit?",
+      "options": [
+        {
+          "text": "@container (Container Queries)",
+          "correct": true
+        },
+        {
+          "text": "@media (min-width: …)"
+        },
+        {
+          "text": "vw-Einheiten"
+        },
+        {
+          "text": "@layer"
+        }
+      ],
+      "explanation": "Media Queries prüfen nur den Viewport. Container Queries (container-type, @container) prüfen die Größe eines markierten Elternelements – ideal für wiederverwendbare Komponenten. Baseline Widely available seit Februar 2023."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-width-bezug",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Worauf bezieht sich `width` in einer Media Query?",
+      "options": [
+        {
+          "text": "auf den Viewport",
+          "correct": true
+        },
+        {
+          "text": "auf die Bildschirmauflösung des Geräts"
+        },
+        {
+          "text": "auf das Browserfenster samt Symbolleisten"
+        },
+        {
+          "text": "auf das Elternelement"
+        }
+      ],
+      "explanation": "width und height beziehen sich auf den Viewport, also den sichtbaren Bereich der Seite im Browserfenster – nicht auf den Monitor und nicht auf das Fenster samt Rahmen. device-width ist veraltet."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-breakpoints-waehlen",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Wie wählt man Breakpoints am besten?",
+      "options": [
+        {
+          "text": "Dort, wo das eigene Layout sichtbar zu brechen beginnt",
+          "correct": true
+        },
+        {
+          "text": "Genau bei den Breiten der meistverkauften Smartphones"
+        },
+        {
+          "text": "In festen Abständen von 100px"
+        },
+        {
+          "text": "Immer bei 480, 768 und 1024px, weil das genormt ist"
+        }
+      ],
+      "explanation": "Breakpoint-Tabellen sind nur Richtwerte. Gerätegrößen ändern sich jedes Jahr – der richtige Breakpoint liegt dort, wo der eigene Inhalt unschön zu wirken beginnt."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-mq-dark-mode",
+      "section": "css-media-queries",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Mit welchem Media Feature reagiert eine Seite auf den Dunkelmodus des Systems?",
+      "options": [
+        {
+          "text": "prefers-color-scheme",
+          "correct": true
+        },
+        {
+          "text": "color"
+        },
+        {
+          "text": "prefers-reduced-motion"
+        },
+        {
+          "text": "resolution"
+        }
+      ],
+      "explanation": "@media (prefers-color-scheme: dark) greift, wenn der Nutzer den Dunkelmodus eingestellt hat. prefers-reduced-motion fragt nach reduzierten Bewegungen, color nach der Farbfähigkeit des Geräts."
+    },
+    {
+      "id": "css-gl-container-container-queries",
+      "chapter": "css",
+      "section": "css-media-queries",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "@container (Container Queries)",
+      "answer": "CSS-At-Regel (Baseline Widely available seit Februar 2023), die CSS-Regeln abhängig von der Größe eines explizit markierten Eltern-Containers (`container-type`, `container-name`) statt des gesamten Viewports anwendet. Ergänzt Media Queries um komponentenweise Responsivität – eine Karten-Komponente passt sich damit an ihren tatsächlichen verfügbaren Platz an, unabhängig davon, wo auf der Seite sie eingesetzt wird.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-media-query",
+      "chapter": "css",
+      "section": "css-media-queries",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Media Query",
+      "answer": "Bedingte CSS-Regel (`@media`) oder HTML-Einbindung (`<link media=\"...\">`), die Stylesheets bzw. Regelblöcke abhängig von Eigenschaften des Viewports oder Geräts (Breite, Orientierung, Farbschema-Präferenz u. a.) anwendet. Nur `all`, `screen` und `print` sind seit Media Queries Level 4 noch gültige Medientypen.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-media-query-range-syntax",
+      "chapter": "css",
+      "section": "css-media-queries",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Media-Query-Range-Syntax",
+      "answer": "Seit ca. September 2025 Baseline Widely available verfügbare Schreibweise für Media Queries mit mathematischen Vergleichsoperatoren (`<`, `<=`, `>`, `>=`), z. B. `@media (400px <= width <= 900px)` statt `@media (min-width: 400px) and (max-width: 900px)`. Letzte der drei großen Engines war Safari 16.4 (März 2023).",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-viewport",
+      "chapter": "css",
+      "section": "css-media-queries",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Viewport",
+      "answer": "Der sichtbare Bereich einer Webseite innerhalb des Browserfensters – zu unterscheiden vom physischen Monitor und vom Browserfenster selbst (samt Symbolleisten/Rahmen). `width`/`height` in Media Queries beziehen sich stets auf den Viewport. Auf mobilen Geräten muss der `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">`-Tag gesetzt sein, sonst rendern Browser standardmäßig eine breite virtuelle Desktop-Ansicht und Media Queries bleiben faktisch wirkungslos.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-fr-verteilung",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wie breit wird die mittlere Spalte?",
+      "code": {
+        "lang": "css",
+        "text": ".grid {\n  display: grid;\n  width: 800px;\n  grid-template-columns: 1fr 2fr 1fr;\n}"
+      },
+      "options": [
+        {
+          "text": "400px",
+          "correct": true
+        },
+        {
+          "text": "200px"
+        },
+        {
+          "text": "267px"
+        },
+        {
+          "text": "533px"
+        }
+      ],
+      "explanation": "Insgesamt gibt es 1 + 2 + 1 = 4 Anteile; 800px / 4 = 200px pro fr. Die mittlere Spalte bekommt 2fr = 400px."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-gap-vor-fr",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wie breit ist eine Spalte?",
+      "code": {
+        "lang": "css",
+        "text": ".grid {\n  display: grid;\n  width: 640px;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}"
+      },
+      "options": [
+        {
+          "text": "200px",
+          "correct": true
+        },
+        {
+          "text": "213px"
+        },
+        {
+          "text": "180px"
+        },
+        {
+          "text": "220px"
+        }
+      ],
+      "explanation": "gap wird vor der Verteilung der fr-Anteile abgezogen: 640px − 2 × 20px = 600px, geteilt durch 3 = 200px. Ein calc() ist dafür nicht nötig."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-grid-column-linien",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Über wie viele Spalten erstreckt sich `.header`?",
+      "code": {
+        "lang": "css",
+        "text": ".header {\n  grid-column: 1 / 4;\n}"
+      },
+      "options": [
+        {
+          "text": "3",
+          "correct": true
+        },
+        {
+          "text": "4"
+        },
+        {
+          "text": "1"
+        },
+        {
+          "text": "2"
+        }
+      ],
+      "explanation": "Die Zahlen sind Linien, nicht Spalten: Von Linie 1 bis Linie 4 liegen drei Spalten."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-minus-eins",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Was bewirkt diese Angabe?",
+      "code": {
+        "lang": "css",
+        "text": ".full {\n  grid-column: 1 / -1;\n}"
+      },
+      "options": [
+        {
+          "text": "Das Item reicht von der ersten bis zur letzten Linie, also über alle Spalten",
+          "correct": true
+        },
+        {
+          "text": "Das Item wird aus dem Grid entfernt"
+        },
+        {
+          "text": "Das Item belegt nur die letzte Spalte"
+        },
+        {
+          "text": "Sie ist ungültig, negative Linien gibt es nicht"
+        }
+      ],
+      "explanation": "Negative Liniennummern zählen vom Ende: -1 ist die letzte Linie. 1 / -1 spannt das Item damit über die gesamte Breite – unabhängig von der Spaltenanzahl."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-auto-fit-spalten",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Der Container enthält 12 Karten. Wie viele Spalten entstehen?",
+      "code": {
+        "lang": "css",
+        "text": ".cards {\n  display: grid;\n  width: 1100px;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n}"
+      },
+      "options": [
+        {
+          "text": "4",
+          "correct": true
+        },
+        {
+          "text": "5"
+        },
+        {
+          "text": "3"
+        },
+        {
+          "text": "12"
+        }
+      ],
+      "explanation": "Jede Spalte ist mindestens 250px breit: 4 × 250px = 1000px passen in 1100px, 5 × 250px = 1250px nicht. Die vier Spalten teilen sich dann die 1100px, je 275px."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-auto-fit-auto-fill",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Ein Grid mit `repeat(…, minmax(150px, 1fr))` enthält nur zwei Karten in einem breiten Container. Bei welchem Schlüsselwort strecken sich die beiden Karten über die ganze Breite?",
+      "options": [
+        {
+          "text": "auto-fit",
+          "correct": true
+        },
+        {
+          "text": "auto-fill"
+        },
+        {
+          "text": "bei beiden"
+        },
+        {
+          "text": "bei keinem – dafür ist eine Media Query nötig"
+        }
+      ],
+      "explanation": "auto-fit lässt leere Spalten zusammenfallen, die vorhandenen Karten strecken sich. auto-fill behält die leeren Spalten, am Ende bleibt eine Lücke."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-areas-punkt",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Was bedeutet ein Punkt (`.`) in `grid-template-areas`?",
+      "options": [
+        {
+          "text": "eine bewusst leere Zelle",
+          "correct": true
+        },
+        {
+          "text": "die Zelle, in der das aktuelle Item steht"
+        },
+        {
+          "text": "einen Klassen-Selektor"
+        },
+        {
+          "text": "eine Zelle, die sich über alle Spalten erstreckt"
+        }
+      ],
+      "explanation": "Ein Punkt markiert eine Zelle, die zu keinem benannten Bereich gehört und leer bleibt."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-areas-zuordnung",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wie breit ist der Bereich `header`?",
+      "code": {
+        "lang": "css",
+        "text": ".page {\n  display: grid;\n  grid-template-columns: 200px 1fr;\n  grid-template-areas:\n    \"header header\"\n    \"nav    main\"\n    \"footer footer\";\n}"
+      },
+      "options": [
+        {
+          "text": "über beide Spalten, also die volle Breite",
+          "correct": true
+        },
+        {
+          "text": "200px"
+        },
+        {
+          "text": "nur die rechte Spalte (1fr)"
+        },
+        {
+          "text": "Die Angabe ist ungültig, ein Name darf nur einmal vorkommen"
+        }
+      ],
+      "explanation": "Steht ein Name in einer Zeile mehrfach nebeneinander, bildet er einen zusammenhängenden Bereich über diese Zellen. header und footer reichen hier über beide Spalten."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-zentrieren",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Wie zentriert man ein Element im Container horizontal und vertikal mit zwei Zeilen?",
+      "options": [
+        {
+          "text": "display: grid; place-items: center;",
+          "correct": true
+        },
+        {
+          "text": "display: block; margin: auto;"
+        },
+        {
+          "text": "text-align: center; vertical-align: middle;"
+        },
+        {
+          "text": "position: relative; top: 50%;"
+        }
+      ],
+      "explanation": "place-items: center setzt justify-items und align-items gleichzeitig und zentriert jedes Item in seiner Zelle. margin: auto zentriert einen Block nur horizontal."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-mobile-first",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Media Queries passen zu Mobile First?",
+      "options": [
+        {
+          "text": "min-width-Queries, die das Basis-Layout für größere Viewports erweitern",
+          "correct": true
+        },
+        {
+          "text": "max-width-Queries, die ein Desktop-Layout für kleine Viewports einschränken"
+        },
+        {
+          "text": "Gar keine – Mobile First verzichtet auf Media Queries"
+        },
+        {
+          "text": "orientation: portrait für alle Regeln"
+        }
+      ],
+      "explanation": "Bei Mobile First gelten die Basisregeln für schmale Viewports; min-width-Queries ergänzen ab einer bestimmten Breite zusätzliche Regeln. Aufwendige Effekte und große Bilder werden so erst auf großen Bildschirmen geladen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-adaptive",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welcher Layout-Typ verwendet vordefinierte Layouts für bestimmte Geräteklassen?",
+      "options": [
+        {
+          "text": "Adaptive",
+          "correct": true
+        },
+        {
+          "text": "Fluid"
+        },
+        {
+          "text": "Elastic"
+        },
+        {
+          "text": "Fixed"
+        }
+      ],
+      "explanation": "Adaptive Layouts schalten per Media Query zwischen festen Layouts für bekannte Geräteklassen um. Fluid nutzt prozentuale Breiten; Responsive verbindet beides."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-responsive-bilder",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Wozu dient `height: auto` in dieser Regel?",
+      "code": {
+        "lang": "css",
+        "text": "img, video {\n  max-width: 100%;\n  height: auto;\n}"
+      },
+      "options": [
+        {
+          "text": "Das Seitenverhältnis bleibt erhalten, wenn das Bild schmaler wird",
+          "correct": true
+        },
+        {
+          "text": "Das Bild wird immer so hoch wie sein Container"
+        },
+        {
+          "text": "Das Bild wird erst nach dem Laden angezeigt"
+        },
+        {
+          "text": "Es verhindert, dass das Bild breiter als sein Container wird"
+        }
+      ],
+      "explanation": "max-width: 100% verhindert, dass ein Bild seinen Container sprengt. height: auto passt die Höhe proportional an, damit das Bild nicht verzerrt wird."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-direkte-kinder",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Für `.grid` gilt `display: grid`. Welche Elemente werden zu Grid-Items?",
+      "code": {
+        "lang": "html",
+        "text": "<div class=\"grid\">\n  <article>\n    <h2>Titel</h2>\n    <p>Text</p>\n  </article>\n  <article>…</article>\n</div>"
+      },
+      "options": [
+        {
+          "text": "nur die beiden article-Elemente",
+          "correct": true
+        },
+        {
+          "text": "article, h2 und p"
+        },
+        {
+          "text": "nur h2 und p"
+        },
+        {
+          "text": "nur das div selbst"
+        }
+      ],
+      "explanation": "Nur die direkten Kinder eines Grid-Containers werden zu Grid-Items. Soll auch der Inhalt eines article ins Raster, braucht der article selbst display: grid – oder subgrid."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-lay-subgrid",
+      "section": "css-layout",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Wozu dient `grid-template-rows: subgrid`?",
+      "options": [
+        {
+          "text": "Ein verschachteltes Grid übernimmt die Zeilen des Eltern-Grids, sodass Inhalte mehrerer Karten fluchten",
+          "correct": true
+        },
+        {
+          "text": "Es erzeugt ein zweites, unabhängiges Grid im Hintergrund"
+        },
+        {
+          "text": "Es teilt jede Zeile in zwei Unterzeilen"
+        },
+        {
+          "text": "Es ordnet Kacheln versetzt als Masonry-Layout an"
+        }
+      ],
+      "explanation": "Ohne subgrid berechnet ein verschachteltes Grid seine Tracks unabhängig. Mit subgrid übernimmt es die Tracks des Eltern-Grids – Titel, Text und Buttons verschiedener Karten stehen auf einer Linie. Baseline Widely available seit ca. März 2026. Masonry ist dagegen display: grid-lanes."
+    },
+    {
+      "id": "css-gl-auto-fit-auto-fill",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "auto-fit / auto-fill",
+      "answer": "Zwei Schlüsselwörter für die `repeat()`-Funktion in einem Grid-Container, die zusammen mit `minmax()` responsive Spaltenanzahlen ganz ohne Media Queries ermöglichen. `auto-fit` streckt vorhandene Spalten, um leere Tracks zu füllen; `auto-fill` behält leere Tracks stattdessen als Lücke am Ende bei.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-css-grid-grid-layout",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "CSS Grid (Grid Layout)",
+      "answer": "Zweidimensionaler CSS-Layout-Modus (`display: grid`), der Kindelemente gleichzeitig in Zeilen und Spalten anordnet. Abzugrenzen von Flexbox, das nur eindimensional layoutet; beide Modi lassen sich kombinieren, ein Grid-Item kann selbst wieder ein Flex-Container sein.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-css-grid-lanes-masonry-layout",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "CSS Grid Lanes (Masonry-Layout)",
+      "answer": "Auf der WWDC 2026 von Apple vorgestellte Erweiterung von CSS Grid (`display: grid-lanes`), die echtes Masonry-Layout (versetzt gestapelte Kacheln unterschiedlicher Höhe) nativ ohne JavaScript ermöglicht. Zum Stand dieses Dokuments ausschließlich in Safari (ab 26.4) implementiert und damit noch nicht Baseline.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-css-subgrid",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "CSS Subgrid",
+      "answer": "Wert `subgrid` für `grid-template-columns`/`grid-template-rows`, mit dem ein verschachtelter Grid-Container die Tracks seines Eltern-Grids übernimmt, statt eigene neu zu berechnen. Löst das Problem, Inhalte über mehrere verschachtelte Grid-Ebenen hinweg exakt fluchten zu lassen. Chrome 117 (September 2023) war die letzte der drei großen Engines – nach der 30-Monats-Regel seit ca. März 2026 Baseline Widely available.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-fr-einheit",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "fr-Einheit",
+      "answer": "Einheit für `grid-template-columns`/`-rows`, die einen Bruchteil des innerhalb eines Grid-Containers verbleibenden freien Platzes repräsentiert (analog zu `flex-grow` bei Flexbox). `gap` wird vor der Berechnung der `fr`-Anteile abgezogen – ein zusätzliches `calc()` ist damit meist überflüssig.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-grid-template-areas-named-areas",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "grid-template-areas (Named Areas)",
+      "answer": "Eigenschaft, die ein Grid-Layout als benannte, in Anführungszeichen gesetzte \"Landkarte\" aus Strings definiert; jedes Kindelement wird per `grid-area` einem Bereichsnamen zugeordnet, ein `.` markiert eine bewusst leere Zelle. Macht die Struktur direkt im CSS lesbar und erlaubt Layoutänderungen, ohne das HTML anzufassen – oft kombiniert mit Media Queries für unterschiedliche Bereichsanordnungen je Viewport-Breite.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-layout-typen-fixed-fluid-elastic-adaptive-respon",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Layout-Typen (Fixed / Fluid / Elastic / Adaptive / Responsive)",
+      "answer": "Fünf klassische Kategorien von Webseiten-Layouts: Fixed (feste Größen), Fluid (prozentuale Breiten), Elastic (Breite und Höhe dynamisch, meist in `em`), Adaptive (vordefinierte Layouts je Geräteklasse per Media Query) und Responsive (dynamische Anpassung an jede Viewport-Größe). Responsive Layout kombiniert dabei die Prinzipien von Fluid und Adaptive und gilt heute als De-facto-Standard.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-mobile-first",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Mobile First",
+      "answer": "Entwurfsprinzip, bei dem Basis-CSS-Regeln zunächst für schmale (mobile) Viewports geschrieben und über `min-width`-Media-Queries additiv für größere Viewports erweitert werden – im Unterschied zum umgekehrten \"Desktop First\"-Ansatz mit `max-width`-Queries. Verhindert, dass mobile Geräte unnötig große Assets oder aufwendige CSS3-Effekte laden.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-place-items",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "place-items",
+      "answer": "Kurzschreibweise für `align-items` und `justify-items` gleichzeitig, z. B. `place-items: center;` zentriert jedes Item innerhalb seiner Grid- oder Flex-Zelle in beiden Achsen. Analog dazu setzt `place-content` die Ausrichtung des gesamten Grids innerhalb des Containers.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-repeat",
+      "chapter": "css",
+      "section": "css-layout",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "repeat()",
+      "answer": "Funktion für `grid-template-columns`/`-rows`, die ein Track-Muster eine festgelegte Anzahl mal wiederholt, z. B. `repeat(3, 1fr)` statt `1fr 1fr 1fr`. Mit den Schlüsselwörtern `auto-fit`/`auto-fill` statt einer festen Zahl entstehen responsive Grids ganz ohne Media Queries.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-rev-nachfahren-selektor",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Nachfahren-Selektor).",
+      "code": {
+        "lang": "css",
+        "text": "article p { color: gray; }"
+      },
+      "answer": "Der Nachfahren-Selektor (Leerzeichen) trifft auf JEDES p innerhalb von article zu, egal wie tief verschachtelt – im Unterschied zum Kind-Kombinator >.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<article>\n  <p>Matches (direkt oder verschachtelt).</p>\n  <div>\n    <p>Matches auch als Nachfahre.</p>\n  </div>\n</article>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 16
+      }
+    },
+    {
+      "id": "css-rev-kind-kombinator",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Kind-Kombinator).",
+      "code": {
+        "lang": "css",
+        "text": "nav > ul > li { list-style: none; }"
+      },
+      "answer": "Der Kind-Kombinator (>) trifft NUR auf direkte Kinder zu – ein li innerhalb einer verschachtelten ul erfüllt nav > ul > li nicht, weil es kein direktes Kind der äußeren ul ist.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<nav>\n  <ul>\n    <li>Matches (direktes Kind).</li>\n    <li>\n      <ul><li>Kein Match (verschachtelt).</li></ul>\n    </li>\n  </ul>\n</nav>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 17
+      }
+    },
+    {
+      "id": "css-rev-adjazenter-geschwister-kombinator",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Adjazenter Geschwister-Kombinator).",
+      "code": {
+        "lang": "css",
+        "text": "h1 + p { color: red; }"
+      },
+      "answer": "+ trifft NUR auf das unmittelbar folgende Geschwister-Element zu – ein dazwischenliegendes Element bricht den Match. Vergleich mit dem allgemeinen Geschwister-Kombinator ~.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<h1>Section</h1>\n<p>Matches (unmittelbar folgendes Geschwister).</p>\n<div>\n  <p>Kein Match (nicht direkt danach).</p>\n</div>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 18
+      }
+    },
+    {
+      "id": "css-rev-allgemeiner-geschwister-kombinator",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Allgemeiner Geschwister-Kombinator).",
+      "code": {
+        "lang": "css",
+        "text": "h2 ~ p { background: yellow; }"
+      },
+      "answer": "~ trifft auf ALLE nachfolgenden Geschwister zu, auch wenn andere Elemente dazwischenliegen – der häufigste Verwechslungspunkt gegenüber dem adjazenten Kombinator +.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<h2>Intro</h2>\n<p>Matches (allgemeines Geschwister).</p>\n<div>Dazwischenliegendes Element ist erlaubt.</div>\n<p>Matches ebenfalls.</p>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 19
+      }
+    },
+    {
+      "id": "css-rev-zusammengesetzter-klassen-selektor",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Zusammengesetzter Klassen-Selektor).",
+      "code": {
+        "lang": "css",
+        "text": "div.note.highlight { border: 2px solid gold; }"
+      },
+      "answer": "div.note.highlight ist ein zusammengesetzter Selektor (kein Leerzeichen) – alle Teile müssen GLEICHZEITIG auf dasselbe Element zutreffen, ihre Spezifitäten addieren sich.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<div class=\"note highlight\">\n  Matches (beide Klassen vorhanden).\n</div>\n<div class=\"note\">Kein Match (nur eine Klasse).</div>\n<div class=\"highlight\">Kein Match (nur eine Klasse).</div>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 20
+      }
+    },
+    {
+      "id": "css-rev-attribut-selektor-exakter-wert",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Attribut-Selektor, exakter Wert).",
+      "code": {
+        "lang": "css",
+        "text": "input[type=\"email\"] { outline: 2px solid; }"
+      },
+      "answer": "[type=\"email\"] verlangt exakte Gleichheit des Attributwerts – ein anderer type-Wert erfüllt die Bedingung nicht. Für Teilstrings gibt es ^= (beginnt mit), $= (endet mit) und *= (enthält).",
+      "answerCode": {
+        "lang": "html",
+        "text": "<form>\n  <input type=\"email\" placeholder=\"you@example.com\">  <!-- Match -->\n  <input type=\"text\" placeholder=\"Name\">              <!-- kein Match -->\n</form>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 21
+      }
+    },
+    {
+      "id": "css-rev-attribut-selektor-praefix",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Attribut-Selektor, Präfix).",
+      "code": {
+        "lang": "css",
+        "text": "a[href^=\"https://\"] { text-decoration: underline; }"
+      },
+      "answer": "^= prüft, ob der Attributwert mit dem angegebenen Teilstring BEGINNT – ein relativer Link (/about) oder ein unverschlüsseltes http:// erfüllen die Bedingung nicht.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<a href=\"https://example.com\">Match</a>\n<a href=\"http://example.com\">Kein Match</a>\n<a href=\"/about\">Kein Match</a>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 22
+      }
+    },
+    {
+      "id": "css-rev-attribut-selektor-teilstring",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Attribut-Selektor, Teilstring).",
+      "code": {
+        "lang": "css",
+        "text": "img[alt*=\"logo\"] { max-height: 40px; }"
+      },
+      "answer": "*= prüft, ob der Teilstring IRGENDWO im Attributwert vorkommt – 'logo' muss nicht am Anfang oder Ende von alt stehen, im Unterschied zu ^= oder $= (endet mit).",
+      "answerCode": {
+        "lang": "html",
+        "text": "<img src=\"logo-dark.png\" alt=\"company logo mark\">  <!-- Match -->\n<img src=\"header.png\" alt=\"header banner\">          <!-- kein Match -->"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 23
+      }
+    },
+    {
+      "id": "css-rev-nth-child",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (nth-child()).",
+      "code": {
+        "lang": "css",
+        "text": "ol > li:nth-child(2) { font-weight: bold; }"
+      },
+      "answer": ":nth-child(2) zählt die Position UNTER ALLEN Geschwistern, nicht nur unter gleichnamigen – bei einer reinen li-Liste fällt dieser Unterschied zu :nth-of-type() hier nicht ins Gewicht.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<ol>\n  <li>First</li>\n  <li>Second (Match, 2. Kind)</li>\n  <li>Third</li>\n</ol>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 24
+      }
+    },
+    {
+      "id": "css-rev-not",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (not()).",
+      "code": {
+        "lang": "css",
+        "text": "ul.menu li:not(.active) { opacity: 0.6; }"
+      },
+      "answer": ":not(.active) schließt genau die Elemente aus, auf die das Argument zutrifft – alle übrigen li-Elemente der Liste erhalten die reduzierte Opazität.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<ul class=\"menu\">\n  <li class=\"active\">Dashboard</li>  <!-- kein Match -->\n  <li>Projects</li>                   <!-- Match -->\n  <li>Settings</li>                   <!-- Match -->\n</ul>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 25
+      }
+    },
+    {
+      "id": "css-rev-first-of-type",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (first-of-type).",
+      "code": {
+        "lang": "css",
+        "text": "p:first-of-type { color: green; }"
+      },
+      "answer": ":first-of-type bezieht sich auf die Position innerhalb der Geschwister DESSELBEN Elementtyps – das h2 davor spielt für die Zählung der p-Elemente keine Rolle.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<section>\n  <h2>Headline</h2>\n  <p>Erster Absatz (Match).</p>\n  <p>Zweiter Absatz (kein Match).</p>\n</section>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 26
+      }
+    },
+    {
+      "id": "css-rev-focus",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (focus).",
+      "code": {
+        "lang": "css",
+        "text": "input:focus { border-color: blue; }"
+      },
+      "answer": ":focus ist eine dynamische Pseudo-Klasse – sie greift erst bei tatsächlicher Nutzerinteraktion (Klick, Tab-Taste) und lässt sich daher nur live im Browser demonstrieren, nicht als statischer Screenshot.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<form>\n  <label for=\"name\">Name:</label>\n  <input id=\"name\" type=\"text\" placeholder=\"Click me to focus\">\n</form>\n<!-- Rand wird blau, sobald das Feld fokussiert ist -->"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 27
+      }
+    },
+    {
+      "id": "css-rev-visited",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (visited).",
+      "code": {
+        "lang": "css",
+        "text": "a:visited { color: purple; }"
+      },
+      "answer": ":visited greift nur auf einige wenige, aus Datenschutzgründen stark eingeschränkte Eigenschaften zu (u. a. color) – Layout-relevante Eigenschaften lassen sich damit bewusst NICHT auslesen, um das Ausspionieren des Browserverlaufs zu verhindern.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<nav>\n  <a href=\"https://example.com\">Besucht (wird lila)</a>\n  <a href=\"https://newsite.com\">Nicht besucht (Standardfarbe)</a>\n</nav>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 28
+      }
+    },
+    {
+      "id": "css-rev-empty",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (empty).",
+      "code": {
+        "lang": "css",
+        "text": "li:empty { display: none; }"
+      },
+      "answer": ":empty trifft nur zu, wenn ein Element WIRKLICH keinerlei Inhalt hat – auch ein einzelnes Leerzeichen als Textknoten würde den Match bereits verhindern.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<ul>\n  <li>First item</li>\n  <li></li>  <!-- leer -> Match, wird ausgeblendet -->\n  <li>Third item</li>\n</ul>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 29
+      }
+    },
+    {
+      "id": "css-rev-verschachtelte-kombination",
+      "chapter": "css",
+      "section": "css-review",
+      "type": "code-task",
+      "difficulty": 3,
+      "status": "freigegeben",
+      "prompt": "Schreibe HTML, auf das dieser Selektor zutrifft (Verschachtelte Kombination).",
+      "code": {
+        "lang": "css",
+        "text": "section:not(:last-of-type) article:nth-child(2):hover p:first-line {\n  font-weight: bold;\n}"
+      },
+      "answer": "Diese Aufgabe kombiniert Nachfahren-Kombinator, :not(), :nth-child(), die dynamische Pseudo-Klasse :hover und das Pseudo-Element ::first-line (hier mit einfachem Doppelpunkt geschrieben – für die CSS2-Pseudo-Elemente aus Kompatibilitätsgründen weiterhin gültig).\n\nLöse den Selektor von links nach rechts auf: section:not(:last-of-type) grenzt die betroffenen Sections ein, article:nth-child(2) wählt darin das zweite Kind-Element, :hover macht es interaktiv, p:first-line beschränkt die Wirkung auf die erste Zeile jedes p darin.",
+      "answerCode": {
+        "lang": "html",
+        "text": "<section>\n  <article><p>Erster Absatz (nicht betroffen).</p></article>\n  <article>\n    <!-- Hover -> erste Zeile jedes p hier wird fett -->\n    <p>Beim Hover wird die erste Zeile fett.</p>\n    <p>Auch hier wird die erste Zeile fett.</p>\n  </article>\n</section>\n<section>\n  <!-- letztes section -> :not(:last-of-type) greift nicht -->\n  <article><p>Diese Section ist ausgenommen.</p></article>\n</section>"
+      },
+      "source": {
+        "kind": "review",
+        "file": "04-CSS/Praesentationen/16-review-questions-css.json",
+        "nr": 30
+      }
+    }
+  ]
+}

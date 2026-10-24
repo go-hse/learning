@@ -1,0 +1,397 @@
+{
+  "chapter": {
+    "id": "css",
+    "title": "CSS",
+    "order": 4,
+    "dir": "04-CSS"
+  },
+  "sections": [
+    {
+      "id": "css-basics",
+      "prefix": "css-bas",
+      "title": "Grundlagen und Kaskade",
+      "source": "04-CSS/01-Basics.md"
+    },
+    {
+      "id": "css-selectors",
+      "prefix": "css-sel",
+      "title": "Selektoren",
+      "source": "04-CSS/02-Selectors.md",
+      "ars": "02-selectors-ars.json"
+    },
+    {
+      "id": "css-text-fonts",
+      "prefix": "css-txt",
+      "title": "Text und Schriften",
+      "source": "04-CSS/03-Text-and-Fonts.md"
+    },
+    {
+      "id": "css-units",
+      "prefix": "css-unit",
+      "title": "Einheiten",
+      "source": "04-CSS/05-Box-Model-Layout-Basics.md",
+      "ars": "05-units-ars.json"
+    },
+    {
+      "id": "css-lists",
+      "prefix": "css-list",
+      "title": "Listen gestalten",
+      "source": "04-CSS/06-Styling-Lists.md",
+      "ars": "06-styling-lists-ars.json"
+    },
+    {
+      "id": "css-box-model",
+      "prefix": "css-box",
+      "title": "Box-Modell",
+      "source": "04-CSS/07-Box-Model-and-Layout-Basics.md",
+      "ars": "07-box-model-ars.json"
+    },
+    {
+      "id": "css-flexbox",
+      "prefix": "css-flex",
+      "title": "Flexbox",
+      "source": "04-CSS/09-Flexbox-Layout.md",
+      "ars": "09-flexbox-ars.json"
+    },
+    {
+      "id": "css-positioning",
+      "prefix": "css-pos",
+      "title": "Positionierung",
+      "source": "04-CSS/11-Positioning.md",
+      "ars": "11-positioning-ars.json"
+    },
+    {
+      "id": "css-gradients-animation",
+      "prefix": "css-anim",
+      "title": "Verläufe und Animation",
+      "source": "04-CSS/12-Gradients-and-Animation.md"
+    },
+    {
+      "id": "css-media-queries",
+      "prefix": "css-mq",
+      "title": "Media Queries",
+      "source": "04-CSS/14-Media-Queries.md"
+    },
+    {
+      "id": "css-layout",
+      "prefix": "css-lay",
+      "title": "Layout und Grid",
+      "source": "04-CSS/15-Layout.md"
+    },
+    {
+      "id": "css-review",
+      "prefix": "css-rev",
+      "title": "Selektoren üben",
+      "source": "04-CSS/16-Review-Questions-CSS.md"
+    }
+  ],
+  "review": {
+    "file": "16-review-questions-css.json",
+    "section": "css-review"
+  },
+  "glossaryPrefix": "css-gl",
+  "glossarySections": {
+    "@font-face": "css-text-fonts",
+    "@layer (Cascade Layer)": "css-basics",
+    "@container (Container Queries)": "css-media-queries",
+    "@keyframes": "css-gradients-animation",
+    "@property": "css-gradients-animation",
+    "::marker": "css-lists",
+    "An+B-Formel": "css-selectors",
+    "auto-fit / auto-fill": "css-layout",
+    "animation-timeline (Scroll-Driven Animations)": "css-gradients-animation",
+    "Attribut-Selektor": "css-selectors",
+    "Baseline": "css-basics",
+    "box-shadow": "css-gradients-animation",
+    "box-sizing (content-box / border-box)": "css-box-model",
+    "calc()": "css-units",
+    "Cascading Style Sheets (CSS)": "css-basics",
+    "Clearfix / display: flow-root": "css-box-model",
+    "CSS1 / CSS2 / CSS2.1": "css-basics",
+    "CSS-Modularisierung": "css-basics",
+    "CSS Anchor Positioning": "css-positioning",
+    "CSS Grid (Grid Layout)": "css-layout",
+    "CSS Grid Lanes (Masonry-Layout)": "css-layout",
+    "CSS Subgrid": "css-layout",
+    "Containing Block": "css-positioning",
+    "DSGVO und Google Fonts": "css-text-fonts",
+    "Dynamische Viewport-Einheiten (svh, lvh, dvh)": "css-units",
+    "Extern eingebundenes CSS": "css-basics",
+    "flex-grow / flex-shrink / flex-basis": "css-flexbox",
+    "Flexbox (CSS Flexible Box Layout)": "css-flexbox",
+    "fr-Einheit": "css-layout",
+    "gap (Flexbox-Kontext)": "css-flexbox",
+    "Gradients (linear-gradient / radial-gradient / conic-gradient)": "css-gradients-animation",
+    "grid-template-areas (Named Areas)": "css-layout",
+    "Hauptachse / Querachse (main axis / cross axis)": "css-flexbox",
+    ":has() (Eltern-Selektor)": "css-selectors",
+    "Inline-CSS": "css-basics",
+    "Internes CSS": "css-basics",
+    ":is() / :where()": "css-selectors",
+    "inset (Shorthand)": "css-positioning",
+    "Kaskade": "css-basics",
+    "Kombinator": "css-selectors",
+    "Layout-Typen (Fixed / Fluid / Elastic / Adaptive / Responsive)": "css-layout",
+    "list-style (Shorthand)": "css-lists",
+    "Logische Eigenschaften (margin-inline, padding-block)": "css-box-model",
+    "Media Query": "css-media-queries",
+    "Media-Query-Range-Syntax": "css-media-queries",
+    "Mehrfacher Selektor / Zusammengesetzter Selektor": "css-selectors",
+    "Mobile First": "css-layout",
+    "Moderne Farbsyntax (CSS Color Module Level 4)": "css-text-fonts",
+    "Nesting (CSS-Verschachtelung)": "css-basics",
+    "place-items": "css-layout",
+    "Progressive Enhancement": "css-basics",
+    "Pseudo-Element": "css-selectors",
+    "Pseudo-Klasse": "css-selectors",
+    "position (static / relative / absolute / fixed / sticky)": "css-positioning",
+    "rem vs. em (Compounding-Problem)": "css-units",
+    "repeat()": "css-layout",
+    "Spezifität": "css-selectors",
+    "Stacking Context": "css-positioning",
+    "text-decoration (Shorthand)": "css-text-fonts",
+    "transition": "css-gradients-animation",
+    "Variable Font": "css-text-fonts",
+    "Viewport": "css-media-queries",
+    "Web Font": "css-text-fonts",
+    "WOFF2": "css-text-fonts",
+    "z-index": "css-positioning"
+  },
+  "wordFixes": {
+    "Aenderung": "Änderung",
+    "Anfuehrungszeichen": "Anführungszeichen",
+    "Aufzaehlungszeichen": "Aufzählungszeichen",
+    "Benoetigen": "Benötigen",
+    "Endgeraet": "Endgerät",
+    "Ergaenzt": "Ergänzt",
+    "Fuenf": "Fünf",
+    "Funktionalitaet": "Funktionalität",
+    "Geraete": "Geräte",
+    "Geraeteklasse": "Geräteklasse",
+    "Geraeten": "Geräten",
+    "Geraets": "Geräts",
+    "Groesse": "Größe",
+    "Groessen": "Größen",
+    "Hoehe": "Höhe",
+    "Layoutaenderungen": "Layoutänderungen",
+    "Loest": "Löst",
+    "Luecke": "Lücke",
+    "Maerz": "März",
+    "Praeferenz": "Präferenz",
+    "Regelbloecke": "Regelblöcke",
+    "Responsivitaet": "Responsivität",
+    "Schlaegt": "Schlägt",
+    "Schluesselwoerter": "Schlüsselwörter",
+    "Schluesselwoertern": "Schlüsselwörtern",
+    "Ueberblendung": "Überblendung",
+    "Zaehler": "Zähler",
+    "abhaengig": "abhängig",
+    "ausschliesslich": "ausschließlich",
+    "aussen": "außen",
+    "behaelt": "behält",
+    "durchgaengig": "durchgängig",
+    "eingeschraenkten": "eingeschränkten",
+    "einzuschliessen": "einzuschließen",
+    "ermoeglichen": "ermöglichen",
+    "ermoeglicht": "ermöglicht",
+    "faellt": "fällt",
+    "fuellen": "füllen",
+    "fuenf": "fünf",
+    "fuer": "für",
+    "gewaehlten": "gewählten",
+    "groessere": "größere",
+    "grosse": "große",
+    "grossen": "großen",
+    "gueltige": "gültige",
+    "haelt": "hält",
+    "haeufige": "häufige",
+    "koennen": "können",
+    "laedt": "lädt",
+    "muessen": "müssen",
+    "naechste": "nächste",
+    "repraesentiert": "repräsentiert",
+    "standardmaessig": "standardmäßig",
+    "tatsaechlichen": "tatsächlichen",
+    "ueber": "über",
+    "ueberfluessig": "überflüssig",
+    "uebernimmt": "übernimmt",
+    "unabhaengig": "unabhängig",
+    "unnoetig": "unnötig",
+    "unterstuetzt": "unterstützt",
+    "verfuegbare": "verfügbare",
+    "verfuegbaren": "verfügbaren",
+    "vollstaendig": "vollständig",
+    "zunaechst": "zunächst",
+    "zurueck": "zurück",
+    "zusaetzlich": "zusätzlich",
+    "zusaetzlichen": "zusätzlichen",
+    "zusaetzliches": "zusätzliches",
+    "schliesst": "schließt",
+    "äusseren": "äußeren"
+  },
+  "difficulty": {
+    "css-sel-attribut-operatoren": 1,
+    "css-sel-kind-kombinator": 1,
+    "css-sel-pseudo-klasse-oder-pseudo-element": 1,
+    "css-unit-compounding-vermeiden": 1,
+    "css-unit-viewport-einheiten": 1,
+    "css-unit-calc": 1,
+    "css-list-list-style-type": 1,
+    "css-list-inside-oder-outside": 1,
+    "css-list-navigation-aus-einer-liste": 1,
+    "css-box-drei-werte": 1,
+    "css-box-zentrieren": 1,
+    "css-box-negativer-margin": 1,
+    "css-box-rahmen-pro-seite": 1,
+    "css-box-unsichtbar-aber-mit-platz": 1,
+    "css-flex-wo-steht-display-flex": 1,
+    "css-flex-querachse": 1,
+    "css-flex-gap": 1,
+    "css-flex-flexbox-oder-grid": 1,
+    "css-pos-raus-aus-dem-fluss": 1,
+    "css-pos-relative-verschieben": 1,
+    "css-pos-chat-button": 1,
+    "css-pos-anchor-positioning": 1,
+    "css-sel-welche-regel-gewinnt": 2,
+    "css-sel-operator-pipe-gleich": 2,
+    "css-sel-geschwister-kombinator": 2,
+    "css-sel-komma-oder-kein-komma": 2,
+    "css-sel-nth-child-formel": 2,
+    "css-unit-em-bei-padding": 2,
+    "css-unit-compounding": 2,
+    "css-unit-absolute-einheiten": 2,
+    "css-unit-vmin": 2,
+    "css-unit-mobile-browserleisten": 2,
+    "css-list-bild-fehlt": 2,
+    "css-list-bildgroesse": 2,
+    "css-list-kurzschreibweise": 2,
+    "css-list-marker": 2,
+    "css-box-gesamtbreite": 2,
+    "css-box-content-box": 2,
+    "css-box-border-box": 2,
+    "css-box-border-radius-mit-zwei-werten": 2,
+    "css-box-display-inline": 2,
+    "css-box-clear": 2,
+    "css-box-float": 2,
+    "css-box-logische-eigenschaften": 2,
+    "css-flex-hauptachse-bei-column": 2,
+    "css-flex-alle-gleich-hoch": 2,
+    "css-flex-zu-viele-items": 2,
+    "css-flex-order": 2,
+    "css-flex-ein-item-anders": 2,
+    "css-pos-falsche-ecke": 2,
+    "css-pos-badge-an-der-karte": 2,
+    "css-pos-fester-header": 2,
+    "css-pos-sticky": 2,
+    "css-pos-inset": 2,
+    "css-sel-spezifitaet-von-where": 3,
+    "css-box-border-radius-mit-drei-werten": 3,
+    "css-box-drei-karten-ohne-border-box": 3,
+    "css-flex-align-content-ohne-wirkung": 3,
+    "css-flex-flex-grow-rechnen": 3,
+    "css-pos-z-index-9999": 3,
+    "css-pos-neuer-stacking-context": 3,
+    "css-rev-nachfahren-selektor": 1,
+    "css-rev-kind-kombinator": 1,
+    "css-rev-adjazenter-geschwister-kombinator": 1,
+    "css-rev-allgemeiner-geschwister-kombinator": 1,
+    "css-rev-zusammengesetzter-klassen-selektor": 1,
+    "css-rev-attribut-selektor-exakter-wert": 1,
+    "css-rev-attribut-selektor-praefix": 1,
+    "css-rev-attribut-selektor-teilstring": 1,
+    "css-rev-focus": 1,
+    "css-rev-nth-child": 2,
+    "css-rev-not": 2,
+    "css-rev-first-of-type": 2,
+    "css-rev-visited": 2,
+    "css-rev-empty": 2,
+    "css-rev-verschachtelte-kombination": 3,
+    "css-gl-layer-cascade-layer": 2,
+    "css-gl-kaskade": 2,
+    "css-gl-spezifitaet": 2,
+    "css-gl-is-where": 2,
+    "css-gl-has-eltern-selektor": 2,
+    "css-gl-an-b-formel": 2,
+    "css-gl-moderne-farbsyntax-css-color-module-level-4": 2,
+    "css-gl-rem-vs-em-compounding-problem": 2,
+    "css-gl-clearfix-display-flow-root": 2,
+    "css-gl-logische-eigenschaften-margin-inline-padding-blo": 2,
+    "css-gl-flex-grow-flex-shrink-flex-basis": 2,
+    "css-gl-hauptachse-querachse-main-axis-cross-axis": 2,
+    "css-gl-containing-block": 2,
+    "css-gl-stacking-context": 2,
+    "css-gl-property": 2,
+    "css-gl-animation-timeline-scroll-driven-animations": 2,
+    "css-gl-container-container-queries": 2,
+    "css-gl-auto-fit-auto-fill": 2,
+    "css-gl-css-subgrid": 2,
+    "css-gl-fr-einheit": 2,
+    "css-gl-grid-template-areas-named-areas": 2,
+    "css-gl-mobile-first": 2,
+    "css-gl-progressive-enhancement": 2
+  },
+  "patch": {
+    "css-list-kurzschreibweise": {
+      "explanation": "Gültig sind square inside, none und inside square. Die Werte der Kurzschreibweise stehen in beliebiger Reihenfolge und werden durch Leerzeichen getrennt – ein Komma macht die Deklaration ungültig."
+    },
+    "css-box-border-box": {
+      "prompt": "Wie breit ist der Inhaltsbereich?"
+    },
+    "css-box-drei-karten-ohne-border-box": {
+      "prompt": "Drei Karten sollen nebeneinander stehen, dazwischen insgesamt 2rem Abstand. Ohne `* { box-sizing: border-box; }` rutscht die dritte Karte in die nächste Zeile. Warum?",
+      "explanation": "Bei content-box kommt der Rahmen zur Breite hinzu: Jede Karte ist width + 2px breit. Drei Karten plus 2rem Abstand ergeben mehr als 100 % – die dritte Karte bricht um."
+    },
+    "css-box-negativer-margin": {
+      "replaceOption": {
+        "D": "Das Element wird 10px niedriger"
+      }
+    },
+    "css-box-clear": {
+      "replaceOption": {
+        "D": "position: relative;"
+      }
+    },
+    "css-flex-alle-gleich-hoch": {
+      "replaceOption": {
+        "D": "Flex-Items erben die Höhe des Containers automatisch über height: inherit"
+      }
+    },
+    "css-flex-zu-viele-items": {
+      "replaceOption": {
+        "D": "Die Items behalten 200px und ragen rechts aus dem Container heraus"
+      }
+    },
+    "css-flex-querachse": {
+      "explanation": "Merkhilfe: Justify wirkt auf der Hauptachse, Align auf der Querachse."
+    },
+    "css-pos-anchor-positioning": {
+      "replaceOption": {
+        "D": "Ein Element beim Scrollen am oberen Rand festhalten"
+      },
+      "explanation": "anchor-name markiert ein Bezugselement, position-anchor und anchor() beziehen sich darauf – unabhängig vom eigenen Containing Block. Ersetzt zunehmend JavaScript-Bibliotheken wie Floating UI oder Popper.js; Baseline Newly available seit Januar 2026. Am oberen Rand festhalten wäre position: sticky."
+    },
+    "css-pos-falsche-ecke": {
+      "explanation": "position: relative an .parent. absolute richtet sich am nächsten positionierten Vorfahren aus – gibt es keinen, am Anfangs-Containing-Block (der Seite). Ein typischer Debugging-Fall: Das Element „springt“ an eine falsche Stelle."
+    },
+    "css-pos-z-index-9999": {
+      "explanation": ".a bildet mit position: relative und z-index: 1 einen eigenen Stacking Context. z-index: 9999 gilt nur INNERHALB von .a; nach außen zählt die 1 von .a – und die ist kleiner als die 2 von .b. Eine der häufigsten Fehlerquellen bei z-index."
+    },
+    "css-rev-verschachtelte-kombination": {
+      "answer": "Diese Aufgabe kombiniert Nachfahren-Kombinator, :not(), :nth-child(), die dynamische Pseudo-Klasse :hover und das Pseudo-Element ::first-line (hier mit einfachem Doppelpunkt geschrieben – für die CSS2-Pseudo-Elemente aus Kompatibilitätsgründen weiterhin gültig).\n\nLöse den Selektor von links nach rechts auf: section:not(:last-of-type) grenzt die betroffenen Sections ein, article:nth-child(2) wählt darin das zweite Kind-Element, :hover macht es interaktiv, p:first-line beschränkt die Wirkung auf die erste Zeile jedes p darin."
+    },
+    "css-pos-sticky": {
+      "explanation": "sticky verhält sich zunächst wie relative und ab einem Schwellenwert aus top, bottom, left oder right wie fixed; overflow: hidden auf einem Vorfahren verhindert das Kleben. Falsch sind die anderen beiden Aussagen: sticky wirkt nur innerhalb der Höhe des Elternelements, und z-index ist dafür nicht nötig."
+    },
+    "css-sel-komma-oder-kein-komma": {
+      "explanation": "Ohne Trennzeichen müssen alle Teile auf dasselbe Element zutreffen (UND); Spezifität 0-2-1. „Alle div, alle .note und alle .highlight“ wäre der Selektor div, .note, .highlight (Komma = ODER)."
+    },
+    "css-rev-attribut-selektor-exakter-wert": {
+      "answer": "[type=\"email\"] verlangt exakte Gleichheit des Attributwerts – ein anderer type-Wert erfüllt die Bedingung nicht. Für Teilstrings gibt es ^= (beginnt mit), $= (endet mit) und *= (enthält)."
+    }
+  },
+  "skip": [],
+  "rename": {
+    "css-sel-der-operator": "css-sel-operator-pipe-gleich",
+    "css-box-uebung-5-ohne-border-box": "css-box-drei-karten-ohne-border-box"
+  }
+}
