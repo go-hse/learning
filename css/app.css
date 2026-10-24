@@ -232,8 +232,9 @@ h1, h2, h3, p { margin: 0; }
   background: var(--day-cell);
 }
 .cell.is-filled { background: var(--day-fill); }
-.day.is-done .cell.is-filled { background: #ffffff; }
-@media (prefers-color-scheme: dark) { .day.is-done .cell.is-filled { background: var(--day-fill); } }
+.cell.is-extra { background: color-mix(in srgb, var(--day-fill) 45%, transparent); }
+.day-title:has(.day-check) { display: flex; align-items: center; gap: 0.5rem; }
+.day-check { width: 1.5em; height: 1.5em; padding: 0.2em; border-radius: 50%; background: var(--day-fill); color: var(--day-bg); stroke-width: 3; }
 
 .day-sub { opacity: 0.85; }
 .day-streak { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
@@ -533,7 +534,7 @@ code { font-family: var(--mono); font-size: 0.92em; padding: 0.05em 0.3em; borde
 .footer a { color: var(--muted); text-underline-offset: 0.2em; padding: 0.5rem 0; margin: -0.5rem 0; }
 .footer a:hover { color: var(--ink); }
 
-.footer-links { display: flex; gap: 1.25rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
 
 .help { gap: 1.5rem; }
 .help-intro { font-size: 1.125rem; }

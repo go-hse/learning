@@ -5,7 +5,7 @@ import { streak, series, totalPoints, dayKey } from '../scoring.js';
 import { computeBoxes, progress } from '../leitner.js';
 import { visibleQuestions, findChapter, sectionTitle } from '../catalog.js';
 import { isFinished } from '../session.js';
-import { APP_VERSION, IMPRESSUM_URL } from '../config.js';
+import { APP_VERSION, IMPRESSUM_URL, DATENSCHUTZ_URL } from '../config.js';
 
 const BACKUP_INTERVAL = 14 * 24 * 60 * 60 * 1000;
 
@@ -73,20 +73,26 @@ export function home(root, _params, ctx) {
   root.append(h('footer', { class: 'footer' },
     h('nav', { class: 'footer-links', 'aria-label': 'Fußzeile' },
       h('a', { href: '#/hilfe' }, t('footer.help')),
-      h('a', { href: IMPRESSUM_URL }, t('footer.impressum'))),
+      h('a', { href: IMPRESSUM_URL }, t('footer.impressum')),
+      h('a', { href: DATENSCHUTZ_URL }, t('footer.privacy'))),
     h('span', {}, t('footer.version', { version: APP_VERSION }))));
 }
 
 function dayPanel(st) {
   const { todayCount: count, todayGoal: goal } = st;
   const done = count >= goal;
+  // Ein Kästchen je Frage des Tagesziels; Fragen darüber hinaus als zusätzliche, hellere Kästchen
+  // (höchstens so viele wie das Tagesziel selbst, damit das Raster überschaubar bleibt)
+  const extra = Math.min(Math.max(0, count - goal), goal);
   const grid = h('div', { class: 'day-grid', 'aria-hidden': 'true' });
   for (let i = 0; i < goal; i++) grid.append(h('span', { class: i < count ? 'cell is-filled' : 'cell' }));
+  for (let i = 0; i < extra; i++) grid.append(h('span', { class: 'cell is-extra' }));
   const sub = !done
     ? tn('home.remaining', goal - count)
     : count > goal ? tn('home.extra', count - goal, { count }) : t('home.doneSub', { count, goal });
   return h('section', { class: `day${done ? ' is-done' : ''}`, 'aria-labelledby': 'day-title' },
-    h('h2', { class: 'day-title', id: 'day-title' }, done ? t('home.todayDone') : t('home.today', { count, goal })),
+    h('h2', { class: 'day-title', id: 'day-title' },
+      done ? [icon('check', 'icon day-check'), t('home.todayDone')] : t('home.today', { count, goal })),
     grid,
     h('p', { class: 'day-sub' }, sub),
     h('p', { class: 'day-streak' }, icon('flame', 'icon flame'),

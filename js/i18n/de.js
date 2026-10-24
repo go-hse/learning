@@ -32,6 +32,7 @@ const de = {
   'home.retry': 'Neu laden',
   'footer.help': 'Hilfe',
   'footer.impressum': 'Impressum',
+  'footer.privacy': 'Datenschutz',
   'footer.version': 'Version {version}',
   'home.noStorage': 'Dein Browser erlaubt kein dauerhaftes Speichern. Der Lernstand geht beim Schließen verloren.',
 
