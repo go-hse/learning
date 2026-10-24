@@ -182,8 +182,13 @@ function buildCss() {
     out.push({ chapter: cfg.chapter.id, status: 'entwurf', shuffle: true, source: { kind: 'neu' }, ...q });
   }
 
+  // skip: endgültig entfernt; fragenspeicher: zurückgestellt, bis das Thema in der Vorlesung ausführlich behandelt wurde
   const skip = new Set(cfg.skip ?? []);
-  const questions = out.filter((q) => !skip.has(q.id));
+  const parked = new Set(cfg.fragenspeicher ?? []);
+  const known = new Set(out.map((q) => q.id));
+  for (const id of [...skip, ...parked]) if (!known.has(id)) errors.push(`skip/fragenspeicher: unbekannte Frage-ID ${id}`);
+  const stored = out.filter((q) => parked.has(q.id) && !skip.has(q.id));
+  const questions = out.filter((q) => !skip.has(q.id) && !parked.has(q.id));
   const order = Object.fromEntries(cfg.sections.map((s, i) => [s.id, i]));
   const typeOrder = { 'mc-single': 0, 'mc-multi': 0, 'code-task': 1, flashcard: 2 };
   questions.forEach((q, i) => (q._i = i));
@@ -196,7 +201,38 @@ function buildCss() {
       sections: cfg.sections.map(({ id, title, source }) => ({ id, title, source })),
     },
     questions,
+    stored,
   };
+}
+
+// ---------- Mindestanteil Fragen mit Punkten je Abschnitt ----------
+export const MIN_SCORED_SHARE = 0.5;
+const SCORED = new Set(['mc-single', 'mc-multi', 'term-mc']);
+
+/** Prüft je Abschnitt, ob mindestens die Hälfte der Fragen Punkte gibt (Entwürfe zählen mit). */
+export function checkScoredShare(cat) {
+  const errs = [];
+  for (const ch of cat.chapters) {
+    for (const sec of ch.sections) {
+      const qs = cat.questions.filter((q) => q.section === sec.id);
+      if (!qs.length) continue;
+      const scored = qs.filter((q) => SCORED.has(q.type)).length;
+      if (scored / qs.length < MIN_SCORED_SHARE) {
+        errs.push(`Abschnitt „${sec.title}“: nur ${scored} von ${qs.length} Fragen geben Punkte, mindestens ${Math.ceil(qs.length * MIN_SCORED_SHARE)} nötig`);
+      }
+    }
+  }
+  return errs;
+}
+
+export function scoredShareReport(cat) {
+  return cat.chapters.flatMap((ch) => ch.sections.map((sec) => {
+    const qs = cat.questions.filter((q) => q.section === sec.id);
+    const scored = qs.filter((q) => SCORED.has(q.type));
+    const rel = (list) => list.filter((q) => q.status === 'freigegeben').length;
+    return `  ${sec.title.padEnd(26)} ${String(scored.length).padStart(3)} von ${String(qs.length).padStart(3)} mit Punkten`
+      + `   (freigegeben: ${rel(scored)} von ${rel(qs)})`;
+  }));
 }
 
 // ---------- Validierung (Spec 7.1) ----------
@@ -245,6 +281,7 @@ const catalog = {
   questions: css.questions,
 };
 errors.push(...validateCatalog(catalog));
+errors.push(...checkScoredShare(catalog));
 
 if (LIST) {
   for (const q of catalog.questions) console.log([q.id, q.type, q.difficulty ?? '-', q.prompt.slice(0, 70)].join('\t'));
@@ -267,9 +304,17 @@ fs.writeFileSync(path.join(ROOT, 'catalogs/index.json'), JSON.stringify({
   catalogs: [{ id: 'inet-tech', title: 'Internet-Technologien', url: 'catalogs/inet-tech.json', version: catalog.catalog.version, languages: ['de'] }],
 }, null, 2) + '\n');
 
+// Fragenspeicher: zurückgestellte Fragen, nicht im Katalog der App
+fs.writeFileSync(path.join(ROOT, 'tools/content/css-fragenspeicher.json'), JSON.stringify({
+  hinweis: 'Automatisch erzeugt von tools/build-catalog.mjs. Diese Fragen sind zurückgestellt (fragenspeicher in css-overrides.json) und nicht im Katalog der App.',
+  questions: css.stored,
+}, null, 2) + '\n');
+
 const by = (k) => catalog.questions.reduce((m, q) => ((m[q[k]] = (m[q[k]] ?? 0) + 1), m), {});
 console.log(`catalogs/inet-tech.json geschrieben, Version ${catalog.catalog.version}, ${catalog.questions.length} Fragen`);
 console.log('nach Typ:', by('type'));
 console.log('nach Status:', by('status'));
 console.log('nach Schwierigkeit:', by('difficulty'));
-console.log('nach Abschnitt:', by('section'));
+console.log(`Fragenspeicher: ${css.stored.length} Fragen in tools/content/css-fragenspeicher.json`);
+console.log('Anteil Fragen mit Punkten je Abschnitt (Mindestens 50 %, Entwürfe zählen mit):');
+console.log(scoredShareReport(catalog).join('\n'));

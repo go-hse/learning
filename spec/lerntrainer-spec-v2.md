@@ -103,7 +103,7 @@ und Frage. Sind weniger als 3 Präsentationen übrig, wird sie ans Ende gestellt
 
 ### 5.3 Punkte, Tagesziel, Streak, Serie
 
-**F-20 Punkte** nach 6.1. Gesamtpunkte und Punkte pro Kapitel werden angezeigt. Der Gesamtstand fällt nicht unter 0.
+**F-20 Punkte** nach 6.1. Gesamtpunkte und Punkte pro Kapitel werden angezeigt; in der Sitzung steht der aktuelle Punktestand in der Kopfzeile, und bei jeder Frage wird angezeigt, wie viele Punkte sie noch wert ist. Der Gesamtstand fällt nicht unter 0.
 
 **F-21 Tagesziel.** Jede beantwortete Präsentation zählt: richtig, teilweise und falsch, Wiederholungen derselben Frage
 und Lernkarten mit Selbsteinschätzung. Standard 20, einstellbar (5–100). Tagesgrenze ist lokale Mitternacht.
@@ -119,7 +119,7 @@ Aktuelle Serie und Bestwert werden angezeigt.
 
 **F-30 Problemfragen.** Liste der Fragen mit der höchsten Fehlerquote (falsch + teilweise / Präsentationen),
 nur Fragen mit mindestens 3 Präsentationen.
-**F-31 Fortschritt pro Kapitel/Sektion:** gesehen / beherrscht (Leitner-Fach 5) / gesamt.
+**F-31 Fortschritt pro Kapitel/Sektion:** gesamt / zuletzt richtig (letzte Antwort richtig oder „gewusst“) / beherrscht (Leitner-Fach 5, also 4-mal in Folge richtig). Die Bedeutung von „beherrscht“ wird in der Kapitelübersicht erklärt.
 **F-32 Verlauf:** beantwortete Präsentationen pro Tag (Kalender der letzten 12 Wochen), Trefferquote pro Woche.
 **F-33 Kennzahlen:** Streak (aktuell / Bestwert), Serie (aktuell / Bestwert), Gesamtpunkte.
 
@@ -385,6 +385,11 @@ Die meisten Übungen finden voraussichtlich auf dem Handy statt (20 Fragen am Ta
 2. Zuordnung zur Sektion über den Dateinamen (`02-selectors-ars.json` → `css-selectors`).
 3. Erzeugte Fragen haben `status: entwurf`. Schwierigkeitsgrad und Freigabe werden redaktionell gesetzt.
 4. Eine GitHub Action prüft den Katalog gegen das Schema, bevor deployt wird.
+
+Inhaltliche Regeln:
+- **Mindestens 50 % Fragen mit Punkten** (`mc-single`, `mc-multi`, `term-mc`) in jedem Abschnitt; Entwürfe zählen mit. Das Erzeugungs-Skript bricht sonst ab.
+- **Keine Fragen zur Geschichte** von CSS (Versionen, Jahreszahlen der Standardisierung).
+- **Fragenspeicher:** Fragen zu Themen, die in der Vorlesung noch nicht ausführlich behandelt wurden (derzeit Modularisierung, Nesting, `@layer`), werden zurückgestellt (`fragenspeicher` in `css-overrides.json`). Sie stehen nicht im Katalog der App, bleiben aber in `tools/content/css-fragenspeicher.json` erhalten.
 
 Material: `05-Hochschule/0505-ModuleVorlesungen/02_InternetTechnologien/Vorlesungsskript`.
 Umfang CSS (Stand Oktober 2026): 61 MC-Fragen, 65 Glossarbegriffe, rund 15 Code-Aufgaben.

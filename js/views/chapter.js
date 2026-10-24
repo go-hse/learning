@@ -52,6 +52,7 @@ export function chapter(root, { cat: catId, chapter: chapterId }, ctx) {
   main.append(h('p', { class: 'muted chapter-points' }, t('chapter.points', { n: totalPoints(events, (e) => chapterIds.has(e.qid)) })));
 
   main.append(h('h2', { class: 'section-title' }, t('chapter.sections')));
+  main.append(h('p', { class: 'muted mastered-hint' }, t('chapter.masteredHint')));
   const list = h('ul', { class: 'rows' });
   for (const sec of ch.sections) {
     const sq = qs.filter((q) => q.section === sec.id);

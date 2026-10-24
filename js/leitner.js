@@ -23,14 +23,26 @@ export function encounters(events, qid) {
   return n;
 }
 
-/** Fortschritt für eine Menge von Fragen: gesehen, beherrscht (Fach 5), gesamt. */
-export function progress(questions, events, boxes = computeBoxes(events)) {
-  const seen = new Set(events.map((e) => e.qid));
+/** Letztes Ergebnis je Frage (events nach ts sortiert). */
+export function lastResults(events) {
+  const last = new Map();
+  for (const e of events) last.set(e.qid, e.result);
+  return last;
+}
+
+/**
+ * Fortschritt für eine Menge von Fragen:
+ * gesehen, zuletzt richtig (richtig oder gewusst), beherrscht (Fach 5), gesamt.
+ */
+export function progress(questions, events, boxes = computeBoxes(events), last = lastResults(events)) {
   let s = 0;
+  let c = 0;
   let m = 0;
   for (const q of questions) {
-    if (seen.has(q.id)) s++;
+    const r = last.get(q.id);
+    if (r) s++;
+    if (r === 'correct' || r === 'knew') c++;
     if (boxes.get(q.id) === MASTERED_BOX) m++;
   }
-  return { total: questions.length, seen: s, mastered: m };
+  return { total: questions.length, seen: s, correct: c, mastered: m };
 }

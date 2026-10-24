@@ -5,7 +5,7 @@ node tools/build-catalog.mjs --src "C:\Users\adr\Nextcloud\05-Hochschule\0505-Mo
 ```
 
 Schreibt `catalogs/inet-tech.json` und `catalogs/index.json`. Mit `--list` werden zusätzlich alle Fragen mit ID, Typ und Schwierigkeit ausgegeben.
-Das Skript bricht mit Fehlermeldung ab, wenn der Katalog nicht der Spezifikation (Kapitel 7.1) entspricht.
+Das Skript bricht mit Fehlermeldung ab, wenn der Katalog nicht der Spezifikation (Kapitel 7.1) entspricht oder in einem Abschnitt weniger als 50 % der Fragen Punkte geben (Entwürfe zählen mit).
 
 ## Quellen (Kapitel CSS)
 
@@ -24,7 +24,8 @@ ARS-Fragen vom Typ „Tippen Sie auf …“ (`kind: coords`) werden übersprunge
 - `difficulty` – Schwierigkeitsgrad je Frage-ID (Pflicht für MC- und Code-Fragen; Lernkarten ohne Eintrag = 1)
 - `patch` – Korrekturen je Frage-ID, z. B. `prompt`, `explanation`, `answer` oder `replaceOption: { "D": "neuer Text" }`
 - `rename` – feste IDs, wenn die automatisch erzeugte ID unpassend ist
-- `skip` – Fragen, die nicht in den Katalog sollen
+- `skip` – Fragen, die endgültig nicht in den Katalog sollen (z. B. Geschichte)
+- `fragenspeicher` – zurückgestellte Fragen zu Themen, die noch nicht ausführlich behandelt wurden; sie landen in `css-fragenspeicher.json` statt im Katalog. Zum Aktivieren die ID aus der Liste entfernen.
 - `glossarySections` – Zuordnung der Glossarbegriffe zu Abschnitten
 - `wordFixes` – Schreibweisen ohne Umlaut im Glossar (fuer → für)
 

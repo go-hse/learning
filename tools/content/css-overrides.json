@@ -387,11 +387,27 @@
     },
     "css-rev-attribut-selektor-exakter-wert": {
       "answer": "[type=\"email\"] verlangt exakte Gleichheit des Attributwerts – ein anderer type-Wert erfüllt die Bedingung nicht. Für Teilstrings gibt es ^= (beginnt mit), $= (endet mit) und *= (enthält)."
+    },
+    "css-gl-kaskade": {
+      "answer": "Der Algorithmus, mit dem der Browser bei mehreren zutreffenden CSS-Regeln entscheidet, welche gewinnt: zuerst Herkunft und Wichtigkeit (`!important`), dann Spezifität, zuletzt Quellreihenfolge. Namensgebendes Konzept von „Cascading“ Style Sheets."
+    },
+    "css-gl-baseline": {
+      "answer": "Der browserübergreifende Kompatibilitätsstatus eines Web-Plattform-Features (z. B. einer CSS-Eigenschaft), gepflegt von der W3C WebDX Community Group. Zeigt, ob ein Feature in allen großen Browsern nutzbar ist: Newly available (in allen aktuellen Browsern) oder Widely available (seit mindestens 30 Monaten)."
     }
   },
-  "skip": [],
+  "skip": [
+    "css-gl-css1-css2-css2-1"
+  ],
   "rename": {
     "css-sel-der-operator": "css-sel-operator-pipe-gleich",
     "css-box-uebung-5-ohne-border-box": "css-box-drei-karten-ohne-border-box"
-  }
+  },
+  "fragenspeicher": [
+    "css-gl-css-modularisierung",
+    "css-bas-kein-css4",
+    "css-gl-nesting-css-verschachtelung",
+    "css-bas-nesting-ampersand",
+    "css-gl-layer-cascade-layer",
+    "css-bas-layer-gegen-spezifitaet"
+  ]
 }

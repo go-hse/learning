@@ -4,7 +4,7 @@ import { h, icon, codeBlock, scrollIntoViewIfNeeded } from '../ui.js';
 import { t, tn } from '../i18n/de.js';
 import { renderInline, renderMarkdown } from '../markdown.js';
 import * as store from '../store.js';
-import { gradeChoice, points, streak, dayKey } from '../scoring.js';
+import { gradeChoice, points, bonus, streak, dayKey, totalPoints } from '../scoring.js';
 import { encounters } from '../leitner.js';
 import { sectionTitle, findChapter } from '../catalog.js';
 import { advance, currentQid, isFinished, shuffle, skip } from '../session.js';
@@ -15,6 +15,7 @@ const isChoice = (q) => q.type === 'mc-single' || q.type === 'mc-multi';
 export function quiz(root, _params, ctx) {
   let session = store.getSession();
   let keyHandler = null;
+  let lastScore = null;
   const onKey = (e) => keyHandler?.(e);
   document.addEventListener('keydown', onKey);
   draw();
@@ -64,12 +65,25 @@ export function quiz(root, _params, ctx) {
     const total = session.queue.length;
     const fill = h('span', { class: 'quizbar-fill' });
     fill.style.width = `${(session.pos / total) * 100}%`;
+    const score = totalPoints(store.allEvents());
+    const changed = lastScore !== null && score !== lastScore;
+    lastScore = score;
     return h('header', { class: 'appbar quizbar' },
       h('a', { class: 'iconbtn', href: chapterHref(), 'aria-label': t('quiz.close') }, icon('close')),
       h('div', { class: 'quizbar-progress' },
         h('span', { class: 'quizbar-text' }, t('quiz.position', { n, total })),
         h('span', { class: 'quizbar-track', 'aria-hidden': 'true' }, fill)),
-      h('span', { class: 'appbar-spacer', 'aria-hidden': 'true' }));
+      h('p', { class: `quizbar-score${changed ? ' is-changed' : ''}`, title: t('quiz.score') },
+        h('span', { class: 'visually-hidden' }, `${t('quiz.score')}: `),
+        h('span', { class: 'quizbar-score-value' }, String(score)),
+        h('span', { class: 'quizbar-score-unit', 'aria-hidden': 'true' }, 'P')));
+  }
+
+  /** Was die Frage jetzt noch wert ist (sinkt mit jeder Begegnung, Spec 6.1). */
+  function worthText(q) {
+    if (!isChoice(q)) return t('quiz.noPoints');
+    const max = bonus(encounters(store.allEvents(), q.id) + 1, q.difficulty);
+    return max > 0 ? tn('quiz.worth', max) : t('quiz.worthZero');
   }
 
   function drawQuestion(cat, q) {
@@ -86,6 +100,7 @@ export function quiz(root, _params, ctx) {
     main.append(h('p', { class: 'q-meta' },
       h('span', {}, scope),
       h('span', { class: `q-level level-${q.difficulty}` }, t(`quiz.level${q.difficulty}`)),
+      c.phase !== 'feedback' ? h('span', { class: 'q-worth' }, worthText(q)) : null,
       q.status === 'entwurf' ? h('span', { class: 'q-draft' }, t('quiz.draft')) : null));
 
     if (q.type === 'flashcard') main.append(h('p', { class: 'q-kicker' }, t('quiz.explainTerm')));

@@ -57,7 +57,7 @@ export function home(root, _params, ctx) {
       const p = progress(visibleQuestions(cat, settings.showDrafts), events, boxes);
       list.append(h('li', {}, h('a', { class: 'row', href: `#/fach/${encodeURIComponent(entry.id)}` },
         h('span', { class: 'row-title' }, cat.catalog.title),
-        h('span', { class: 'row-sub' }, t('home.subjectSub', { chapters: cat.chapters.length, total: p.total, mastered: p.mastered })),
+        h('span', { class: 'row-sub' }, t('home.subjectSub', p)),
         progressBar(p))));
     }
     main.append(list);

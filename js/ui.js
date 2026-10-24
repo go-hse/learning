@@ -61,12 +61,16 @@ export function appBar({ title, back = null, backLabel = t('nav.back'), end = nu
 
 const pct = (part, total) => (total ? `${Math.round((part / total) * 1000) / 10}%` : '0%');
 
-export function progressBar({ total, seen, mastered }) {
+/** Drei Stufen übereinander: gesehen (hell), zuletzt richtig (cyan), beherrscht (dunkel). */
+export function progressBar({ total, seen, correct = 0, mastered }) {
   const seenBar = h('span', { class: 'bar-seen' });
+  const correctBar = h('span', { class: 'bar-correct' });
   const masteredBar = h('span', { class: 'bar-mastered' });
   seenBar.style.width = pct(seen, total);
+  correctBar.style.width = pct(Math.max(correct, mastered), total);
   masteredBar.style.width = pct(mastered, total);
-  return h('span', { class: 'bar', role: 'img', 'aria-label': t('progress.label', { seen, total, mastered }) }, seenBar, masteredBar);
+  return h('span', { class: 'bar', role: 'img', 'aria-label': t('progress.label', { seen, correct, total, mastered }) },
+    seenBar, correctBar, masteredBar);
 }
 
 export function codeBlock({ lang, text }) {

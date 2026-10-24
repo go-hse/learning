@@ -65,6 +65,8 @@ test('Leitner-Fächer (Spec 6.3)', () => {
   assert.equal(boxes.get('c'), 5);
   assert.equal(boxes.get('d'), 1);
   const p = progress([{ id: 'a' }, { id: 'c' }, { id: 'z' }], [ev('a', 'correct', 1), ...[1, 2, 3, 4].map((i) => ev('c', 'correct', i + 1))]);
-  assert.deepEqual(p, { total: 3, seen: 2, mastered: 1 });
+  assert.deepEqual(p, { total: 3, seen: 2, correct: 2, mastered: 1 });
+  const p2 = progress([{ id: 'a' }, { id: 'b' }], [ev('a', 'knew', 1), ev('b', 'correct', 2), ev('b', 'wrong', 3)]);
+  assert.deepEqual(p2, { total: 2, seen: 2, correct: 1, mastered: 0 }, 'gewusst zählt als richtig, falsch danach nicht');
   assert.equal(encounters([ev('a', 'x', 1), ev('a', 'y', 2), ev('b', 'x', 3)], 'a'), 2);
 });

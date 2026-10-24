@@ -3,7 +3,7 @@
   "catalog": {
     "id": "inet-tech",
     "title": "Internet-Technologien",
-    "version": "2026.10.23.2",
+    "version": "2026.10.24.1",
     "lang": "de"
   },
   "chapters": [
@@ -257,43 +257,10 @@
           "text": "Quellreihenfolge"
         },
         {
-          "text": "Cascade Layer (@layer)"
+          "text": "Anzahl der Deklarationen in der Regel"
         }
       ],
-      "explanation": "Die Reihenfolge ist: Herkunft und Wichtigkeit → Cascade Layer → Spezifität → Quellreihenfolge. Spezifität wird nur innerhalb derselben Herkunft und desselben Layers verglichen."
-    },
-    {
-      "chapter": "css",
-      "status": "entwurf",
-      "shuffle": true,
-      "source": {
-        "kind": "neu"
-      },
-      "id": "css-bas-layer-gegen-spezifitaet",
-      "section": "css-basics",
-      "type": "mc-single",
-      "difficulty": 3,
-      "prompt": "Welche Farbe hat ein Absatz innerhalb von `#main`?",
-      "code": {
-        "lang": "css",
-        "text": "@layer base, utilities;\n\n@layer base {\n  #main p { color: blue; }\n}\n@layer utilities {\n  p { color: green; }\n}"
-      },
-      "options": [
-        {
-          "text": "grün",
-          "correct": true
-        },
-        {
-          "text": "blau"
-        },
-        {
-          "text": "Die Regeln heben sich auf, es gilt der Browser-Standard"
-        },
-        {
-          "text": "Das hängt davon ab, welcher @layer-Block weiter unten im Stylesheet steht"
-        }
-      ],
-      "explanation": "Die Reihenfolge der Layer legt die erste Zeile fest: Später deklarierte Layer (utilities) gewinnen gegen früher deklarierte (base) – unabhängig von der Spezifität. 1-0-1 gegen 0-0-1 würde nur innerhalb desselben Layers zählen."
+      "explanation": "Die Reihenfolge ist: Herkunft und Wichtigkeit → Spezifität → Quellreihenfolge. Spezifität wird nur verglichen, wenn Herkunft und Wichtigkeit gleich sind; erst bei gleicher Spezifität entscheidet die Reihenfolge im Stylesheet."
     },
     {
       "chapter": "css",
@@ -331,68 +298,6 @@
       "source": {
         "kind": "neu"
       },
-      "id": "css-bas-nesting-ampersand",
-      "section": "css-basics",
-      "type": "mc-single",
-      "difficulty": 2,
-      "prompt": "Welchen Selektor erzeugt die verschachtelte Regel `&:hover`?",
-      "code": {
-        "lang": "css",
-        "text": ".card {\n  &:hover { box-shadow: 0 2px 8px rgb(0 0 0 / 20%); }\n  .title  { font-weight: bold; }\n}"
-      },
-      "options": [
-        {
-          "text": ".card:hover",
-          "correct": true
-        },
-        {
-          "text": ".card :hover"
-        },
-        {
-          "text": ".card > :hover"
-        },
-        {
-          "text": ":hover .card"
-        }
-      ],
-      "explanation": "& steht für das Elternelement selbst – &:hover wird also zu .card:hover. Ohne & entsteht ein Nachfahren-Selektor: Aus .title wird .card .title."
-    },
-    {
-      "chapter": "css",
-      "status": "entwurf",
-      "shuffle": true,
-      "source": {
-        "kind": "neu"
-      },
-      "id": "css-bas-kein-css4",
-      "section": "css-basics",
-      "type": "mc-single",
-      "difficulty": 1,
-      "prompt": "Warum gibt es kein „CSS4“?",
-      "options": [
-        {
-          "text": "Seit 2009 wird CSS in einzelnen Modulen mit eigenem Reifegrad weiterentwickelt",
-          "correct": true
-        },
-        {
-          "text": "CSS3 ist die endgültige Version, CSS wird nicht mehr erweitert"
-        },
-        {
-          "text": "Das W3C hat CSS zugunsten von JavaScript eingefroren"
-        },
-        {
-          "text": "CSS4 heißt offiziell Sass"
-        }
-      ],
-      "explanation": "Seit der Modularisierung (2009) gibt es Module wie CSS Grid Level 1 oder CSS Nesting Level 1 mit eigenem Stand – aber kein Gesamtdokument CSS3 oder CSS4. Ob ein Feature nutzbar ist, zeigt heute der Baseline-Status."
-    },
-    {
-      "chapter": "css",
-      "status": "entwurf",
-      "shuffle": true,
-      "source": {
-        "kind": "neu"
-      },
       "id": "css-bas-komma-liste",
       "section": "css-basics",
       "type": "mc-single",
@@ -416,20 +321,6 @@
       "explanation": "Das Komma ist eine reine Abkürzung (ODER): Die Regel gilt für jedes aufgezählte Element einzeln, die Spezifität jedes Selektors bleibt unverändert."
     },
     {
-      "id": "css-gl-layer-cascade-layer",
-      "chapter": "css",
-      "section": "css-basics",
-      "type": "flashcard",
-      "difficulty": 2,
-      "status": "freigegeben",
-      "prompt": "@layer (Cascade Layer)",
-      "answer": "CSS-At-Regel (Baseline Widely available seit März 2022), die benannte Kaskade-Ebenen deklariert. Später deklarierte Layer gewinnen gegen früher deklarierte, unabhängig von der Spezifität einzelner Regeln — löst die sogenannten \"Specificity Wars\" in großen Projekten.",
-      "source": {
-        "kind": "glossar",
-        "file": "04-CSS/glossar.md"
-      }
-    },
-    {
       "id": "css-gl-baseline",
       "chapter": "css",
       "section": "css-basics",
@@ -437,7 +328,7 @@
       "difficulty": 1,
       "status": "freigegeben",
       "prompt": "Baseline",
-      "answer": "Der browserübergreifende Kompatibilitätsstatus eines Web-Plattform-Features (z. B. eines CSS-Moduls), gepflegt von der W3C WebDX Community Group. Ersetzt seit der CSS-Modularisierung die Frage nach einer einzelnen \"CSS-Version\".",
+      "answer": "Der browserübergreifende Kompatibilitätsstatus eines Web-Plattform-Features (z. B. einer CSS-Eigenschaft), gepflegt von der W3C WebDX Community Group. Zeigt, ob ein Feature in allen großen Browsern nutzbar ist: Newly available (in allen aktuellen Browsern) oder Widely available (seit mindestens 30 Monaten).",
       "source": {
         "kind": "glossar",
         "file": "04-CSS/glossar.md"
@@ -452,34 +343,6 @@
       "status": "freigegeben",
       "prompt": "Cascading Style Sheets (CSS)",
       "answer": "Die Stylesheet-Sprache des Web zur Beschreibung der Darstellung (Farben, Schriften, Layout) eines HTML-Dokuments, unabhängig von dessen Inhalt.",
-      "source": {
-        "kind": "glossar",
-        "file": "04-CSS/glossar.md"
-      }
-    },
-    {
-      "id": "css-gl-css1-css2-css2-1",
-      "chapter": "css",
-      "section": "css-basics",
-      "type": "flashcard",
-      "difficulty": 1,
-      "status": "freigegeben",
-      "prompt": "CSS1 / CSS2 / CSS2.1",
-      "answer": "Die ersten formalen W3C-Recommendations von CSS: CSS1 (17. Dezember 1996, 68 Eigenschaften), CSS2 (Mai 1998, u. a. Positionierung und `@media`), CSS2.1 (2011, spiegelt das tatsächliche Browser-Verhalten wider).",
-      "source": {
-        "kind": "glossar",
-        "file": "04-CSS/glossar.md"
-      }
-    },
-    {
-      "id": "css-gl-css-modularisierung",
-      "chapter": "css",
-      "section": "css-basics",
-      "type": "flashcard",
-      "difficulty": 1,
-      "status": "freigegeben",
-      "prompt": "CSS-Modularisierung",
-      "answer": "Seit 2009 verfolgtes Prinzip des W3C, CSS nicht mehr als ein einzelnes Dokument (wie CSS1/CSS2), sondern als eigenständig weiterentwickelbare Module (z. B. CSS Grid Level 1, CSS Nesting Level 1) zu spezifizieren. Der Grund, warum es kein einheitliches \"CSS3\"- oder \"CSS4\"-Dokument gibt.",
       "source": {
         "kind": "glossar",
         "file": "04-CSS/glossar.md"
@@ -535,21 +398,7 @@
       "difficulty": 2,
       "status": "freigegeben",
       "prompt": "Kaskade",
-      "answer": "Der Algorithmus, mit dem der Browser bei mehreren zutreffenden CSS-Regeln entscheidet, welche gewinnt: zuerst Herkunft/Wichtigkeit (`!important`), dann Cascade Layer (`@layer`), dann Spezifität, zuletzt Quellreihenfolge. Namensgebendes Konzept von \"Cascading\" Style Sheets.",
-      "source": {
-        "kind": "glossar",
-        "file": "04-CSS/glossar.md"
-      }
-    },
-    {
-      "id": "css-gl-nesting-css-verschachtelung",
-      "chapter": "css",
-      "section": "css-basics",
-      "type": "flashcard",
-      "difficulty": 1,
-      "status": "freigegeben",
-      "prompt": "Nesting (CSS-Verschachtelung)",
-      "answer": "Seit Dezember 2023 native, browserseitig unterstützte Syntax, um CSS-Selektoren ineinander zu verschachteln, ohne einen Präprozessor wie Sass zu benötigen. Das `&`-Zeichen referenziert dabei explizit das Elternelement.",
+      "answer": "Der Algorithmus, mit dem der Browser bei mehreren zutreffenden CSS-Regeln entscheidet, welche gewinnt: zuerst Herkunft und Wichtigkeit (`!important`), dann Spezifität, zuletzt Quellreihenfolge. Namensgebendes Konzept von „Cascading“ Style Sheets.",
       "source": {
         "kind": "glossar",
         "file": "04-CSS/glossar.md"
@@ -4740,6 +4589,493 @@
         "kind": "glossar",
         "file": "04-CSS/glossar.md"
       }
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-nachfahre",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Absätze werden durch `article p { color: gray; }` grau?",
+      "code": {
+        "lang": "html",
+        "text": "<article>\n  <p>A</p>\n  <div>\n    <p>B</p>\n  </div>\n</article>\n<p>C</p>"
+      },
+      "options": [
+        {
+          "text": "A und B",
+          "correct": true
+        },
+        {
+          "text": "nur A"
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "nur C"
+        }
+      ],
+      "explanation": "Das Leerzeichen ist der Nachfahren-Kombinator: Er trifft jedes p innerhalb von article, egal wie tief verschachtelt. C steht außerhalb von article."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-kind",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Listeneinträge trifft `nav > ul > li`?",
+      "code": {
+        "lang": "html",
+        "text": "<nav>\n  <ul>\n    <li>A</li>\n    <li>B\n      <ul>\n        <li>C</li>\n      </ul>\n    </li>\n  </ul>\n</nav>"
+      },
+      "options": [
+        {
+          "text": "A und B",
+          "correct": true
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "nur C"
+        },
+        {
+          "text": "nur A"
+        }
+      ],
+      "explanation": "> trifft nur direkte Kinder. A und B sind direkte Kinder der ul, die direktes Kind von nav ist. C steckt in einer verschachtelten ul, die kein direktes Kind von nav ist."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-nachbar",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Absätze trifft `h1 + p`?",
+      "code": {
+        "lang": "html",
+        "text": "<h1>Titel</h1>\n<p>A</p>\n<p>B</p>\n<div>\n  <p>C</p>\n</div>"
+      },
+      "options": [
+        {
+          "text": "nur A",
+          "correct": true
+        },
+        {
+          "text": "A und B"
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "keinen"
+        }
+      ],
+      "explanation": "+ trifft nur das unmittelbar folgende Geschwister-Element. B folgt erst nach A, C ist gar kein Geschwister des h1."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-geschwister",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Absätze trifft `h2 ~ p`?",
+      "code": {
+        "lang": "html",
+        "text": "<p>A</p>\n<h2>Intro</h2>\n<p>B</p>\n<div>Kasten</div>\n<p>C</p>"
+      },
+      "options": [
+        {
+          "text": "B und C",
+          "correct": true
+        },
+        {
+          "text": "nur B"
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "nur C"
+        }
+      ],
+      "explanation": "~ trifft alle nachfolgenden Geschwister vom Typ p, auch wenn andere Elemente dazwischenstehen. A steht vor dem h2 und wird deshalb nicht getroffen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-zwei-klassen",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Elemente trifft `div.note.highlight`?",
+      "code": {
+        "lang": "html",
+        "text": "<div class=\"note highlight\">A</div>\n<div class=\"note\">B</div>\n<div class=\"highlight note important\">C</div>\n<p class=\"note highlight\">D</p>"
+      },
+      "options": [
+        {
+          "text": "A und C",
+          "correct": true
+        },
+        {
+          "text": "nur A"
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "A, C und D"
+        }
+      ],
+      "explanation": "Ohne Leerzeichen müssen alle Teile auf dasselbe Element zutreffen: Es muss ein div sein und beide Klassen tragen. Reihenfolge und weitere Klassen spielen keine Rolle. B fehlt eine Klasse, D ist kein div."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-attribut-exakt",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Eingabefelder trifft `input[type=\"email\"]`?",
+      "code": {
+        "lang": "html",
+        "text": "<input type=\"email\">  <!-- A -->\n<input type=\"text\">   <!-- B -->\n<input>               <!-- C -->"
+      },
+      "options": [
+        {
+          "text": "nur A",
+          "correct": true
+        },
+        {
+          "text": "A und C"
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "keines"
+        }
+      ],
+      "explanation": "[type=\"email\"] verlangt genau diesen Attributwert. C hat gar kein type-Attribut – der Browser behandelt es zwar als Textfeld, für den Selektor zählt aber nur, was im HTML steht."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-praefix",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Welche Links trifft `a[href^=\"https://\"]`?",
+      "code": {
+        "lang": "html",
+        "text": "<a href=\"https://example.com\">A</a>\n<a href=\"http://example.com\">B</a>\n<a href=\"/about\">C</a>\n<a href=\"https://hs-esslingen.de/kurse\">D</a>"
+      },
+      "options": [
+        {
+          "text": "A und D",
+          "correct": true
+        },
+        {
+          "text": "nur A"
+        },
+        {
+          "text": "A, B und D"
+        },
+        {
+          "text": "nur D"
+        }
+      ],
+      "explanation": "^= prüft, ob der Wert mit „https://“ beginnt. Das gilt für A und D. B beginnt mit http://, C ist ein relativer Link."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-teilstring",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Bilder trifft `img[alt*=\"logo\"]`?",
+      "code": {
+        "lang": "html",
+        "text": "<img src=\"a.png\" alt=\"company logo mark\">  <!-- A -->\n<img src=\"b.png\" alt=\"logos\">              <!-- B -->\n<img src=\"logo.png\" alt=\"Banner\">          <!-- C -->"
+      },
+      "options": [
+        {
+          "text": "A und B",
+          "correct": true
+        },
+        {
+          "text": "nur A"
+        },
+        {
+          "text": "A, B und C"
+        },
+        {
+          "text": "A und C"
+        }
+      ],
+      "explanation": "*= prüft, ob „logo“ irgendwo im alt-Text vorkommt – auch „logos“ enthält es. Bei C steht logo nur im src, der Selektor prüft aber alt."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-nth-child",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welcher Absatz wird von `p:nth-child(2)` getroffen?",
+      "code": {
+        "lang": "html",
+        "text": "<section>\n  <h2>A</h2>\n  <p>B</p>\n  <p>C</p>\n</section>"
+      },
+      "options": [
+        {
+          "text": "B",
+          "correct": true
+        },
+        {
+          "text": "C"
+        },
+        {
+          "text": "B und C"
+        },
+        {
+          "text": "keiner"
+        }
+      ],
+      "explanation": ":nth-child() zählt alle Geschwister, egal welchen Typs: h2 ist Kind 1, B ist Kind 2 und zugleich ein p. p:nth-of-type(2) würde dagegen C treffen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-not",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Einträge trifft `ul.menu li:not(.active)`?",
+      "code": {
+        "lang": "html",
+        "text": "<ul class=\"menu\">\n  <li class=\"active\">A</li>\n  <li>B</li>\n  <li class=\"disabled\">C</li>\n</ul>\n<ul>\n  <li>D</li>\n</ul>"
+      },
+      "options": [
+        {
+          "text": "B und C",
+          "correct": true
+        },
+        {
+          "text": "nur B"
+        },
+        {
+          "text": "B, C und D"
+        },
+        {
+          "text": "nur A"
+        }
+      ],
+      "explanation": ":not(.active) schließt nur Elemente mit der Klasse active aus – C mit der Klasse disabled wird also getroffen. D steht nicht in einer ul mit der Klasse menu."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-first-of-type",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Absätze trifft `p:first-of-type`?",
+      "code": {
+        "lang": "html",
+        "text": "<section>\n  <h2>A</h2>\n  <p>B</p>\n  <p>C</p>\n</section>\n<div>\n  <p>D</p>\n</div>"
+      },
+      "options": [
+        {
+          "text": "B und D",
+          "correct": true
+        },
+        {
+          "text": "nur B"
+        },
+        {
+          "text": "keinen – das erste Kind von section ist ein h2"
+        },
+        {
+          "text": "B, C und D"
+        }
+      ],
+      "explanation": ":first-of-type zählt nur Geschwister desselben Typs, und zwar in jedem Elternelement getrennt: B ist das erste p in section, D das erste p im div. Das h2 spielt für die Zählung keine Rolle."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-focus",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Wann greift die Regel `input:focus { border-color: blue; }`?",
+      "options": [
+        {
+          "text": "Sobald das Feld per Klick, Tippen oder Tab-Taste aktiv ist",
+          "correct": true
+        },
+        {
+          "text": "Solange der Mauszeiger über dem Feld ist"
+        },
+        {
+          "text": "Nachdem das Formular abgeschickt wurde"
+        },
+        {
+          "text": "Bei jedem input, sobald die Seite geladen ist"
+        }
+      ],
+      "explanation": ":focus ist eine dynamische Pseudo-Klasse: Sie greift, solange das Feld den Eingabefokus hat. Für den Mauszeiger wäre :hover zuständig."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-visited",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welche Eigenschaft lässt sich mit `a:visited` ändern?",
+      "options": [
+        {
+          "text": "color",
+          "correct": true
+        },
+        {
+          "text": "font-size"
+        },
+        {
+          "text": "display"
+        },
+        {
+          "text": "width"
+        }
+      ],
+      "explanation": ":visited erlaubt aus Datenschutzgründen nur wenige Eigenschaften, vor allem Farben. Eigenschaften, die das Layout verändern, sind gesperrt – sonst könnte eine Seite per JavaScript den Browserverlauf ausspionieren."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-empty",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Welche Listeneinträge trifft `li:empty`?",
+      "code": {
+        "lang": "html",
+        "text": "<ul>\n  <li>A</li>\n  <li></li>\n  <li> </li>\n  <li><!-- Kommentar --></li>\n</ul>"
+      },
+      "options": [
+        {
+          "text": "das 2. und das 4. li",
+          "correct": true
+        },
+        {
+          "text": "nur das 2. li"
+        },
+        {
+          "text": "das 2., 3. und 4. li"
+        },
+        {
+          "text": "keinen"
+        }
+      ],
+      "explanation": ":empty trifft Elemente ohne Inhalt. Ein Leerzeichen ist ein Textknoten und verhindert den Treffer (3. li). Ein Kommentar zählt dagegen nicht als Inhalt (4. li)."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-rev-q-kombination",
+      "section": "css-review",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Welchen Absatz trifft `section:not(:last-of-type) article:nth-child(2) p`?",
+      "code": {
+        "lang": "html",
+        "text": "<section>\n  <article><p>A</p></article>\n  <article><p>B</p></article>\n</section>\n<section>\n  <article><p>C</p></article>\n  <article><p>D</p></article>\n</section>"
+      },
+      "options": [
+        {
+          "text": "nur B",
+          "correct": true
+        },
+        {
+          "text": "B und D"
+        },
+        {
+          "text": "A und B"
+        },
+        {
+          "text": "nur D"
+        }
+      ],
+      "explanation": "Von links nach rechts: section:not(:last-of-type) schließt die letzte section aus, es bleibt die erste. Darin wählt article:nth-child(2) das zweite article, und p dessen Absatz – also B."
     },
     {
       "id": "css-rev-nachfahren-selektor",

@@ -1,0 +1,142 @@
+{
+  "hinweis": "Automatisch erzeugt von tools/build-catalog.mjs. Diese Fragen sind zurückgestellt (fragenspeicher in css-overrides.json) und nicht im Katalog der App.",
+  "questions": [
+    {
+      "id": "css-gl-layer-cascade-layer",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 2,
+      "status": "freigegeben",
+      "prompt": "@layer (Cascade Layer)",
+      "answer": "CSS-At-Regel (Baseline Widely available seit März 2022), die benannte Kaskade-Ebenen deklariert. Später deklarierte Layer gewinnen gegen früher deklarierte, unabhängig von der Spezifität einzelner Regeln — löst die sogenannten \"Specificity Wars\" in großen Projekten.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-css-modularisierung",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "CSS-Modularisierung",
+      "answer": "Seit 2009 verfolgtes Prinzip des W3C, CSS nicht mehr als ein einzelnes Dokument (wie CSS1/CSS2), sondern als eigenständig weiterentwickelbare Module (z. B. CSS Grid Level 1, CSS Nesting Level 1) zu spezifizieren. Der Grund, warum es kein einheitliches \"CSS3\"- oder \"CSS4\"-Dokument gibt.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "id": "css-gl-nesting-css-verschachtelung",
+      "chapter": "css",
+      "section": "css-basics",
+      "type": "flashcard",
+      "difficulty": 1,
+      "status": "freigegeben",
+      "prompt": "Nesting (CSS-Verschachtelung)",
+      "answer": "Seit Dezember 2023 native, browserseitig unterstützte Syntax, um CSS-Selektoren ineinander zu verschachteln, ohne einen Präprozessor wie Sass zu benötigen. Das `&`-Zeichen referenziert dabei explizit das Elternelement.",
+      "source": {
+        "kind": "glossar",
+        "file": "04-CSS/glossar.md"
+      }
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-layer-gegen-spezifitaet",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 3,
+      "prompt": "Welche Farbe hat ein Absatz innerhalb von `#main`?",
+      "code": {
+        "lang": "css",
+        "text": "@layer base, utilities;\n\n@layer base {\n  #main p { color: blue; }\n}\n@layer utilities {\n  p { color: green; }\n}"
+      },
+      "options": [
+        {
+          "text": "grün",
+          "correct": true
+        },
+        {
+          "text": "blau"
+        },
+        {
+          "text": "Die Regeln heben sich auf, es gilt der Browser-Standard"
+        },
+        {
+          "text": "Das hängt davon ab, welcher @layer-Block weiter unten im Stylesheet steht"
+        }
+      ],
+      "explanation": "Die Reihenfolge der Layer legt die erste Zeile fest: Später deklarierte Layer (utilities) gewinnen gegen früher deklarierte (base) – unabhängig von der Spezifität. 1-0-1 gegen 0-0-1 würde nur innerhalb desselben Layers zählen."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-nesting-ampersand",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 2,
+      "prompt": "Welchen Selektor erzeugt die verschachtelte Regel `&:hover`?",
+      "code": {
+        "lang": "css",
+        "text": ".card {\n  &:hover { box-shadow: 0 2px 8px rgb(0 0 0 / 20%); }\n  .title  { font-weight: bold; }\n}"
+      },
+      "options": [
+        {
+          "text": ".card:hover",
+          "correct": true
+        },
+        {
+          "text": ".card :hover"
+        },
+        {
+          "text": ".card > :hover"
+        },
+        {
+          "text": ":hover .card"
+        }
+      ],
+      "explanation": "& steht für das Elternelement selbst – &:hover wird also zu .card:hover. Ohne & entsteht ein Nachfahren-Selektor: Aus .title wird .card .title."
+    },
+    {
+      "chapter": "css",
+      "status": "entwurf",
+      "shuffle": true,
+      "source": {
+        "kind": "neu"
+      },
+      "id": "css-bas-kein-css4",
+      "section": "css-basics",
+      "type": "mc-single",
+      "difficulty": 1,
+      "prompt": "Warum gibt es kein „CSS4“?",
+      "options": [
+        {
+          "text": "Seit 2009 wird CSS in einzelnen Modulen mit eigenem Reifegrad weiterentwickelt",
+          "correct": true
+        },
+        {
+          "text": "CSS3 ist die endgültige Version, CSS wird nicht mehr erweitert"
+        },
+        {
+          "text": "Das W3C hat CSS zugunsten von JavaScript eingefroren"
+        },
+        {
+          "text": "CSS4 heißt offiziell Sass"
+        }
+      ],
+      "explanation": "Seit der Modularisierung (2009) gibt es Module wie CSS Grid Level 1 oder CSS Nesting Level 1 mit eigenem Stand – aber kein Gesamtdokument CSS3 oder CSS4. Ob ein Feature nutzbar ist, zeigt heute der Baseline-Status."
+    }
+  ]
+}
