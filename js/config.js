@@ -2,7 +2,7 @@
 // APP_VERSION ist die einzige Stelle für die Versionsnummer: Footer, Einstellungen und Service Worker
 // (sw.js?v=…) lesen sie von hier. Bei jeder Veröffentlichung erhöhen.
 
-export const APP_VERSION = '0.6.0';
+export const APP_VERSION = '0.6.1';
 
 /** Ziel des Impressum-Links im Footer: eigene Seite im Repo oder eine externe Adresse. */
 export const IMPRESSUM_URL = 'impressum.html';
