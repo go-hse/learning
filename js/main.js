@@ -9,6 +9,7 @@ import { chapter } from './views/chapter.js';
 import { quiz } from './views/quiz.js';
 import { settings } from './views/settings.js';
 import { helpView } from './views/help.js';
+import { APP_VERSION } from './config.js';
 
 const app = document.getElementById('app');
 const state = { index: null, catalogs: new Map(), error: null };
@@ -43,7 +44,7 @@ async function boot() {
   start(render);
   requestPersistence();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    navigator.serviceWorker.register('sw.js').catch((e) => console.warn('Service Worker:', e));
+    navigator.serviceWorker.register(`sw.js?v=${encodeURIComponent(APP_VERSION)}`).catch((e) => console.warn('Service Worker:', e));
   }
 }
 

@@ -1,11 +1,17 @@
-// Service Worker (Spec v2, NF-05): App-Dateien offline verfügbar, Kataloge zuerst aus dem Netz.
-// Bei jeder Änderung an App-Dateien VERSION erhöhen, damit Nutzer die neue Fassung bekommen.
+// Service Worker (Spec v2, NF-05): App offline verfügbar machen.
+//
+// Strategie: Netz zuerst, Cache nur als Rückfall (offline). So sehen Nutzer mit Internet immer die
+// aktuelle Fassung; offline läuft die zuletzt geladene.
+//
+// Die Version kommt aus der Registrierung (sw.js?v=<APP_VERSION> in js/main.js). Eine neue Version in
+// js/config.js führt damit automatisch zu einem neuen Service Worker – hier muss nichts angepasst werden.
 
-const VERSION = '0.6.0';
-const SHELL_CACHE = `lerntrainer-shell-${VERSION}`;
-const DATA_CACHE = 'lerntrainer-data';
+const VERSION = new URL(self.location.href).searchParams.get('v') ?? 'dev';
+const CACHE = `lerntrainer-${VERSION}`;
 
-const SHELL = [
+// Wird beim Installieren vorab geladen, damit die App auch offline vollständig startet.
+// Neue Dateien hier eintragen.
+const PRECACHE = [
   './',
   'index.html',
   'impressum.html',
@@ -34,13 +40,16 @@ const SHELL = [
   'icons/icon.svg',
   'icons/icon-192.png',
   'icons/apple-touch-icon.png',
+  'catalogs/index.json',
+  'catalogs/inet-tech.json',
 ];
-const DATA = ['catalogs/index.json', 'catalogs/inet-tech.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    await (await caches.open(SHELL_CACHE)).addAll(SHELL);
-    await (await caches.open(DATA_CACHE)).addAll(DATA);
+    const cache = await caches.open(CACHE);
+    // cache: 'reload' umgeht den HTTP-Cache des Browsers – sonst könnten kurz nach einem Deployment
+    // noch alte Dateien (GitHub Pages: bis zu 10 Minuten) in den neuen Cache gelangen.
+    await cache.addAll(PRECACHE.map((url) => new Request(url, { cache: 'reload' })));
     await self.skipWaiting();
   })());
 });
@@ -48,7 +57,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     for (const key of await caches.keys()) {
-      if (key.startsWith('lerntrainer-shell-') && key !== SHELL_CACHE) await caches.delete(key);
+      if (key.startsWith('lerntrainer-') && key !== CACHE) await caches.delete(key);
     }
     await self.clients.claim();
   })());
@@ -59,29 +68,17 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return;
 
-  if (url.pathname.includes('/catalogs/')) {
-    // Netz zuerst, damit neue Katalogversionen ankommen; offline aus dem Cache
-    event.respondWith((async () => {
-      const cache = await caches.open(DATA_CACHE);
-      try {
-        const res = await fetch(req);
-        if (res.ok) cache.put(url.origin + url.pathname, res.clone());
-        return res;
-      } catch {
-        return (await cache.match(req, { ignoreSearch: true })) ?? Response.error();
-      }
-    })());
-    return;
-  }
-
-  // App-Dateien: Cache zuerst
   event.respondWith((async () => {
-    const cached = await caches.match(req, { ignoreSearch: true });
-    if (cached) return cached;
+    const cache = await caches.open(CACHE);
     try {
-      return await fetch(req);
+      // no-cache: der Browser fragt beim Server nach, ob sich die Datei geändert hat (schnell per 304)
+      const res = await fetch(req, { cache: 'no-cache' });
+      if (res.ok) cache.put(url.origin + url.pathname, res.clone());
+      return res;
     } catch {
-      if (req.mode === 'navigate') return (await caches.match('index.html')) ?? Response.error();
+      const cached = await cache.match(url.origin + url.pathname) ?? await cache.match(req, { ignoreSearch: true });
+      if (cached) return cached;
+      if (req.mode === 'navigate') return (await cache.match('index.html')) ?? Response.error();
       return Response.error();
     }
   })());

@@ -36,8 +36,12 @@ Details in [`tools/README.md`](tools/README.md).
 
 1. Repository auf GitHub pushen.
 2. *Settings → Pages → Build and deployment*: Quelle „Deploy from a branch“, Branch `main`, Ordner `/ (root)`.
-3. Bei jeder Änderung an App-Dateien in `sw.js` die Konstante `VERSION` erhöhen und neue Dateien in `SHELL` eintragen –
-   sonst sehen installierte Apps die alte Fassung.
+3. Bei jeder Veröffentlichung `APP_VERSION` in `js/config.js` erhöhen. Das ist die einzige Stelle für die Version:
+   Footer und Einstellungen zeigen sie an, und der Service Worker wird darüber automatisch erneuert.
+   Neue Dateien zusätzlich in `PRECACHE` in `sw.js` eintragen, damit sie offline verfügbar sind.
+
+Nach einem Deployment kann es einige Minuten dauern, bis GitHub Pages die neuen Dateien ausliefert (CDN-Cache).
+Der Service Worker lädt mit Internetverbindung immer zuerst aus dem Netz; offline nutzt er die zuletzt geladene Fassung.
 
 ## Aufbau
 
