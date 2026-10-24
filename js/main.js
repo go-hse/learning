@@ -8,6 +8,7 @@ import { subject } from './views/subject.js';
 import { chapter } from './views/chapter.js';
 import { quiz } from './views/quiz.js';
 import { settings } from './views/settings.js';
+import { helpView } from './views/help.js';
 
 const app = document.getElementById('app');
 const state = { index: null, catalogs: new Map(), error: null };
@@ -38,6 +39,7 @@ async function boot() {
   route('/fach/:cat/kapitel/:chapter', chapter);
   route('/quiz', quiz);
   route('/einstellungen', settings);
+  route('/hilfe', helpView);
   start(render);
   requestPersistence();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {

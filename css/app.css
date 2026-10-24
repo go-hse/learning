@@ -533,6 +533,38 @@ code { font-family: var(--mono); font-size: 0.92em; padding: 0.05em 0.3em; borde
 .footer a { color: var(--muted); text-underline-offset: 0.2em; padding: 0.5rem 0; margin: -0.5rem 0; }
 .footer a:hover { color: var(--ink); }
 
+.footer-links { display: flex; gap: 1.25rem; }
+
+.help { gap: 1.5rem; }
+.help-intro { font-size: 1.125rem; }
+.help-section { display: grid; gap: 0.625rem; }
+.help-section p { max-width: 65ch; }
+.help-sub { font-size: 1rem; font-weight: 650; margin-top: 0.5rem; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.help-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
+.help-table caption { text-align: left; padding: 0.625rem 0.75rem 0.25rem; font-weight: 600; color: var(--muted); font-size: 0.875rem; }
+.help-table th, .help-table td { padding: 0.5rem 0.75rem; text-align: right; border-top: 1px solid var(--line); white-space: nowrap; }
+.help-table th[scope="row"], .help-table thead th:first-child { text-align: left; white-space: normal; }
+.help-table th, .help-table td { padding-inline: 0.5rem; }
+.help-table th:first-child { padding-left: 0.75rem; }
+.help-table td:last-child, .help-table th:last-child { padding-right: 0.75rem; }
+.help-table thead th { font-weight: 600; color: var(--muted); font-size: 0.8125rem; white-space: normal; vertical-align: bottom; }
+.help-table .col-malus { color: var(--red); }
+.help-table-compact { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); border-collapse: separate; border-spacing: 0; overflow: hidden; }
+.help-table-compact th, .help-table-compact td { text-align: left; white-space: normal; }
+.help-table-compact thead th { border-top: 0; }
+.help-table-compact td:last-child { font-variant-numeric: tabular-nums; }
+.leitner { list-style: none; margin: 0.25rem 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.leitner-box { display: grid; align-content: start; gap: 0.125rem; padding: 0.625rem 0.375rem; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); text-align: center; }
+.leitner-box + .leitner-box { position: relative; }
+.leitner-n { font-weight: 650; font-size: 0.875rem; }
+.leitner-label { font-size: 0.75rem; color: var(--muted); min-height: 1.1em; }
+.leitner-box.is-mastered { border-color: var(--primary); background: var(--primary); color: var(--on-primary); }
+.leitner-box.is-mastered .leitner-label { color: inherit; opacity: 0.85; }
+.help-levels { margin: 0; display: grid; gap: 0.5rem; }
+.help-levels dt { font-weight: 600; }
+.help-levels dd { margin: 0; color: var(--muted); }
+
 .legal section { display: grid; gap: 0.375rem; }
 .legal p { max-width: 65ch; }
 

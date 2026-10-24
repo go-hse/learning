@@ -71,7 +71,9 @@ export function home(root, _params, ctx) {
   }
 
   root.append(h('footer', { class: 'footer' },
-    h('a', { href: IMPRESSUM_URL }, t('footer.impressum')),
+    h('nav', { class: 'footer-links', 'aria-label': 'Fußzeile' },
+      h('a', { href: '#/hilfe' }, t('footer.help')),
+      h('a', { href: IMPRESSUM_URL }, t('footer.impressum'))),
     h('span', {}, t('footer.version', { version: APP_VERSION }))));
 }
 
