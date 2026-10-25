@@ -20,7 +20,8 @@
         "text": "CSS direkt im <body> vor jedem Abschnitt"
       }
     ],
-    "explanation": "Ein externes Stylesheet ist wiederverwendbar, wird vom Browser gecacht und trennt Inhalt und Darstellung vollständig. Internes CSS gilt nur für eine Seite, Inline-CSS nur für ein Element und ist kaum wartbar."
+    "explanation": "Ein externes Stylesheet ist wiederverwendbar, wird vom Browser gecacht und trennt Inhalt und Darstellung vollständig. Internes CSS gilt nur für eine Seite, Inline-CSS nur für ein Element und ist kaum wartbar.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-inline-gegen-id",
@@ -47,7 +48,8 @@
         "text": "Das hängt davon ab, ob <style> vor oder nach dem h1 steht"
       }
     ],
-    "explanation": "Ein Inline-Style hat keinen Selektor und bekommt eine vorangestellte vierte Spalte: 1-0-0-0. Damit schlägt er jede Regel aus einem Stylesheet, auch eine mit ID-Selektor (1-0-0). Ausnahme wäre !important."
+    "explanation": "Ein Inline-Style hat keinen Selektor und bekommt eine vorangestellte vierte Spalte: 1-0-0-0. Damit schlägt er jede Regel aus einem Stylesheet, auch eine mit ID-Selektor (1-0-0). Ausnahme wäre !important.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-spezifitaet-zwei-klassen",
@@ -70,7 +72,8 @@
         "text": "0-0-2"
       }
     ],
-    "explanation": "Jeder Klassen-Selektor zählt 0-1-0, zwei Klassen also 0-2-0. Der Nachfahren-Kombinator (Leerzeichen) zählt nicht mit."
+    "explanation": "Jeder Klassen-Selektor zählt 0-1-0, zwei Klassen also 0-2-0. Der Nachfahren-Kombinator (Leerzeichen) zählt nicht mit.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-id-gegen-klassen",
@@ -97,7 +100,8 @@
         "text": "gelb, weil zwei Klassen mehr wiegen als eine ID"
       }
     ],
-    "explanation": "h1#content hat die Spezifität 1-0-1, .article .title nur 0-2-0. Verglichen wird spaltenweise von links: Ein ID-Treffer schlägt beliebig viele Klassen."
+    "explanation": "h1#content hat die Spezifität 1-0-1, .article .title nur 0-2-0. Verglichen wird spaltenweise von links: Ein ID-Treffer schlägt beliebig viele Klassen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-gleiche-spezifitaet",
@@ -124,7 +128,8 @@
         "text": "Browser-Standard, weil sich die Regeln widersprechen"
       }
     ],
-    "explanation": "Beide Regeln haben dieselbe Spezifität (0-0-1). Dann entscheidet die Quellreihenfolge: Die zuletzt deklarierte Regel gewinnt."
+    "explanation": "Beide Regeln haben dieselbe Spezifität (0-0-1). Dann entscheidet die Quellreihenfolge: Die zuletzt deklarierte Regel gewinnt.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-kaskade-reihenfolge",
@@ -147,7 +152,8 @@
         "text": "Anzahl der Deklarationen in der Regel"
       }
     ],
-    "explanation": "Die Reihenfolge ist: Herkunft und Wichtigkeit → Spezifität → Quellreihenfolge. Spezifität wird nur verglichen, wenn Herkunft und Wichtigkeit gleich sind; erst bei gleicher Spezifität entscheidet die Reihenfolge im Stylesheet."
+    "explanation": "Die Reihenfolge ist: Herkunft und Wichtigkeit → Spezifität → Quellreihenfolge. Spezifität wird nur verglichen, wenn Herkunft und Wichtigkeit gleich sind; erst bei gleicher Spezifität entscheidet die Reihenfolge im Stylesheet.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-layer-gegen-spezifitaet",
@@ -174,7 +180,8 @@
         "text": "Das hängt davon ab, welcher @layer-Block weiter unten im Stylesheet steht"
       }
     ],
-    "explanation": "Die Reihenfolge der Layer legt die erste Zeile fest: Später deklarierte Layer (utilities) gewinnen gegen früher deklarierte (base) – unabhängig von der Spezifität. 1-0-1 gegen 0-0-1 würde nur innerhalb desselben Layers zählen."
+    "explanation": "Die Reihenfolge der Layer legt die erste Zeile fest: Später deklarierte Layer (utilities) gewinnen gegen früher deklarierte (base) – unabhängig von der Spezifität. 1-0-1 gegen 0-0-1 würde nur innerhalb desselben Layers zählen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-unbekannte-eigenschaft",
@@ -197,7 +204,8 @@
         "text": "Er bricht das Laden der Seite mit einer Fehlermeldung ab"
       }
     ],
-    "explanation": "Browser ignorieren unbekannte oder ungültige Deklarationen stillschweigend. Diese Fehlertoleranz ermöglicht Progressive Enhancement: Neue Features wirken in modernen Browsern, ältere überspringen sie einfach."
+    "explanation": "Browser ignorieren unbekannte oder ungültige Deklarationen stillschweigend. Diese Fehlertoleranz ermöglicht Progressive Enhancement: Neue Features wirken in modernen Browsern, ältere überspringen sie einfach.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-nesting-ampersand",
@@ -224,7 +232,8 @@
         "text": ":hover .card"
       }
     ],
-    "explanation": "& steht für das Elternelement selbst – &:hover wird also zu .card:hover. Ohne & entsteht ein Nachfahren-Selektor: Aus .title wird .card .title."
+    "explanation": "& steht für das Elternelement selbst – &:hover wird also zu .card:hover. Ohne & entsteht ein Nachfahren-Selektor: Aus .title wird .card .title.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-kein-css4",
@@ -247,7 +256,8 @@
         "text": "CSS4 heißt offiziell Sass"
       }
     ],
-    "explanation": "Seit der Modularisierung (2009) gibt es Module wie CSS Grid Level 1 oder CSS Nesting Level 1 mit eigenem Stand – aber kein Gesamtdokument CSS3 oder CSS4. Ob ein Feature nutzbar ist, zeigt heute der Baseline-Status."
+    "explanation": "Seit der Modularisierung (2009) gibt es Module wie CSS Grid Level 1 oder CSS Nesting Level 1 mit eigenem Stand – aber kein Gesamtdokument CSS3 oder CSS4. Ob ein Feature nutzbar ist, zeigt heute der Baseline-Status.",
+    "status": "freigegeben"
   },
   {
     "id": "css-bas-komma-liste",
@@ -270,7 +280,8 @@
         "text": "Sie gilt nur, wenn alle drei Überschriften auf der Seite vorkommen"
       }
     ],
-    "explanation": "Das Komma ist eine reine Abkürzung (ODER): Die Regel gilt für jedes aufgezählte Element einzeln, die Spezifität jedes Selektors bleibt unverändert."
+    "explanation": "Das Komma ist eine reine Abkürzung (ODER): Die Regel gilt für jedes aufgezählte Element einzeln, die Spezifität jedes Selektors bleibt unverändert.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-hex-kurzform",
@@ -293,7 +304,8 @@
         "text": "#c0c0c0"
       }
     ],
-    "explanation": "In der dreistelligen Kurzform wird jede Ziffer verdoppelt: c → cc, 0 → 00, 0 → 00. #c00 ist also ein kräftiges Rot."
+    "explanation": "In der dreistelligen Kurzform wird jede Ziffer verdoppelt: c → cc, 0 → 00, 0 → 00. #c00 ist also ein kräftiges Rot.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-moderne-farbsyntax",
@@ -316,7 +328,8 @@
         "text": "rgb(128 0 0)"
       }
     ],
-    "explanation": "Die moderne Syntax trennt mit Leerzeichen und setzt den Alpha-Wert hinter einen Schrägstrich. rgba() ist nur noch ein Alias für rgb(). 50 % Deckkraft entspricht Alpha 0.5; bei rgba(255, 0, 0, 50) wird Alpha auf 1 begrenzt, die Farbe wäre deckend."
+    "explanation": "Die moderne Syntax trennt mit Leerzeichen und setzt den Alpha-Wert hinter einen Schrägstrich. rgba() ist nur noch ein Alias für rgb(). 50 % Deckkraft entspricht Alpha 0.5; bei rgba(255, 0, 0, 50) wird Alpha auf 1 begrenzt, die Farbe wäre deckend.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-font-family-fallback",
@@ -339,7 +352,8 @@
         "text": "sans-serif lädt Arial automatisch von einem Server nach"
       }
     ],
-    "explanation": "font-family ist eine Fallback-Kette: Der Browser probiert die Schriften von links nach rechts, bis eine verfügbar ist. Am Ende sollte immer eine generische Familie (sans-serif, serif, monospace) stehen."
+    "explanation": "font-family ist eine Fallback-Kette: Der Browser probiert die Schriften von links nach rechts, bis eine verfügbar ist. Am Ende sollte immer eine generische Familie (sans-serif, serif, monospace) stehen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-font-weight-bold",
@@ -362,7 +376,8 @@
         "text": "900"
       }
     ],
-    "explanation": "normal entspricht 400, bold entspricht 700. Variable Fonts erlauben darüber hinaus jeden Wert zwischen 1 und 1000."
+    "explanation": "normal entspricht 400, bold entspricht 700. Variable Fonts erlauben darüber hinaus jeden Wert zwischen 1 und 1000.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-text-decoration-teile",
@@ -391,7 +406,8 @@
         "text": "text-decoration-offset"
       }
     ],
-    "explanation": "Linie, Farbe, Stil und Dicke sind seit März 2021 (Baseline Widely available) einzeln steuerbar, z. B. text-decoration: underline dotted #ff3028 3px. Eine Eigenschaft text-decoration-offset gibt es nicht; den Abstand der Unterstreichung regelt die eigenständige Eigenschaft text-underline-offset."
+    "explanation": "Linie, Farbe, Stil und Dicke sind seit März 2021 (Baseline Widely available) einzeln steuerbar, z. B. text-decoration: underline dotted #ff3028 3px. Eine Eigenschaft text-decoration-offset gibt es nicht; den Abstand der Unterstreichung regelt die eigenständige Eigenschaft text-underline-offset.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-background-reihenfolge",
@@ -418,7 +434,8 @@
         "text": "Das div hat gar keinen Hintergrund, weil die Kurzschreibweise ungültig ist"
       }
     ],
-    "explanation": "Die Kurzschreibweise background setzt alle nicht angegebenen Teil-Eigenschaften auf ihren Startwert zurück – auch background-color auf transparent. Deshalb gehört background-color als Fallback hinter die Kurzschreibweise."
+    "explanation": "Die Kurzschreibweise background setzt alle nicht angegebenen Teil-Eigenschaften auf ihren Startwert zurück – auch background-color auf transparent. Deshalb gehört background-color als Fallback hinter die Kurzschreibweise.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-background-size-cover",
@@ -441,7 +458,8 @@
         "text": "background-repeat: repeat;"
       }
     ],
-    "explanation": "cover skaliert das Bild, bis die ganze Fläche bedeckt ist – überstehende Ränder werden abgeschnitten. contain skaliert, bis das ganze Bild hineinpasst; dabei können Lücken bleiben."
+    "explanation": "cover skaliert das Bild, bis die ganze Fläche bedeckt ist – überstehende Ränder werden abgeschnitten. contain skaliert, bis das ganze Bild hineinpasst; dabei können Lücken bleiben.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-google-fonts-dsgvo",
@@ -464,7 +482,8 @@
         "text": "Den Schriftnamen nur im style-Attribut angeben"
       }
     ],
-    "explanation": "Laut LG München I (20.01.2022) verstößt das Laden von Google-Servern ohne Einwilligung gegen die DSGVO, weil dabei die IP-Adresse der Besucher an Google übertragen wird. Lokal gehostete Schriftdateien vermeiden das."
+    "explanation": "Laut LG München I (20.01.2022) verstößt das Laden von Google-Servern ohne Einwilligung gegen die DSGVO, weil dabei die IP-Adresse der Besucher an Google übertragen wird. Lokal gehostete Schriftdateien vermeiden das.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-font-display-swap",
@@ -487,7 +506,8 @@
         "text": "Die Web Font wird nur geladen, wenn der Nutzer zustimmt"
       }
     ],
-    "explanation": "swap hält Text sofort lesbar: Zuerst wird eine Ersatzschrift angezeigt, nach dem Laden wird auf die Web Font gewechselt."
+    "explanation": "swap hält Text sofort lesbar: Zuerst wird eine Ersatzschrift angezeigt, nach dem Laden wird auf die Web Font gewechselt.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-variable-fonts",
@@ -510,7 +530,8 @@
         "text": "Sie lassen sich nur per JavaScript steuern"
       }
     ],
-    "explanation": "Variable Fonts fassen Gewicht, Breite, Neigung usw. in einer Datei zusammen und sind über Achsen (wght, wdth, ital, slnt, opsz) stufenlos steuerbar – per font-weight oder font-variation-settings."
+    "explanation": "Variable Fonts fassen Gewicht, Breite, Neigung usw. in einer Datei zusammen und sind über Achsen (wght, wdth, ital, slnt, opsz) stufenlos steuerbar – per font-weight oder font-variation-settings.",
+    "status": "freigegeben"
   },
   {
     "id": "css-txt-text-transform",
@@ -533,7 +554,8 @@
         "text": "Er wird in einer Kapitälchen-Schrift neu geladen"
       }
     ],
-    "explanation": "text-transform ändert nur, wie der Text angezeigt wird; im Dokument bleibt er unverändert. capitalize würde den ersten Buchstaben jedes Wortes groß darstellen."
+    "explanation": "text-transform ändert nur, wie der Text angezeigt wird; im Dokument bleibt er unverändert. capitalize würde den ersten Buchstaben jedes Wortes groß darstellen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-gradient-winkel",
@@ -560,7 +582,8 @@
         "text": "unten"
       }
     ],
-    "explanation": "0deg zeigt nach oben, 90deg nach rechts. Der Verlauf läuft in Pfeilrichtung: von Rot (links) nach Blau (rechts) – wie to right."
+    "explanation": "0deg zeigt nach oben, 90deg nach rechts. Der Verlauf läuft in Pfeilrichtung: von Rot (links) nach Blau (rechts) – wie to right.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-gradient-ist-bild",
@@ -583,7 +606,8 @@
         "text": "text-decoration-color"
       }
     ],
-    "explanation": "Gradients sind vom Browser erzeugte Bilder. Sie gehören dorthin, wo ein Bild erwartet wird – in background-image bzw. die Kurzschreibweise background – und lassen sich mit echten Bildern schichten."
+    "explanation": "Gradients sind vom Browser erzeugte Bilder. Sie gehören dorthin, wo ein Bild erwartet wird – in background-image bzw. die Kurzschreibweise background – und lassen sich mit echten Bildern schichten.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-harter-uebergang",
@@ -610,7 +634,8 @@
         "text": "Oben rot, unten blau"
       }
     ],
-    "explanation": "Endet eine Farbe an derselben Position, an der die nächste beginnt, gibt es keinen Übergangsbereich – es entsteht eine harte Kante. So entstehen z. B. Streifen oder Tortendiagramme."
+    "explanation": "Endet eine Farbe an derselben Position, an der die nächste beginnt, gibt es keinen Übergangsbereich – es entsteht eine harte Kante. So entstehen z. B. Streifen oder Tortendiagramme.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-conic-start",
@@ -633,7 +658,8 @@
         "text": "in der Mitte, von dort nach außen"
       }
     ],
-    "explanation": "Konische Verläufe rotieren um den Mittelpunkt, starten bei 0deg = 12 Uhr und laufen im Uhrzeigersinn. Mit from <winkel> lässt sich der Start drehen. Von der Mitte nach außen wäre ein radial-gradient."
+    "explanation": "Konische Verläufe rotieren um den Mittelpunkt, starten bei 0deg = 12 Uhr und laufen im Uhrzeigersinn. Mit from <winkel> lässt sich der Start drehen. Von der Mitte nach außen wäre ein radial-gradient.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-streifenbreite",
@@ -660,7 +686,8 @@
         "text": "5px"
       }
     ],
-    "explanation": "#222 reicht von 0 bis 10px, #eee von 10px bis 20px. Dieses 20px lange Muster wiederholt sich – jeder Streifen ist also 10px breit."
+    "explanation": "#222 reicht von 0 bis 10px, #eee von 10px bis 20px. Dieses 20px lange Muster wiederholt sich – jeder Streifen ist also 10px breit.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-box-shadow-richtung",
@@ -687,7 +714,8 @@
         "text": "gleichmäßig rundherum"
       }
     ],
-    "explanation": "Der erste Wert ist der horizontale Versatz (negativ = links), der zweite der vertikale (positiv = unten), der dritte der Weichzeichnungsradius."
+    "explanation": "Der erste Wert ist der horizontale Versatz (negativ = links), der zweite der vertikale (positiv = unten), der dritte der Weichzeichnungsradius.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-transition-oder-keyframes",
@@ -710,7 +738,8 @@
         "text": "@property"
       }
     ],
-    "explanation": "transition überblendet zwischen zwei Zuständen, z. B. bei :hover oder :focus. @keyframes braucht man erst für benannte Zwischenphasen oder Animationen, die von selbst laufen."
+    "explanation": "transition überblendet zwischen zwei Zuständen, z. B. bei :hover oder :focus. @keyframes braucht man erst für benannte Zwischenphasen oder Animationen, die von selbst laufen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-infinite",
@@ -737,7 +766,8 @@
         "text": "Die Animation läuft rückwärts"
       }
     ],
-    "explanation": "pulse ist der Name der @keyframes-Regel, 2s die Dauer eines Durchlaufs, infinite die Anzahl der Wiederholungen."
+    "explanation": "pulse ist der Name der @keyframes-Regel, 2s die Dauer eines Durchlaufs, infinite die Anzahl der Wiederholungen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-transition-nur-background",
@@ -764,7 +794,8 @@
         "text": "Sie wird erst nach 0.5s schlagartig ausgeführt"
       }
     ],
-    "explanation": "Nur die in transition genannten Eigenschaften werden übergeblendet. Für beide wäre z. B. transition: background 0.5s, transform 0.3s; nötig."
+    "explanation": "Nur die in transition genannten Eigenschaften werden übergeblendet. Für beide wäre z. B. transition: background 0.5s, transform 0.3s; nötig.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-property",
@@ -787,7 +818,8 @@
         "text": "Ohne @property funktioniert var(--winkel) überhaupt nicht"
       }
     ],
-    "explanation": "Unregistrierte Custom Properties behandelt der Browser als Text – er springt von einem Wert zum nächsten. Mit @property (syntax, inherits, initial-value) kann er interpolieren, z. B. für einen sich drehenden conic-gradient. Baseline Newly available seit Juli 2024."
+    "explanation": "Unregistrierte Custom Properties behandelt der Browser als Text – er springt von einem Wert zum nächsten. Mit @property (syntax, inherits, initial-value) kann er interpolieren, z. B. für einen sich drehenden conic-gradient. Baseline Newly available seit Juli 2024.",
+    "status": "freigegeben"
   },
   {
     "id": "css-anim-scroll-driven",
@@ -810,7 +842,8 @@
         "text": "Scrollen ist gesperrt, solange die Animation läuft"
       }
     ],
-    "explanation": "Scroll-Driven Animations koppeln @keyframes an den Scroll-Fortschritt (scroll()) oder an die Sichtbarkeit eines Elements (view()) – bisher ein Fall für JavaScript. Mangels Firefox-Unterstützung noch nicht Baseline, daher mit Fallback einsetzen."
+    "explanation": "Scroll-Driven Animations koppeln @keyframes an den Scroll-Fortschritt (scroll()) oder an die Sichtbarkeit eines Elements (view()) – bisher ein Fall für JavaScript. Mangels Firefox-Unterstützung noch nicht Baseline, daher mit Fallback einsetzen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-medientypen",
@@ -838,7 +871,8 @@
         "text": "tv"
       }
     ],
-    "explanation": "Seit Media Queries Level 4 sind nur noch all, screen und print nutzbar. handheld, projection, tv und andere wurden entfernt und treffen nie mehr zu."
+    "explanation": "Seit Media Queries Level 4 sind nur noch all, screen und print nutzbar. handheld, projection, tv und andere wurden entfernt und treffen nie mehr zu.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-komma",
@@ -865,7 +899,8 @@
         "text": "Nie – ein Komma ist in Media Queries ungültig"
       }
     ],
-    "explanation": "Das Komma wirkt wie ODER zwischen ganzen Queries. Die Regeln gelten, wenn mindestens eine der Queries zutrifft."
+    "explanation": "Das Komma wirkt wie ODER zwischen ganzen Queries. Die Regeln gelten, wenn mindestens eine der Queries zutrifft.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-not",
@@ -892,7 +927,8 @@
         "text": "gar nichts – not ist ungültig"
       }
     ],
-    "explanation": "not negiert immer die gesamte Query, nicht nur das direkt folgende Wort. Die Query trifft also auf alles zu, was nicht zugleich screen und farbfähig ist."
+    "explanation": "not negiert immer die gesamte Query, nicht nur das direkt folgende Wort. Die Query trifft also auf alles zu, was nicht zugleich screen und farbfähig ist.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-max-width-grenze",
@@ -919,7 +955,8 @@
         "text": "Nur, wenn zusätzlich min-width angegeben ist"
       }
     ],
-    "explanation": "max-width: 600px bedeutet „höchstens 600px“, also einschließlich 600px. In der Range-Syntax: (width <= 600px)."
+    "explanation": "max-width: 600px bedeutet „höchstens 600px“, also einschließlich 600px. In der Range-Syntax: (width <= 600px).",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-viewport-meta",
@@ -942,7 +979,8 @@
         "text": "box-sizing: border-box"
       }
     ],
-    "explanation": "Ohne den Viewport-Meta-Tag rendern mobile Browser die Seite in einer virtuellen, oft 980px breiten Desktop-Ansicht und verkleinern sie danach. Die Media Queries sehen dann 980px statt der echten Breite."
+    "explanation": "Ohne den Viewport-Meta-Tag rendern mobile Browser die Seite in einer virtuellen, oft 980px breiten Desktop-Ansicht und verkleinern sie danach. Die Media Queries sehen dann 980px statt der echten Breite.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-link-download",
@@ -969,7 +1007,8 @@
         "text": "Sie wird nie geladen, weil print veraltet ist"
       }
     ],
-    "explanation": "Ein media-Attribut steuert nur, wann ein Stylesheet angewendet wird, nicht ob es geladen wird. Ein häufiges Missverständnis: Auch nicht zutreffende Stylesheets werden heruntergeladen."
+    "explanation": "Ein media-Attribut steuert nur, wann ein Stylesheet angewendet wird, nicht ob es geladen wird. Ein häufiges Missverständnis: Auch nicht zutreffende Stylesheets werden heruntergeladen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-range-syntax",
@@ -992,7 +1031,8 @@
         "text": "@media (width: 400px) or (width: 900px)"
       }
     ],
-    "explanation": "Die Range-Syntax (seit ca. September 2025 Baseline Widely available) ersetzt min-/max-Präfixe durch Vergleichsoperatoren. Ein Komma statt and wäre ODER und träfe auf fast jede Breite zu."
+    "explanation": "Die Range-Syntax (seit ca. September 2025 Baseline Widely available) ersetzt min-/max-Präfixe durch Vergleichsoperatoren. Ein Komma statt and wäre ODER und träfe auf fast jede Breite zu.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-container-query",
@@ -1015,7 +1055,8 @@
         "text": "@layer"
       }
     ],
-    "explanation": "Media Queries prüfen nur den Viewport. Container Queries (container-type, @container) prüfen die Größe eines markierten Elternelements – ideal für wiederverwendbare Komponenten. Baseline Widely available seit Februar 2023."
+    "explanation": "Media Queries prüfen nur den Viewport. Container Queries (container-type, @container) prüfen die Größe eines markierten Elternelements – ideal für wiederverwendbare Komponenten. Baseline Widely available seit Februar 2023.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-width-bezug",
@@ -1038,7 +1079,8 @@
         "text": "auf das Elternelement"
       }
     ],
-    "explanation": "width und height beziehen sich auf den Viewport, also den sichtbaren Bereich der Seite im Browserfenster – nicht auf den Monitor und nicht auf das Fenster samt Rahmen. device-width ist veraltet."
+    "explanation": "width und height beziehen sich auf den Viewport, also den sichtbaren Bereich der Seite im Browserfenster – nicht auf den Monitor und nicht auf das Fenster samt Rahmen. device-width ist veraltet.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-breakpoints-waehlen",
@@ -1061,7 +1103,8 @@
         "text": "Immer bei 480, 768 und 1024px, weil das genormt ist"
       }
     ],
-    "explanation": "Breakpoint-Tabellen sind nur Richtwerte. Gerätegrößen ändern sich jedes Jahr – der richtige Breakpoint liegt dort, wo der eigene Inhalt unschön zu wirken beginnt."
+    "explanation": "Breakpoint-Tabellen sind nur Richtwerte. Gerätegrößen ändern sich jedes Jahr – der richtige Breakpoint liegt dort, wo der eigene Inhalt unschön zu wirken beginnt.",
+    "status": "freigegeben"
   },
   {
     "id": "css-mq-dark-mode",
@@ -1084,7 +1127,8 @@
         "text": "resolution"
       }
     ],
-    "explanation": "@media (prefers-color-scheme: dark) greift, wenn der Nutzer den Dunkelmodus eingestellt hat. prefers-reduced-motion fragt nach reduzierten Bewegungen, color nach der Farbfähigkeit des Geräts."
+    "explanation": "@media (prefers-color-scheme: dark) greift, wenn der Nutzer den Dunkelmodus eingestellt hat. prefers-reduced-motion fragt nach reduzierten Bewegungen, color nach der Farbfähigkeit des Geräts.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-fr-verteilung",
@@ -1111,7 +1155,8 @@
         "text": "533px"
       }
     ],
-    "explanation": "Insgesamt gibt es 1 + 2 + 1 = 4 Anteile; 800px / 4 = 200px pro fr. Die mittlere Spalte bekommt 2fr = 400px."
+    "explanation": "Insgesamt gibt es 1 + 2 + 1 = 4 Anteile; 800px / 4 = 200px pro fr. Die mittlere Spalte bekommt 2fr = 400px.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-gap-vor-fr",
@@ -1138,7 +1183,8 @@
         "text": "220px"
       }
     ],
-    "explanation": "gap wird vor der Verteilung der fr-Anteile abgezogen: 640px − 2 × 20px = 600px, geteilt durch 3 = 200px. Ein calc() ist dafür nicht nötig."
+    "explanation": "gap wird vor der Verteilung der fr-Anteile abgezogen: 640px − 2 × 20px = 600px, geteilt durch 3 = 200px. Ein calc() ist dafür nicht nötig.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-grid-column-linien",
@@ -1165,7 +1211,8 @@
         "text": "2"
       }
     ],
-    "explanation": "Die Zahlen sind Linien, nicht Spalten: Von Linie 1 bis Linie 4 liegen drei Spalten."
+    "explanation": "Die Zahlen sind Linien, nicht Spalten: Von Linie 1 bis Linie 4 liegen drei Spalten.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-minus-eins",
@@ -1192,7 +1239,8 @@
         "text": "Sie ist ungültig, negative Linien gibt es nicht"
       }
     ],
-    "explanation": "Negative Liniennummern zählen vom Ende: -1 ist die letzte Linie. 1 / -1 spannt das Item damit über die gesamte Breite – unabhängig von der Spaltenanzahl."
+    "explanation": "Negative Liniennummern zählen vom Ende: -1 ist die letzte Linie. 1 / -1 spannt das Item damit über die gesamte Breite – unabhängig von der Spaltenanzahl.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-auto-fit-spalten",
@@ -1219,7 +1267,8 @@
         "text": "12"
       }
     ],
-    "explanation": "Jede Spalte ist mindestens 250px breit: 4 × 250px = 1000px passen in 1100px, 5 × 250px = 1250px nicht. Die vier Spalten teilen sich dann die 1100px, je 275px."
+    "explanation": "Jede Spalte ist mindestens 250px breit: 4 × 250px = 1000px passen in 1100px, 5 × 250px = 1250px nicht. Die vier Spalten teilen sich dann die 1100px, je 275px.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-auto-fit-auto-fill",
@@ -1242,7 +1291,8 @@
         "text": "bei keinem – dafür ist eine Media Query nötig"
       }
     ],
-    "explanation": "auto-fit lässt leere Spalten zusammenfallen, die vorhandenen Karten strecken sich. auto-fill behält die leeren Spalten, am Ende bleibt eine Lücke."
+    "explanation": "auto-fit lässt leere Spalten zusammenfallen, die vorhandenen Karten strecken sich. auto-fill behält die leeren Spalten, am Ende bleibt eine Lücke.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-areas-punkt",
@@ -1265,7 +1315,8 @@
         "text": "eine Zelle, die sich über alle Spalten erstreckt"
       }
     ],
-    "explanation": "Ein Punkt markiert eine Zelle, die zu keinem benannten Bereich gehört und leer bleibt."
+    "explanation": "Ein Punkt markiert eine Zelle, die zu keinem benannten Bereich gehört und leer bleibt.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-areas-zuordnung",
@@ -1292,7 +1343,8 @@
         "text": "Die Angabe ist ungültig, ein Name darf nur einmal vorkommen"
       }
     ],
-    "explanation": "Steht ein Name in einer Zeile mehrfach nebeneinander, bildet er einen zusammenhängenden Bereich über diese Zellen. header und footer reichen hier über beide Spalten."
+    "explanation": "Steht ein Name in einer Zeile mehrfach nebeneinander, bildet er einen zusammenhängenden Bereich über diese Zellen. header und footer reichen hier über beide Spalten.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-zentrieren",
@@ -1315,7 +1367,8 @@
         "text": "position: relative; top: 50%;"
       }
     ],
-    "explanation": "place-items: center setzt justify-items und align-items gleichzeitig und zentriert jedes Item in seiner Zelle. margin: auto zentriert einen Block nur horizontal."
+    "explanation": "place-items: center setzt justify-items und align-items gleichzeitig und zentriert jedes Item in seiner Zelle. margin: auto zentriert einen Block nur horizontal.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-mobile-first",
@@ -1338,7 +1391,8 @@
         "text": "orientation: portrait für alle Regeln"
       }
     ],
-    "explanation": "Bei Mobile First gelten die Basisregeln für schmale Viewports; min-width-Queries ergänzen ab einer bestimmten Breite zusätzliche Regeln. Aufwendige Effekte und große Bilder werden so erst auf großen Bildschirmen geladen."
+    "explanation": "Bei Mobile First gelten die Basisregeln für schmale Viewports; min-width-Queries ergänzen ab einer bestimmten Breite zusätzliche Regeln. Aufwendige Effekte und große Bilder werden so erst auf großen Bildschirmen geladen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-adaptive",
@@ -1361,7 +1415,8 @@
         "text": "Fixed"
       }
     ],
-    "explanation": "Adaptive Layouts schalten per Media Query zwischen festen Layouts für bekannte Geräteklassen um. Fluid nutzt prozentuale Breiten; Responsive verbindet beides."
+    "explanation": "Adaptive Layouts schalten per Media Query zwischen festen Layouts für bekannte Geräteklassen um. Fluid nutzt prozentuale Breiten; Responsive verbindet beides.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-responsive-bilder",
@@ -1388,7 +1443,8 @@
         "text": "Es verhindert, dass das Bild breiter als sein Container wird"
       }
     ],
-    "explanation": "max-width: 100% verhindert, dass ein Bild seinen Container sprengt. height: auto passt die Höhe proportional an, damit das Bild nicht verzerrt wird."
+    "explanation": "max-width: 100% verhindert, dass ein Bild seinen Container sprengt. height: auto passt die Höhe proportional an, damit das Bild nicht verzerrt wird.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-direkte-kinder",
@@ -1415,7 +1471,8 @@
         "text": "nur das div selbst"
       }
     ],
-    "explanation": "Nur die direkten Kinder eines Grid-Containers werden zu Grid-Items. Soll auch der Inhalt eines article ins Raster, braucht der article selbst display: grid – oder subgrid."
+    "explanation": "Nur die direkten Kinder eines Grid-Containers werden zu Grid-Items. Soll auch der Inhalt eines article ins Raster, braucht der article selbst display: grid – oder subgrid.",
+    "status": "freigegeben"
   },
   {
     "id": "css-lay-subgrid",
@@ -1438,7 +1495,8 @@
         "text": "Es ordnet Kacheln versetzt als Masonry-Layout an"
       }
     ],
-    "explanation": "Ohne subgrid berechnet ein verschachteltes Grid seine Tracks unabhängig. Mit subgrid übernimmt es die Tracks des Eltern-Grids – Titel, Text und Buttons verschiedener Karten stehen auf einer Linie. Baseline Widely available seit ca. März 2026. Masonry ist dagegen display: grid-lanes."
+    "explanation": "Ohne subgrid berechnet ein verschachteltes Grid seine Tracks unabhängig. Mit subgrid übernimmt es die Tracks des Eltern-Grids – Titel, Text und Buttons verschiedener Karten stehen auf einer Linie. Baseline Widely available seit ca. März 2026. Masonry ist dagegen display: grid-lanes.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-nachfahre",
@@ -1465,7 +1523,8 @@
         "text": "nur C"
       }
     ],
-    "explanation": "Das Leerzeichen ist der Nachfahren-Kombinator: Er trifft jedes p innerhalb von article, egal wie tief verschachtelt. C steht außerhalb von article."
+    "explanation": "Das Leerzeichen ist der Nachfahren-Kombinator: Er trifft jedes p innerhalb von article, egal wie tief verschachtelt. C steht außerhalb von article.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-kind",
@@ -1492,7 +1551,8 @@
         "text": "nur A"
       }
     ],
-    "explanation": "> trifft nur direkte Kinder. A und B sind direkte Kinder der ul, die direktes Kind von nav ist. C steckt in einer verschachtelten ul, die kein direktes Kind von nav ist."
+    "explanation": "> trifft nur direkte Kinder. A und B sind direkte Kinder der ul, die direktes Kind von nav ist. C steckt in einer verschachtelten ul, die kein direktes Kind von nav ist.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-nachbar",
@@ -1519,7 +1579,8 @@
         "text": "keinen"
       }
     ],
-    "explanation": "+ trifft nur das unmittelbar folgende Geschwister-Element. B folgt erst nach A, C ist gar kein Geschwister des h1."
+    "explanation": "+ trifft nur das unmittelbar folgende Geschwister-Element. B folgt erst nach A, C ist gar kein Geschwister des h1.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-geschwister",
@@ -1546,7 +1607,8 @@
         "text": "nur C"
       }
     ],
-    "explanation": "~ trifft alle nachfolgenden Geschwister vom Typ p, auch wenn andere Elemente dazwischenstehen. A steht vor dem h2 und wird deshalb nicht getroffen."
+    "explanation": "~ trifft alle nachfolgenden Geschwister vom Typ p, auch wenn andere Elemente dazwischenstehen. A steht vor dem h2 und wird deshalb nicht getroffen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-zwei-klassen",
@@ -1573,7 +1635,8 @@
         "text": "A, C und D"
       }
     ],
-    "explanation": "Ohne Leerzeichen müssen alle Teile auf dasselbe Element zutreffen: Es muss ein div sein und beide Klassen tragen. Reihenfolge und weitere Klassen spielen keine Rolle. B fehlt eine Klasse, D ist kein div."
+    "explanation": "Ohne Leerzeichen müssen alle Teile auf dasselbe Element zutreffen: Es muss ein div sein und beide Klassen tragen. Reihenfolge und weitere Klassen spielen keine Rolle. B fehlt eine Klasse, D ist kein div.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-attribut-exakt",
@@ -1600,7 +1663,8 @@
         "text": "keines"
       }
     ],
-    "explanation": "[type=\"email\"] verlangt genau diesen Attributwert. C hat gar kein type-Attribut – der Browser behandelt es zwar als Textfeld, für den Selektor zählt aber nur, was im HTML steht."
+    "explanation": "[type=\"email\"] verlangt genau diesen Attributwert. C hat gar kein type-Attribut – der Browser behandelt es zwar als Textfeld, für den Selektor zählt aber nur, was im HTML steht.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-praefix",
@@ -1627,7 +1691,8 @@
         "text": "nur D"
       }
     ],
-    "explanation": "^= prüft, ob der Wert mit „https://“ beginnt. Das gilt für A und D. B beginnt mit http://, C ist ein relativer Link."
+    "explanation": "^= prüft, ob der Wert mit „https://“ beginnt. Das gilt für A und D. B beginnt mit http://, C ist ein relativer Link.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-teilstring",
@@ -1654,7 +1719,8 @@
         "text": "A und C"
       }
     ],
-    "explanation": "*= prüft, ob „logo“ irgendwo im alt-Text vorkommt – auch „logos“ enthält es. Bei C steht logo nur im src, der Selektor prüft aber alt."
+    "explanation": "*= prüft, ob „logo“ irgendwo im alt-Text vorkommt – auch „logos“ enthält es. Bei C steht logo nur im src, der Selektor prüft aber alt.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-nth-child",
@@ -1681,7 +1747,8 @@
         "text": "keiner"
       }
     ],
-    "explanation": ":nth-child() zählt alle Geschwister, egal welchen Typs: h2 ist Kind 1, B ist Kind 2 und zugleich ein p. p:nth-of-type(2) würde dagegen C treffen."
+    "explanation": ":nth-child() zählt alle Geschwister, egal welchen Typs: h2 ist Kind 1, B ist Kind 2 und zugleich ein p. p:nth-of-type(2) würde dagegen C treffen.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-not",
@@ -1708,7 +1775,8 @@
         "text": "nur A"
       }
     ],
-    "explanation": ":not(.active) schließt nur Elemente mit der Klasse active aus – C mit der Klasse disabled wird also getroffen. D steht nicht in einer ul mit der Klasse menu."
+    "explanation": ":not(.active) schließt nur Elemente mit der Klasse active aus – C mit der Klasse disabled wird also getroffen. D steht nicht in einer ul mit der Klasse menu.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-first-of-type",
@@ -1735,7 +1803,8 @@
         "text": "B, C und D"
       }
     ],
-    "explanation": ":first-of-type zählt nur Geschwister desselben Typs, und zwar in jedem Elternelement getrennt: B ist das erste p in section, D das erste p im div. Das h2 spielt für die Zählung keine Rolle."
+    "explanation": ":first-of-type zählt nur Geschwister desselben Typs, und zwar in jedem Elternelement getrennt: B ist das erste p in section, D das erste p im div. Das h2 spielt für die Zählung keine Rolle.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-focus",
@@ -1758,7 +1827,8 @@
         "text": "Bei jedem input, sobald die Seite geladen ist"
       }
     ],
-    "explanation": ":focus ist eine dynamische Pseudo-Klasse: Sie greift, solange das Feld den Eingabefokus hat. Für den Mauszeiger wäre :hover zuständig."
+    "explanation": ":focus ist eine dynamische Pseudo-Klasse: Sie greift, solange das Feld den Eingabefokus hat. Für den Mauszeiger wäre :hover zuständig.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-visited",
@@ -1781,7 +1851,8 @@
         "text": "width"
       }
     ],
-    "explanation": ":visited erlaubt aus Datenschutzgründen nur wenige Eigenschaften, vor allem Farben. Eigenschaften, die das Layout verändern, sind gesperrt – sonst könnte eine Seite per JavaScript den Browserverlauf ausspionieren."
+    "explanation": ":visited erlaubt aus Datenschutzgründen nur wenige Eigenschaften, vor allem Farben. Eigenschaften, die das Layout verändern, sind gesperrt – sonst könnte eine Seite per JavaScript den Browserverlauf ausspionieren.",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-empty",
@@ -1808,7 +1879,8 @@
         "text": "keinen"
       }
     ],
-    "explanation": ":empty trifft Elemente ohne Inhalt. Ein Leerzeichen ist ein Textknoten und verhindert den Treffer (3. li). Ein Kommentar zählt dagegen nicht als Inhalt (4. li)."
+    "explanation": ":empty trifft Elemente ohne Inhalt. Ein Leerzeichen ist ein Textknoten und verhindert den Treffer (3. li). Ein Kommentar zählt dagegen nicht als Inhalt (4. li).",
+    "status": "freigegeben"
   },
   {
     "id": "css-rev-q-kombination",
@@ -1835,6 +1907,7 @@
         "text": "nur D"
       }
     ],
-    "explanation": "Von links nach rechts: section:not(:last-of-type) schließt die letzte section aus, es bleibt die erste. Darin wählt article:nth-child(2) das zweite article, und p dessen Absatz – also B."
+    "explanation": "Von links nach rechts: section:not(:last-of-type) schließt die letzte section aus, es bleibt die erste. Darin wählt article:nth-child(2) das zweite article, und p dessen Absatz – also B.",
+    "status": "freigegeben"
   }
 ]
