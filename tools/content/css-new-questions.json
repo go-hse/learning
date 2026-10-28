@@ -1909,5 +1909,366 @@
     ],
     "explanation": "Von links nach rechts: section:not(:last-of-type) schließt die letzte section aus, es bleibt die erste. Darin wählt article:nth-child(2) das zweite article, und p dessen Absatz – also B.",
     "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-punkt-mit-oder-ohne-leerzeichen",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Worin unterscheiden sich `div.alert` und `div .alert`?",
+    "options": [
+      {
+        "text": "div.alert trifft ein div, das selbst die Klasse alert trägt; div .alert trifft jedes Element mit der Klasse alert innerhalb eines div",
+        "correct": true
+      },
+      {
+        "text": "Gar nicht – Leerzeichen vor einem Punkt werden in CSS ignoriert"
+      },
+      {
+        "text": "div.alert hat eine höhere Spezifität als div .alert"
+      },
+      {
+        "text": "div .alert trifft nur direkte Kinder eines div, div.alert auch tiefer verschachtelte"
+      }
+    ],
+    "explanation": "Ohne Leerzeichen (div.alert) ist es ein zusammengesetzter Selektor: Beide Teile müssen auf dasselbe Element zutreffen. Mit Leerzeichen (div .alert) ist es ein Nachfahren-Kombinator: .alert liegt irgendwo innerhalb von div. Die Spezifität ist bei beiden 0-1-1.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-attribut-tilde",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Absätze trifft `p[data-tags~=\"neu\"]`?",
+    "code": {
+      "lang": "html",
+      "text": "<p data-tags=\"neu wichtig\">A</p>\n<p data-tags=\"brandneu\">B</p>\n<p data-tags=\"neu-auflage\">C</p>\n<p data-tags=\"neu\">D</p>"
+    },
+    "options": [
+      {
+        "text": "A und D",
+        "correct": true
+      },
+      {
+        "text": "nur D"
+      },
+      {
+        "text": "A, C und D"
+      },
+      {
+        "text": "alle vier"
+      }
+    ],
+    "explanation": "~= prüft, ob der Wert als eigenständiges Wort in einer durch Leerzeichen getrennten Liste vorkommt. Bei B („brandneu“) und C („neu-auflage“) ist „neu“ nur Teil eines Wortes; für Teilstrings wäre *= zuständig, für Bindestrich-Präfixe |=.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-attribut-case-insensitive",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Was bewirkt das `i` in `a[href$=\".pdf\" i]`?",
+    "options": [
+      {
+        "text": "Der Vergleich ignoriert Groß- und Kleinschreibung, trifft also auch .PDF oder .Pdf",
+        "correct": true
+      },
+      {
+        "text": "Der Text des Links wird kursiv (italic) dargestellt"
+      },
+      {
+        "text": "Es werden nur interne Links derselben Domain geprüft"
+      },
+      {
+        "text": "Die Regel erhält wie !important eine höhere Priorität"
+      }
+    ],
+    "explanation": "Das Flag i vor der schließenden Klammer schaltet den Attributvergleich auf case-insensitiv um. Das Gegenstück s erzwingt die Beachtung der Groß-/Kleinschreibung.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-has-eltern",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Karten erhalten durch `.card:has(img)` einen Rahmen?",
+    "code": {
+      "lang": "html",
+      "text": "<div class=\"card\"><h3>A</h3><img src=\"a.jpg\" alt=\"\"></div>\n<div class=\"card\"><h3>B</h3><p>Nur Text</p></div>\n<div class=\"card\"><figure><img src=\"c.jpg\" alt=\"\"></figure></div>"
+    },
+    "options": [
+      {
+        "text": "die erste und die dritte Karte",
+        "correct": true
+      },
+      {
+        "text": "nur die erste Karte"
+      },
+      {
+        "text": "alle drei Karten"
+      },
+      {
+        "text": "gar keine – die Bilder selbst erhalten den Rahmen"
+      }
+    ],
+    "explanation": ":has(img) prüft, ob innerhalb von .card ein img als Nachfahre vorkommt – egal ob direkt (erste Karte) oder tiefer verschachtelt (dritte Karte). Gestylt wird dabei .card selbst, nicht das img. Für nur direkte Kinder müsste man .card:has(> img) schreiben.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-has-kombiniert",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Welches Element wird durch `h2:has(+ p.intro)` gestaltet?",
+    "options": [
+      {
+        "text": "Ein h2, auf das unmittelbar ein p mit der Klasse intro folgt",
+        "correct": true
+      },
+      {
+        "text": "Das p.intro, das unmittelbar auf ein h2 folgt"
+      },
+      {
+        "text": "Jedes h2, das ein p.intro als Kind enthält"
+      },
+      {
+        "text": "Beide Elemente – sowohl das h2 als auch das folgende p.intro"
+      }
+    ],
+    "explanation": "Der Selektor vor :has() bestimmt immer das Ziel der Regel: Gestylt wird das h2. Die Bedingung + p.intro in der Klammer verlangt ein direkt folgendes Geschwister-Element p.intro. Umgekehrt würde h2 + p.intro den Absatz selbst gestalten.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-spezifitaet-is-not",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Welche Spezifität hat der Selektor `ul:not(#hauptmenue) > li.aktiv::after`?",
+    "options": [
+      {
+        "text": "1-1-3",
+        "correct": true
+      },
+      {
+        "text": "0-2-2"
+      },
+      {
+        "text": "1-2-2"
+      },
+      {
+        "text": "0-1-3"
+      }
+    ],
+    "explanation": ":not() selbst zählt nicht, übernimmt aber die Spezifität seines Arguments #hauptmenue (1-0-0). Dazu kommen eine Klasse (.aktiv → 0-1-0) sowie zwei Elementtypen (ul, li) und ein Pseudo-Element (::after), die jeweils in der dritten Spalte zählen (0-0-3). Der Kombinator > zählt 0-0-0. Summe: 1-1-3.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-first-child-falle",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Absätze trifft `article p:first-child`?",
+    "code": {
+      "lang": "html",
+      "text": "<article>\n  <h2>Titel</h2>\n  <p>A</p>\n  <div>\n    <p>B</p>\n    <p>C</p>\n  </div>\n</article>"
+    },
+    "options": [
+      {
+        "text": "nur B",
+        "correct": true
+      },
+      {
+        "text": "nur A"
+      },
+      {
+        "text": "A und B"
+      },
+      {
+        "text": "keinen"
+      }
+    ],
+    "explanation": "p:first-child verlangt ein p, das zugleich das allererste Kind seines Elternelements ist. In article ist das erste Kind ein h2, deshalb scheidet A aus. Im div ist B dagegen das erste Kind und ein p – Treffer.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-content-pseudo",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Hinter jedem Pflichtfeld-Label `.pflicht` soll per CSS automatisch ein roter Stern (` *`) eingefügt werden. Welche Regel funktioniert?",
+    "options": [
+      {
+        "text": ".pflicht::after { content: \" *\"; color: red; }",
+        "correct": true
+      },
+      {
+        "text": ".pflicht:after-text { text: \" *\"; color: red; }"
+      },
+      {
+        "text": ".pflicht { content-after: \" *\"; color: red; }"
+      },
+      {
+        "text": ".pflicht::after { color: red; } (ohne content)"
+      }
+    ],
+    "explanation": "Die Eigenschaft content erzeugt bei ::before und ::after zusätzlichen Inhalt. Ohne content (mindestens content: \"\") wird ein ::before- oder ::after-Pseudo-Element überhaupt nicht erzeugt.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-sel-formular-kombination",
+    "section": "css-selectors",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Was bewirkt die Regel `input[type=\"checkbox\"]:checked + label { font-weight: bold; }`?",
+    "options": [
+      {
+        "text": "Das unmittelbar auf eine angehakte Checkbox folgende Label wird fett dargestellt",
+        "correct": true
+      },
+      {
+        "text": "Alle Labels im selben Formular werden fett, sobald irgendeine Checkbox angehakt ist"
+      },
+      {
+        "text": "Ein Label, das eine angehakte Checkbox als Kind enthält, wird fett dargestellt"
+      },
+      {
+        "text": "Sowohl die Checkbox als auch das Label werden fett dargestellt"
+      }
+    ],
+    "explanation": "Hier greifen vier Konzepte ineinander: Typ-Selektor (input), Attribut-Selektor ([type=\"checkbox\"]), Zustands-Pseudo-Klasse (:checked) und der Nachbar-Kombinator (+), der das direkt folgende Geschwister-Element label auswählt.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-rev-q-not-last-child",
+    "section": "css-review",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Welche Listeneinträge erhalten durch `ul > li:not(:last-child)` eine Trennlinie?",
+    "code": {
+      "lang": "html",
+      "text": "<ul>\n  <li>A</li>\n  <li>B</li>\n  <li>C</li>\n</ul>"
+    },
+    "options": [
+      {
+        "text": "A und B",
+        "correct": true
+      },
+      {
+        "text": "nur C"
+      },
+      {
+        "text": "B und C"
+      },
+      {
+        "text": "A, B und C"
+      }
+    ],
+    "explanation": "li:not(:last-child) wählt alle li-Elemente außer dem letzten Kind. Ein klassisches Muster für Trennlinien oder Abstände zwischen Einträgen, ohne dass nach dem letzten Element eine überflüssige Linie entsteht.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-rev-q-nth-child-formel-3n",
+    "section": "css-review",
+    "type": "mc-single",
+    "difficulty": 2,
+    "prompt": "Eine Liste hat 8 Einträge (`<li>`). Welche Positionen trifft `li:nth-child(3n+2)`?",
+    "options": [
+      {
+        "text": "2, 5 und 8",
+        "correct": true
+      },
+      {
+        "text": "3, 5 und 7"
+      },
+      {
+        "text": "2, 4, 6 und 8"
+      },
+      {
+        "text": "5 und 8"
+      }
+    ],
+    "explanation": "Die Formel 3n+2 wird ab n = 0 ausgewertet: Für n = 0 ergibt sich 2, für n = 1 ergibt sich 5, für n = 2 ergibt sich 8. Ein häufiger Fehler ist, erst bei n = 1 zu beginnen und so Position 2 zu übersehen.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-rev-q-kombinatoren-kette",
+    "section": "css-review",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Welchen Text färbt `.box > h2 + p ~ p { color: red; }` rot?",
+    "code": {
+      "lang": "html",
+      "text": "<div class=\"box\">\n  <p>A</p>\n  <h2>Titel</h2>\n  <p>B</p>\n  <span>Hinweis</span>\n  <p>C</p>\n  <div><p>D</p></div>\n</div>"
+    },
+    "options": [
+      {
+        "text": "nur C",
+        "correct": true
+      },
+      {
+        "text": "B und C"
+      },
+      {
+        "text": "B, C und D"
+      },
+      {
+        "text": "keinen, weil zwischen B und C ein span steht"
+      }
+    ],
+    "explanation": "Schritt für Schritt: .box > h2 wählt die Überschrift (direktes Kind von .box). + p wählt den unmittelbar folgenden Absatz B. ~ p wählt alle auf B folgenden Geschwister-Absätze – das ist C (das span dazwischen stört ~ nicht). D ist kein Geschwister, sondern steckt in einem div.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-rev-q-nachfahre-gegen-kind-kaskade",
+    "section": "css-review",
+    "type": "mc-single",
+    "difficulty": 3,
+    "prompt": "Welche Farben haben die drei Links?",
+    "code": {
+      "lang": "html",
+      "text": "<style>\n  nav a   { color: white; }\n  nav > a { color: cyan; }\n</style>\n<nav>\n  <a href=\"#\">Plan</a>\n  <a href=\"#\">Skript</a>\n  <span><a href=\"#\">Impressum</a></span>\n</nav>"
+    },
+    "options": [
+      {
+        "text": "Plan und Skript sind cyan, Impressum ist weiß",
+        "correct": true
+      },
+      {
+        "text": "Alle drei sind cyan"
+      },
+      {
+        "text": "Alle drei sind weiß, weil nav a allgemeiner ist"
+      },
+      {
+        "text": "Plan und Skript sind weiß, Impressum ist cyan"
+      }
+    ],
+    "explanation": "nav a trifft alle drei Links (Nachfahre). nav > a trifft nur die direkten Kinder Plan und Skript; Impressum liegt in einem span. Beide Selektoren haben dieselbe Spezifität (0-0-2), weil Kombinatoren nicht mitzählen – bei Plan und Skript gewinnt daher die später notierte Regel nav > a.",
+    "status": "freigegeben"
+  },
+  {
+    "id": "css-rev-q-is-kombinator",
+    "section": "css-review",
+    "type": "mc-multi",
+    "difficulty": 2,
+    "prompt": "Welche Elemente trifft `:is(header, footer) a:hover`?",
+    "options": [
+      {
+        "text": "Einen Link im <header>, solange der Mauszeiger darüber schwebt",
+        "correct": true
+      },
+      {
+        "text": "Einen Link im <footer>, solange der Mauszeiger darüber schwebt",
+        "correct": true
+      },
+      {
+        "text": "Jeden Link auf der Seite, sobald der Mauszeiger über dem <header> ist"
+      },
+      {
+        "text": "Alle Links im <header> dauerhaft, aber Links im <footer> nur beim Hovern"
+      }
+    ],
+    "explanation": ":is(header, footer) a:hover ist die kompakte Kurzform für header a:hover, footer a:hover. Bei der Komma-Schreibweise vergessen viele, header vor dem zweiten Selektor zu wiederholen (header a:hover, a:hover träfe dann alle Links auf der Seite).",
+    "status": "freigegeben"
   }
 ]
